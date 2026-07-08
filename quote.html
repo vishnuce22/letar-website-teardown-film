@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Quote — Letar Inc. | CNC Machining, Concord ON</title>
+  <meta name="description" content="Send your RFQ to Letar Inc. — drawings, specs, quantities. Quotes come from the machinists who plan and cut the part. AS9100D · ITAR · CGP. Response within two business days." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/real/as9100d.png" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="index.html">LETAR <span class="co">INC</span><span class="co-aero">Aerospace</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="quality.html">Quality</a>
+      <a href="markets.html">Markets</a>
+      <a href="about.html">About</a>
+      <a class="header-phone" href="tel:+19057380770">905-738-0770</a>
+      <a href="quote.html#rfq" class="btn btn-primary btn-sm" aria-current="page">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ RFQ — form above the fold, its one job is to get the drawing ═══ -->
+<section class="hero" style="padding: 56px 0 40px;">
+  <div class="container">
+    <div class="eyebrow">Request a quote</div>
+    <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.4rem);">Send the drawing.<br /><span class="accent">Get a machinist's quote.</span></h1>
+    <p class="lede" style="margin-top: 18px;">
+      Your quote comes from the people who will plan, program, and cut the part —
+      not a sales desk. Attach the package below and we'll respond within two business days.
+    </p>
+    <div style="margin-top: 22px;">
+      <span class="promise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Quotes within 2 business days
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RFQ FORM — IDs and field names are wired to supabase-client.js; do not rename ═══ -->
+<section class="section-tight" id="rfq" style="padding-top: 12px;">
+  <div class="container rfq-grid">
+
+    <div class="form-card">
+      <div id="quote-form-body">
+        <h3 style="margin-bottom: 6px;">Request for quote</h3>
+        <p style="color: var(--steel); font-size: .95rem; margin-bottom: 26px;">The more you send, the tighter the quote. Only name, company, email, and a description are required.</p>
+        <form id="quote-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="q-name">Your name</label>
+              <input id="q-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="q-company">Company</label>
+              <input id="q-company" name="company" required autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="q-email">Work email</label>
+              <input id="q-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="q-phone">Phone (optional)</label>
+              <input id="q-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="q-qty">Quantity</label>
+              <input id="q-qty" name="quantity" placeholder="e.g. 25 pcs + FAI" />
+            </div>
+            <div class="field">
+              <label for="q-material">Material</label>
+              <input id="q-material" name="material" placeholder="e.g. 7075-T651, Ti-6Al-4V" />
+            </div>
+            <div class="field">
+              <label for="q-date">Required date (optional)</label>
+              <input id="q-date" name="required_date" type="date" />
+            </div>
+            <div class="field">
+              <label for="q-desc" style="visibility:hidden;">Spacer</label>
+              <div style="font-family: var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color: var(--steel-lt); padding-top: 12px;">Fields left blank are fine</div>
+            </div>
+            <div class="field full">
+              <label for="file-input">Drawing / RFQ package (optional)</label>
+              <label class="dropzone" for="file-input" id="dropzone">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+                <span class="dz-text" id="dz-text">Drop your file here or <b>browse</b></span>
+                <span class="dz-hint">PDF · STEP · IGES · DWG · DXF · ZIP — up to 10 MB</span>
+                <input id="file-input" name="file" type="file" accept=".pdf,.step,.stp,.iges,.igs,.zip,.dwg,.dxf" />
+              </label>
+            </div>
+            <div class="field full">
+              <label for="q-desc">What are we quoting?</label>
+              <textarea id="q-desc" name="description" rows="5" required placeholder="Part description, key tolerances, finish requirements, certs needed…"></textarea>
+            </div>
+          </div>
+          <!-- honeypot: humans never see this; bots fill it and get silently dropped -->
+          <div class="hp-field" aria-hidden="true">
+            <label>Leave this field empty<input name="_hp" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div style="margin-top: 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+            <button type="submit" id="quote-submit" class="btn btn-primary">Submit RFQ</button>
+            <span id="quote-notice" class="form-notice"></span>
+          </div>
+          <p class="form-note">For larger packages or controlled data, call <a href="tel:+19057380770" style="color: var(--blue-deep); font-weight:600;">905-738-0770</a> to arrange transfer.</p>
+        </form>
+      </div>
+      <div id="quote-success" style="display:none;">
+        <h3 style="color: var(--good); margin-bottom: 8px;">RFQ received</h3>
+        <p style="color: var(--steel);">Thanks — your package is in our quoting queue. Expect a response within two business days. For anything urgent, call <a href="tel:+19057380770" style="color: var(--blue-deep); font-weight:600;">905-738-0770</a>.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap: 22px;">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 14px;">What happens next</div>
+        <div class="next-steps">
+          <div class="jstep">
+            <span class="j-op">OP 10</span>
+            <div>
+              <div class="j-name">Received</div>
+              <div class="j-desc">Your package lands in the quoting queue — no sales gatekeeper.</div>
+            </div>
+          </div>
+          <div class="jstep">
+            <span class="j-op">OP 20</span>
+            <div>
+              <div class="j-name">Reviewed</div>
+              <div class="j-desc">A machinist checks manufacturability — free feedback if we spot a snag.</div>
+            </div>
+          </div>
+          <div class="jstep">
+            <span class="j-op">OP 30</span>
+            <div>
+              <div class="j-name">Quoted</div>
+              <div class="j-desc">An honest price and a lead time we can keep, within two business days.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-block">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v5c0 5-3.5 9-8 11-4.5-2-8-6-8-11V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <p><b>Controlled drawings are handled under our ITAR / CGP procedures.</b> Technical data is access-controlled to authorized persons only.</p>
+      </div>
+
+      <div class="form-card" style="padding: 24px 26px;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 16px;">Rather talk it through?</h3>
+        <p style="margin-bottom: 12px;"><a href="tel:+19057380770" style="font-weight: 600;">905-738-0770</a><br /><span style="color: var(--steel); font-size:.88rem;">Mon–Fri, 8:00–17:00 ET</span></p>
+        <p style="margin: 0;"><a href="mailto:info@letarinc.com" style="font-weight: 600;">info@letarinc.com</a><br /><span style="color: var(--steel); font-size:.88rem;">RFQs, supplier surveys, general inquiries</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT WE WORK FROM — sets RFQ expectations, qualifies the part ═══ -->
+<section class="section-tight section-alt" style="padding-top: 56px;">
+  <div class="container" style="max-width: 880px;">
+    <div class="section-head reveal" style="margin-bottom: 34px;">
+      <div class="eyebrow">For your RFQ package</div>
+      <h2>What we work from</h2>
+    </div>
+    <div class="spec-card reveal">
+      <table class="spec-table">
+        <thead>
+          <tr><th>Item</th><th>Specification</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Machining envelope</td><td class="mono-cell">UP TO 118″ × 32″ × 28″ (5-AXIS)</td></tr>
+          <tr><td>Materials</td><td>Aluminum, titanium, steel, copper, brass, plastics, and more</td></tr>
+          <tr><td>Drawing formats</td><td class="mono-cell">PDF · STEP · IGES · DWG · DXF</td></tr>
+          <tr><td>Quality documentation</td><td>AS9102 FAI, C of C, material certs, special-process certs</td></tr>
+          <tr><td>Controlled data</td><td>ITAR registration, Canada CGP, U.S. Joint Certification Program</td></tr>
+          <tr><td>Typical response</td><td>Within two business days</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color: var(--steel); font-size: .92rem; margin-top: 18px;">Not sure it's a fit? <a href="capabilities.html" style="color: var(--blue-deep); font-weight: 600;">See what we machine</a> — or just send it and we'll tell you honestly.</p>
+  </div>
+</section>
+
+<!-- ═══ PROOF STRIP ═══ -->
+<section class="anchor-band" style="padding: 76px 0;">
+  <div class="container">
+    <div class="stat-strip" style="margin-top: 0;">
+      <div class="stat-cell"><div class="stat-value">20<span class="unit">+ yrs</span></div><div class="stat-label">Aerospace &amp; defence</div></div>
+      <div class="stat-cell"><div class="stat-value">26</div><div class="stat-label">CNC machines</div></div>
+      <div class="stat-cell"><div class="stat-value">ASL</div><div class="stat-label">Bombardier supplier</div></div>
+      <div class="stat-cell"><div class="stat-value">100<span class="unit">%</span></div><div class="stat-label">Shipments with certs</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html" style="margin-bottom:14px;">LETAR <span class="co">INC</span></a>
+        <p>Precision CNC machining for aerospace, defence, and industry — Concord, Ontario.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="capabilities.html">Capabilities</a>
+        <a href="quality.html">Quality</a>
+        <a href="markets.html">Markets</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Compliance</h4>
+        <a href="quality.html">AS9100D + ISO 9001</a>
+        <a href="quality.html">ITAR / CGP</a>
+        <a href="supplier-terms.html">Supplier T&amp;C</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>40 Courtland Ave<br />Concord, ON L4K 5B3</p>
+        <a href="tel:+19057380770">905-738-0770</a>
+        <a href="mailto:info@letarinc.com">info@letarinc.com</a>
+      </div>
+    </div>
+    <div class="footer-doc">
+      <span>© 2026 Letar Inc. All rights reserved.</span>
+      <span><a href="classic.html">Classic site</a> · DOC: LETAR-WEB · REV D · CONCORD, ON</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+<script src="js/supabase-client.js" defer></script>
+<script>
+  // Dropzone: dress the wired #file-input as a drop target. The input stays the
+  // source of truth for supabase-client.js — we only reflect state + accept drops.
+  (function () {
+    var zone = document.getElementById('dropzone')
+    var input = document.getElementById('file-input')
+    var text = document.getElementById('dz-text')
+    if (!zone || !input || !text) return
+    var idle = text.innerHTML
+    function show() {
+      var f = input.files && input.files[0]
+      if (f) { text.textContent = f.name; zone.classList.add('has-file') }
+      else { text.innerHTML = idle; zone.classList.remove('has-file') }
+    }
+    input.addEventListener('change', show)
+    ;['dragenter', 'dragover'].forEach(function (ev) {
+      zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.add('is-drag') })
+    })
+    ;['dragleave', 'dragend', 'drop'].forEach(function (ev) {
+      zone.addEventListener(ev, function () { zone.classList.remove('is-drag') })
+    })
+    zone.addEventListener('drop', function (e) {
+      e.preventDefault()
+      if (!e.dataTransfer || !e.dataTransfer.files.length) return
+      try { input.files = e.dataTransfer.files } catch (err) { return }
+      show()
+    })
+  })()
+</script>
+</body>
+</html>

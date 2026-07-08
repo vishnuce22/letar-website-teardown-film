@@ -146,6 +146,17 @@ h3 { font-size: 1.25rem; line-height: 1.3; }
 .nav a:hover { color: var(--ink); }
 .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--blue); }
 .nav .btn { margin-left: 6px; }
+/* header phone — the shop is reachable, and buyers who don't want a form see it */
+.header-phone {
+  font-family: var(--font-mono); font-size: .82rem; letter-spacing: .04em;
+  color: var(--steel); border-bottom: none !important; padding: 6px 2px;
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+}
+.header-phone::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--good); box-shadow: 0 0 0 3px rgba(23,138,80,.16);
+}
+.header-phone:hover { color: var(--ink); }
 /* nav CTA = plain emphasized text link (no box). A little bolder + ink so it
    reads as the primary action; small lift on hover. */
 .nav a.btn-primary {
@@ -423,6 +434,64 @@ h3 { font-size: 1.25rem; line-height: 1.3; }
 @media (max-width: 1020px) { .rfq-grid { grid-template-columns: 1fr; } }
 /* honeypot — visually gone, present for bots */
 .hp-field { position: absolute; left: -6000px; opacity: 0; height: 0; overflow: hidden; }
+
+/* ── RFQ dropzone — the file input, dressed as a drawing drop ─────
+   The raw <input id="file-input"> stays wired to supabase-client.js;
+   the label wraps it, so a click opens the picker and drops set .files. */
+.dropzone {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; text-align: center; cursor: pointer;
+  padding: 26px 20px; border: 1.5px dashed var(--line);
+  border-radius: var(--radius-sm); background: var(--card-2);
+  color: var(--steel); transition: border-color .16s, background .16s, color .16s;
+}
+.dropzone:hover, .dropzone:focus-within { border-color: var(--blue); background: var(--blue-wash); color: var(--ink); }
+.dropzone.is-drag { border-color: var(--blue); background: var(--blue-wash); border-style: solid; color: var(--ink); }
+.dropzone.has-file { border-style: solid; border-color: var(--good); background: rgba(23,138,80,.06); color: var(--ink); }
+.dropzone svg { color: var(--blue-deep); }
+.dz-text { font-size: .95rem; font-weight: 500; }
+.dz-text b { color: var(--blue-deep); }
+.dz-hint { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--steel-lt); }
+.dropzone input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+
+/* ── "Quotes in 2 business days" promise pill ─────────────────── */
+.promise {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--blue-deep);
+  background: var(--blue-wash); border: 1px solid rgba(37,99,235,.18);
+  padding: 7px 14px; border-radius: 999px;
+}
+.promise svg { width: 13px; height: 13px; }
+
+/* ── Compact "what happens next" — reuses the traveler step motif ─
+   A slimmer .jstep for the RFQ aside: op number + name + one line. */
+.next-steps { display: grid; gap: 10px; }
+.next-steps .jstep { grid-template-columns: 66px 1fr; gap: 14px; padding: 15px 18px; }
+.next-steps .j-name { font-size: .98rem; margin-bottom: 2px; }
+.next-steps .j-desc { grid-column: 2; font-size: .9rem; }
+@media (max-width: 720px) { .next-steps .jstep { grid-template-columns: 56px 1fr; } }
+
+/* ── Reassurance note (ITAR / controlled data) ──────────────────── */
+.note-block {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--blue); border-radius: var(--radius-sm);
+  padding: 16px 18px; box-shadow: var(--shadow);
+}
+.note-block svg { color: var(--blue-deep); flex-shrink: 0; margin-top: 2px; }
+.note-block p { font-size: .9rem; color: var(--steel); margin: 0; }
+.note-block b { color: var(--ink); }
+
+/* ── Inline section CTA — a quiet "quote this" line under a section ─ */
+.inline-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap; margin-top: 30px; padding: 20px 26px;
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.inline-cta p { margin: 0; color: var(--ink); font-weight: 500; }
+.inline-cta p span { display: block; color: var(--steel); font-weight: 400; font-size: .9rem; margin-top: 2px; }
 
 /* ── Footer — document footer ───────────────────────────────── */
 .site-footer {
