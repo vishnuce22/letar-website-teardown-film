@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>Letar Inc. — Tier-1 Aerospace CNC Machining · Concord, Ontario</title>
+  <meta name="description" content="Precision CNC machining for aerospace and defence. AS9100D certified, ITAR registered, CGP approved, Bombardier Approved Supplier. 20+ years serving OEMs across North America from Concord, Ontario." />
+  <meta name="keywords" content="CNC machining aerospace, AS9100D certified, CGP approved, 5-axis milling, Concord Ontario, Bombardier supplier" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Letar Inc. — Precision Aerospace Manufacturing" />
+  <meta property="og:description" content="Tier-1 CNC machining for aerospace, defence, and medical. AS9100D · CGP · Bombardier approved." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://letarinc.com" />
+  <!-- Schema.org -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Letar Inc.","description":"Precision CNC machining for aerospace and defence","address":{"@type":"PostalAddress","streetAddress":"40 Courtland Avenue Unit A","addressLocality":"Concord","addressRegion":"ON","postalCode":"L4K 5B3","addressCountry":"CA"},"telephone":"+19057380770","email":"info@letarinc.com","url":"https://letarinc.com"}</script>
+  <link rel="preload" as="image" href="assets/images/f35-hero.jpg" />
+  <link rel="stylesheet" href="css/styles.css?v=20260617d" />
+  <link rel="stylesheet" href="css/animations.css?v=20260617d" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260617d" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ NAVIGATION ══ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      LET<span>A</span>R
+      <span class="tagline">Aerospace Manufacturing</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#machines">Machines</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#why-letar">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">Request a Quote</a>
+      <button class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="nav-overlay"></div>
+<nav class="nav-mobile">
+  <a href="#capabilities">Capabilities</a>
+  <a href="#machines">Machines</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#industries">Industries</a>
+  <a href="#why-letar">About</a>
+  <a href="#contact">Contact</a>
+  <a href="capabilities.html">Full Capabilities Page</a>
+  <a href="certifications.html">Certifications Detail</a>
+</nav>
+
+<!-- ══════════════════════════════════════════ HERO ══ -->
+<section id="hero">
+  <!-- F-35 photo background (z-index:-1, behind everything) -->
+  <div class="hero-photo-bg">
+    <img src="assets/images/f35-hero.jpg"
+         alt=""
+         width="2000" height="1333"
+         decoding="async"
+         aria-hidden="true" />
+  </div>
+  <!-- Dark gradient overlay (z-index:0) -->
+  <div class="hero-overlay"></div>
+
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        AS9100D · ITAR · CGP · Bombardier ASL
+      </div>
+
+      <h1 class="hero-title">
+        Precision<br/>
+        <span class="gradient-text">Without Compromise</span>
+      </h1>
+
+      <p class="hero-sub">
+        Tier-1 aerospace CNC machining from the heart of Ontario.
+        Trusted by OEMs and prime contractors across North America
+        for two decades of flawless execution.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-gold btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Request a Quote
+        </a>
+        <a href="#capabilities" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          Explore Capabilities
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value" data-count="20" data-suffix="+">20+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-count="26" data-suffix="+">26+</div>
+          <div class="stat-label">Advanced Machines</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">AS9100D</div>
+          <div class="stat-label">Quality Certified</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">ASL</div>
+          <div class="stat-label">Bombardier Supplier</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ TRUST STRIP ══ -->
+<section class="trust-strip">
+  <div class="container trust-inner">
+    <span class="trust-lead">Trusted across North American aerospace &amp; defence</span>
+    <div class="trust-items">
+      <span>AS9100D</span>
+      <span>ISO 9001</span>
+      <span>CGP</span>
+      <span>JCP</span>
+      <span>Bombardier ASL</span>
+      <span>ITAR-registered</span>
+      <span>20+ Years</span>
+      <span>26 Machines</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ CAPABILITIES OVERVIEW ══ -->
+<section id="capabilities" class="section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">A Single Source, <span class="gradient-text">End to End</span></h2>
+      <p class="section-sub">
+        Over two decades machining and assembling precision parts for Aerospace &amp; Defence —
+        from raw material to finished, inspected sub-assembly, under one roof.
+      </p>
+    </div>
+
+    <div class="capabilities-grid stagger">
+      <!-- CNC Machining -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="cap-title">CNC Machining</h3>
+        <p class="cap-desc">20+ active CNC machines running 3, 4 &amp; 5-axis milling and lathe. Aluminum, titanium, steel, copper, brass and engineering plastics — held to aerospace tolerances.</p>
+        <span class="cap-spec">3 / 4 / 5-Axis · ±0.0005"</span>
+      </div>
+
+      <!-- Concurrent Engineering -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3 class="cap-title">Concurrent Engineering</h3>
+        <p class="cap-desc">Early-stage DFM collaboration with free consultations — we catch machining challenges at design inception to prevent costly redesigns and shorten lead times.</p>
+        <span class="cap-spec">Free DFM review</span>
+      </div>
+
+      <!-- Fabrication -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3 class="cap-title">Fabrication &amp; Sheet Metal</h3>
+        <p class="cap-desc">Precision sheet-metal bending — standalone or integrated with machining. From simple brackets to complex multi-bend assemblies, with end-to-end quality assurance.</p>
+        <span class="cap-spec">In-house bending</span>
+      </div>
+
+      <!-- Assembly -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h3 class="cap-title">Assembly &amp; Hardware</h3>
+        <p class="cap-desc">Nutplates, rivets, press-fit, helicoils, threaded inserts, bushings and bearings — fully integrated sub-assemblies, documented to AS9100D.</p>
+        <span class="cap-spec">Sub-assembly</span>
+      </div>
+
+      <!-- Conversion & Finish -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <h3 class="cap-title">Conversion &amp; Finish</h3>
+        <p class="cap-desc">Chemical conversion coating, fluid-resistant primer and electrical bonding — plus hardness and conductivity testing, coordinated through trusted partners.</p>
+        <span class="cap-spec">Chem-film · primer</span>
+      </div>
+
+      <!-- CMM -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="cap-title">Quality &amp; CMM Inspection</h3>
+        <p class="cap-desc">In-house CMM verification at each stage of production — full first-article and in-process inspection, documented for traceability per our AS9100D QMS.</p>
+        <span class="cap-spec">CMM · FAIR · AS9100D</span>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 40px; text-align: center;">
+      <a href="capabilities.html" class="btn btn-outline">
+        View Full Capabilities &amp; Machine Specs
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ BY THE NUMBERS ══ -->
+<section class="counter-section">
+  <div class="container">
+    <div class="counter-grid">
+      <div class="counter-item reveal">
+        <div class="counter-num" data-count="26">0</div>
+        <div class="counter-label">Precision Machines</div>
+      </div>
+      <div class="counter-item reveal">
+        <div class="counter-num" data-count="20" data-suffix="+">0</div>
+        <div class="counter-label">Years in Aerospace</div>
+      </div>
+      <div class="counter-item reveal">
+        <div class="counter-display">±0.0005″</div>
+        <div class="counter-label">Tolerance Capability</div>
+      </div>
+      <div class="counter-item reveal">
+        <div class="counter-num" data-count="6">0</div>
+        <div class="counter-label">Major Certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ MACHINES SHOWCASE ══ -->
+<section id="machines" class="section" style="background: var(--section);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Our Arsenal</span>
+      <h2 class="section-title">Built for <span class="gradient-text">Mission-Critical</span> Work</h2>
+      <p class="section-sub">
+        26 precision machines running across our Concord facility — including pallet-pool
+        automation and the latest 5-axis machining centres.
+        <span style="display:block; margin-top:8px; font-size:14px; color: var(--subtle);">Hover over each machine to see it in action.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="machines-scroll-wrap reveal">
+      <div class="machines-row">
+
+        <!-- MAM72 — Flip Card -->
+        <div class="machine-flip">
+          <div class="machine-inner">
+            <div class="machine-front">
+              <div class="machine-badge badge-pallet">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Pallet Pool
+              </div>
+              <div class="machine-name">Matsuura MAM72-100H</div>
+              <div class="machine-maker">Matsuura · Japan</div>
+              <div class="machine-specs">
+                <div class="machine-spec-row">
+                  <span class="spec-key">Configuration</span>
+                  <span class="spec-val">5-Axis HMC</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Pallet Pool</span>
+                  <span class="spec-val">8-pallet automated</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Spindle</span>
+                  <span class="spec-val">15,000 RPM</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Travel X/Y/Z</span>
+                  <span class="spec-val">560/560/560mm</span>
+                </div>
+              </div>
+              <div class="machine-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Unattended overnight production
+              </div>
+              <div class="machine-flip-hint">Hover for photo ↻</div>
+            </div>
+            <div class="machine-back">
+              <img src="assets/machines/mam72.jpg" alt="Matsuura MAM72-100H" loading="lazy" onerror="this.style.display='none'" />
+              <div class="machine-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+              <div class="machine-back-label">
+                <span class="machine-back-name">Matsuura MAM72-100H</span>
+                <span class="machine-back-type">5-Axis Horizontal · Pallet Pool</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DMU 60 EVO — Flip Card -->
+        <div class="machine-flip">
+          <div class="machine-inner">
+            <div class="machine-front">
+              <div class="machine-badge badge-5axis">5-Axis</div>
+              <div class="machine-name">DMG DMU 60 EVO</div>
+              <div class="machine-maker">DMG Mori · Germany</div>
+              <div class="machine-specs">
+                <div class="machine-spec-row">
+                  <span class="spec-key">Configuration</span>
+                  <span class="spec-val">5-Axis Universal</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Spindle</span>
+                  <span class="spec-val">18,000 RPM</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Travel X/Y/Z</span>
+                  <span class="spec-val">630/560/560mm</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Status</span>
+                  <span class="spec-val mono">Newly installed</span>
+                </div>
+              </div>
+              <div class="machine-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Simultaneous 5-axis contouring
+              </div>
+              <div class="machine-flip-hint">Hover for photo ↻</div>
+            </div>
+            <div class="machine-back">
+              <img src="assets/machines/dmu60.jpg" alt="DMG DMU 60 EVO" loading="lazy" onerror="this.style.display='none'" />
+              <div class="machine-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <div class="machine-back-label">
+                <span class="machine-back-name">DMG DMU 60 EVO</span>
+                <span class="machine-back-type">5-Axis Universal Mill</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variaxis i700 — Flip Card -->
+        <div class="machine-flip">
+          <div class="machine-inner">
+            <div class="machine-front">
+              <div class="machine-badge badge-5axis">5-Axis</div>
+              <div class="machine-name">Mazak Variaxis i700</div>
+              <div class="machine-maker">Mazak · Japan</div>
+              <div class="machine-specs">
+                <div class="machine-spec-row">
+                  <span class="spec-key">Configuration</span>
+                  <span class="spec-val">5-Axis VMC</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Spindle</span>
+                  <span class="spec-val">12,000 RPM</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Table Size</span>
+                  <span class="spec-val">ø700mm</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Tool Mag.</span>
+                  <span class="spec-val">40 tools</span>
+                </div>
+              </div>
+              <div class="machine-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Trunnion-style full 5-axis
+              </div>
+              <div class="machine-flip-hint">Hover for photo ↻</div>
+            </div>
+            <div class="machine-back">
+              <img src="assets/machines/variaxis.jpg" alt="Mazak Variaxis i700" loading="lazy" onerror="this.style.display='none'" />
+              <div class="machine-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+              <div class="machine-back-label">
+                <span class="machine-back-name">Mazak Variaxis i700</span>
+                <span class="machine-back-type">5-Axis Vertical Machining Centre</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DMU 95 Mono Block — Flip Card -->
+        <div class="machine-flip">
+          <div class="machine-inner">
+            <div class="machine-front">
+              <div class="machine-badge badge-5axis">5-Axis</div>
+              <div class="machine-name">DMG DMU 95 Mono Block</div>
+              <div class="machine-maker">DMG Mori · Germany</div>
+              <div class="machine-specs">
+                <div class="machine-spec-row">
+                  <span class="spec-key">Configuration</span>
+                  <span class="spec-val">5-Axis Universal</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Spindle</span>
+                  <span class="spec-val">18,000 RPM</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Travel X/Y/Z</span>
+                  <span class="spec-val">900/800/700mm</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Table Load</span>
+                  <span class="spec-val">700 kg</span>
+                </div>
+              </div>
+              <div class="machine-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Large aerospace structural parts
+              </div>
+              <div class="machine-flip-hint">Hover for photo ↻</div>
+            </div>
+            <div class="machine-back">
+              <img src="assets/machines/dmu95.jpg" alt="DMG DMU 95 Mono Block" loading="lazy" onerror="this.style.display='none'" />
+              <div class="machine-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+              <div class="machine-back-label">
+                <span class="machine-back-name">DMG DMU 95 Mono Block</span>
+                <span class="machine-back-type">5-Axis Large-Format Mill</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MX-420 — Flip Card -->
+        <div class="machine-flip">
+          <div class="machine-inner">
+            <div class="machine-front">
+              <div class="machine-badge badge-4axis">4-Axis</div>
+              <div class="machine-name">Mazak MX-420</div>
+              <div class="machine-maker">Mazak · Japan</div>
+              <div class="machine-specs">
+                <div class="machine-spec-row">
+                  <span class="spec-key">Configuration</span>
+                  <span class="spec-val">4-Axis VMC</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Spindle</span>
+                  <span class="spec-val">12,000 RPM</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Travel X/Y/Z</span>
+                  <span class="spec-val">762/508/508mm</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">4th Axis</span>
+                  <span class="spec-val">Full 360°</span>
+                </div>
+              </div>
+              <div class="machine-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                High-volume production runs
+              </div>
+              <div class="machine-flip-hint">Hover for photo ↻</div>
+            </div>
+            <div class="machine-back">
+              <img src="assets/machines/mx420.jpg" alt="Mazak MX-420" loading="lazy" onerror="this.style.display='none'" />
+              <div class="machine-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
+              <div class="machine-back-label">
+                <span class="machine-back-name">Mazak MX-420</span>
+                <span class="machine-back-type">4-Axis Vertical Machining Centre</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L700-2 — Flip Card -->
+        <div class="machine-flip">
+          <div class="machine-inner">
+            <div class="machine-front">
+              <div class="machine-badge badge-turning">Turning</div>
+              <div class="machine-name">Mazak L700-2</div>
+              <div class="machine-maker">Mazak · Japan</div>
+              <div class="machine-specs">
+                <div class="machine-spec-row">
+                  <span class="spec-key">Configuration</span>
+                  <span class="spec-val">CNC Lathe</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Max Diameter</span>
+                  <span class="spec-val">ø355mm</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Max Length</span>
+                  <span class="spec-val">700mm</span>
+                </div>
+                <div class="machine-spec-row">
+                  <span class="spec-key">Spindle</span>
+                  <span class="spec-val">Live tooling</span>
+                </div>
+              </div>
+              <div class="machine-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Mill-turn in a single setup
+              </div>
+              <div class="machine-flip-hint">Hover for photo ↻</div>
+            </div>
+            <div class="machine-back">
+              <img src="assets/machines/l700.jpg" alt="Mazak L700-2" loading="lazy" onerror="this.style.display='none'" />
+              <div class="machine-back-icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+              <div class="machine-back-label">
+                <span class="machine-back-name">Mazak L700-2</span>
+                <span class="machine-back-type">CNC Turning Centre</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="reveal" style="margin-top: 32px; text-align: center;">
+      <a href="capabilities.html#machines" class="btn btn-outline btn-sm">
+        View all 26 machines &amp; full specifications
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ CERTIFICATIONS ══ -->
+<section id="certifications" class="section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Standards & Compliance</span>
+      <h2 class="section-title">Built to the <span class="gradient-text">Highest Standards</span></h2>
+      <p class="section-sub">
+        Every certification we hold is a promise to our customers —
+        that every part we ship meets the most demanding requirements in the industry.
+      </p>
+    </div>
+
+    <div class="certs-grid stagger">
+
+      <div class="cert-card reveal">
+        <div class="cert-badge cert-img"><img src="assets/real/as9100d.png" alt="AS9100D certification" loading="lazy" /></div>
+        <div class="cert-name">AS9100D Rev. D</div>
+        <div class="cert-standard">IAQG Aerospace QMS · Current Certification</div>
+        <p class="cert-desc">The gold standard for aerospace quality management. Every process, from order entry to delivery, is documented, controlled, and audited — giving customers complete traceability on every part.</p>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge cert-img"><img src="assets/real/iso9001.png" alt="ISO 9001:2015 certification" loading="lazy" /></div>
+        <div class="cert-name">ISO 9001:2015</div>
+        <div class="cert-standard">Quality Management System</div>
+        <p class="cert-desc">Internationally recognized quality management framework underpinning our AS9100D certification. Systematic control of all processes, continual improvement, and customer-focused delivery.</p>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge cert-img"><img src="assets/real/cgp-canada.png" alt="Controlled Goods Program" loading="lazy" /></div>
+        <div class="cert-name">CGP — Controlled Goods</div>
+        <div class="cert-standard">Canada Defence Production Act</div>
+        <p class="cert-desc">Approved under Canada's Controlled Goods Program — authorization to examine, possess, and transfer controlled defence goods and technology within Canada.</p>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge cert-img"><img src="assets/real/itar.png" alt="ITAR registered" loading="lazy" /></div>
+        <div class="cert-name">ITAR Registered</div>
+        <div class="cert-standard">U.S. International Traffic in Arms Regulations</div>
+        <p class="cert-desc">Registered and compliant for the handling of defence-related technical data and hardware — enabling secure work on controlled U.S. and cross-border defence programs.</p>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge cert-purple">JCP</div>
+        <div class="cert-name">JCP Certified</div>
+        <div class="cert-standard">US/Canada Joint Certification Program</div>
+        <p class="cert-desc">Bilateral U.S.–Canada certification enabling cross-border aerospace manufacturing without redundant export restrictions — seamless supply chain integration for North American prime contractors.</p>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-badge cert-green" style="font-size:8px;">BOMBARDIER<br/>ASL</div>
+        <div class="cert-name">Bombardier Approved Supplier</div>
+        <div class="cert-standard">Approved Supplier List</div>
+        <p class="cert-desc">Listed on Bombardier's Approved Supplier List across controlled manufacturing specifications — covering surface treatment, testing, assembly operations, and material processing for business-jet programs.</p>
+      </div>
+
+    </div>
+
+    <div class="reveal" style="margin-top: 40px; text-align: center;">
+      <a href="certifications.html" class="btn btn-outline">
+        Full Certification Details
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ INDUSTRIES ══ -->
+<section id="industries" class="section" style="background: var(--section);">
+  <div class="container">
+    <div class="reveal tabs-header">
+      <span class="section-label">Markets We Serve</span>
+      <h2 class="section-title">Where Precision <span class="gradient-text">Matters Most</span></h2>
+      <p class="section-sub">Trusted partner to OEMs and Tier-1 primes across North America — from flight-critical aerospace structures to rugged first-responder communications.</p>
+
+      <div class="tab-list" role="tablist" aria-label="Industries">
+        <button class="tab-btn active" data-tab="aerospace" role="tab" aria-selected="true">Aerospace &amp; Defence</button>
+        <button class="tab-btn" data-tab="telecom" role="tab" aria-selected="false">Telecommunication</button>
+        <button class="tab-btn" data-tab="medical" role="tab" aria-selected="false">Medical</button>
+        <button class="tab-btn" data-tab="commercial" role="tab" aria-selected="false">Commercial</button>
+      </div>
+    </div>
+
+    <!-- Aerospace & Defence tab -->
+    <div class="tab-panel active" id="tab-aerospace" role="tabpanel">
+      <div class="tab-content-grid reveal">
+        <div class="tab-media">
+          <img src="assets/real/aerospace.jpg" alt="Letar aerospace components" loading="lazy" />
+        </div>
+        <div class="tab-body">
+          <span class="tab-eyebrow">Aerospace &amp; Defence</span>
+          <h3 class="tab-title">From structural parts to critical <span class="gradient-text">avionics</span></h3>
+          <p class="tab-desc">The trusted partner for OEMs and Tier-1 aerospace across North America for machined components and sub-assembly procurement — delivered to the stringent standards and specifications of every customer.</p>
+          <div class="parts-grid">
+            <div class="parts-col"><span class="parts-h">Wing</span><span>Wing ribs</span><span>Fitting assemblies &amp; brackets</span></div>
+            <div class="parts-col"><span class="parts-h">Fuselage</span><span>Frames / bulkheads</span><span>Pylons</span></div>
+            <div class="parts-col"><span class="parts-h">Cockpit Control</span><span>Frame &amp; backplate sub-assemblies</span><span>Light &amp; button plates · dash panels</span></div>
+            <div class="parts-col"><span class="parts-h">Systems Hardware</span><span>Lighting housings</span><span>Electrical box covers · sensor mounts</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Telecommunication tab -->
+    <div class="tab-panel" id="tab-telecom" role="tabpanel">
+      <div class="tab-content-grid reveal">
+        <div class="tab-media market-media-split">
+          <img src="assets/real/telecommunication1.jpg" alt="Precision-machined telecom component" loading="lazy" style="border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-lg);" />
+          <img src="assets/real/telecommunication2.jpg" alt="Precision-machined telecom component" loading="lazy" style="border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-lg);" />
+        </div>
+        <div class="tab-body">
+          <span class="tab-eyebrow">Telecommunication</span>
+          <h3 class="tab-title">Emergency comms, <span class="gradient-text">20+ years</span> running</h3>
+          <p class="tab-desc">We machine matched sets of precision parts for a rugged wireless communication device used by First Responders across North America — meeting stringent waterproofing, impact-resistance, and critical-tolerance requirements.</p>
+          <div class="chip-row">
+            <span>Enclosures</span><span>Chassis</span><span>Filters</span><span>Heatsinks</span>
+            <span>Covers</span><span>Partitions</span><span>Repeater casings</span><span>Precision housings</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medical tab -->
+    <div class="tab-panel" id="tab-medical" role="tabpanel">
+      <div class="tab-soon reveal" style="max-width: 600px; margin: 0 auto;">
+        <span class="tab-eyebrow">Medical Innovation</span>
+        <h3 class="tab-title" style="margin: 16px 0 0;">Precision components for medical robotics &amp; devices</h3>
+        <p>Our AS9100D quality system and tight-tolerance machining capabilities transfer directly to medical device manufacturing requirements. We are actively qualifying for new medical programs.</p>
+        <span class="soon-tag">Accepting inquiries</span>
+      </div>
+    </div>
+
+    <!-- Commercial tab -->
+    <div class="tab-panel" id="tab-commercial" role="tabpanel">
+      <div class="tab-soon reveal" style="max-width: 600px; margin: 0 auto;">
+        <span class="tab-eyebrow">Commercial Manufacturing</span>
+        <h3 class="tab-title" style="margin: 16px 0 0;">Certified precision machining for general commercial OEMs</h3>
+        <p>Our ISO 9001:2015 certification, broad machine fleet, and sub-assembly capability make us a strong partner for commercial OEMs seeking a premium, certified Canadian supplier.</p>
+        <span class="soon-tag">Accepting inquiries</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ WHY LETAR ══ -->
+<section id="why-letar" class="section">
+  <div class="container">
+    <div class="why-header">
+      <div class="reveal">
+        <span class="section-label">Our Difference</span>
+        <h2 class="section-title">The Letar <span class="gradient-text">Advantage</span></h2>
+      </div>
+      <p class="section-sub reveal" style="max-width: 400px;">
+        Two decades of partnerships built on one principle: never compromise on quality, traceability, or delivery.
+      </p>
+    </div>
+
+    <div class="why-grid stagger">
+
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <div class="why-title">Pallet-Pool Automation</div>
+          <div class="why-desc">Our Matsuura MAM72-100H pallet-pool system runs unattended through nights and weekends — giving you competitive lead times without compromising on precision or quality.</div>
+        </div>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <div class="why-title">Defence Supply Chain Ready</div>
+          <div class="why-desc">We maintain a fully segregated, access-controlled environment for Controlled Goods and defence work. Approved under CGP and the U.S.–Canada Joint Certification Program for seamless cross-border supply chain integration.</div>
+        </div>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <div class="why-title">End-to-End Capability</div>
+          <div class="why-desc">From raw material to finished sub-assembly in one facility. We handle machining, in-process inspection, sub-assembly, and final CMM verification — simplifying your supply chain.</div>
+        </div>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <div class="why-title">Concurrent-Engineering Speed</div>
+          <div class="why-desc">Listed on Bombardier's Approved Supplier List, we understand aerospace program schedules. Our concurrent-engineering approach — free DFM consultations at design inception — catches machining issues before they become schedule risks.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CNC PRECISION BANNER ══ -->
+<section id="cnc-precision" class="cnc-section reveal">
+  <div class="cnc-photo-wrap">
+    <img
+      src="assets/real/cncmachine1.jpg"
+      alt="CNC machining centres on the Letar Inc. shop floor"
+      loading="lazy"
+      decoding="async"
+      class="cnc-photo"
+      width="1920" height="1080"
+      onerror="this.style.opacity='0'"
+    />
+    <div class="cnc-overlay"></div>
+  </div>
+  <div class="container cnc-content">
+    <span class="section-label" style="color:rgba(96,165,250,0.8);">The Shop Floor</span>
+    <h2 class="cnc-title">Precision at<br/><span class="gradient-text">Every Micron</span></h2>
+    <p class="cnc-sub">
+      26+ advanced machines. Lights-out capable.<br/>
+      ITAR-registered facility in Concord, Ontario.
+    </p>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════ CTA BANNER ══ -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner-inner reveal">
+      <div>
+        <h2 class="cta-banner-title">Ready to qualify us as a supplier?</h2>
+        <p class="cta-banner-sub">Send us your drawings and specifications. We review all requests and respond within 2 business days with a competitive quote.</p>
+      </div>
+      <div class="cta-banner-actions">
+        <a href="#contact" class="btn btn-gold btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Request a Quote
+        </a>
+        <a href="certifications.html" class="btn btn-outline btn-lg">View Certifications</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ CONTACT / QUOTE ══ -->
+<section id="contact" class="section" style="background: var(--section);">
+  <div class="container">
+    <div class="reveal" style="margin-bottom: 56px;">
+      <span class="section-label">Get Started</span>
+      <h2 class="section-title">Start Your <span class="gradient-text">Project</span></h2>
+      <p class="section-sub">Send us your drawings and requirements. We'll review and respond with a competitive quote within 2 business days.</p>
+    </div>
+
+    <div class="contact-inner">
+      <!-- Quote form -->
+      <div class="quote-form reveal">
+        <div id="quote-form-body">
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px; color: var(--text);">Request a Quote</h3>
+          <p style="font-size: 13px; color: var(--muted); margin-bottom: 24px;">All file formats accepted — PDF, STEP, DXF, DWG.</p>
+
+          <form id="quote-form">
+            <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input class="form-input" type="text" name="name" placeholder="Jane Smith" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Company *</label>
+                <input class="form-input" type="text" name="company" placeholder="Acme Aerospace" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input class="form-input" type="email" name="email" placeholder="jane@company.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input class="form-input" type="tel" name="phone" placeholder="+1 (905) 000-0000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Project Description *</label>
+              <textarea class="form-input" name="description" placeholder="Describe the parts, materials, quantities, and any special requirements…" required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Quantity</label>
+                <input class="form-input" type="text" name="quantity" placeholder="e.g. 50 pcs" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Material</label>
+                <input class="form-input" type="text" name="material" placeholder="e.g. Al 6061-T6" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Required Date</label>
+              <input class="form-input" type="date" name="required_date" />
+            </div>
+
+            <div class="drop-zone" id="drop-zone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <p><span>Click to upload</span> or drag &amp; drop your drawings</p>
+              <p style="font-size: 11px; color: var(--subtle); margin-top: 4px;">PDF, STEP, DXF, DWG — up to 50MB</p>
+              <p id="file-label" style="font-size: 12px; color: var(--accent); margin-top: 6px;"></p>
+            </div>
+            <input type="file" id="file-input" style="display: none;" accept=".pdf,.step,.stp,.dxf,.dwg,.iges,.igs" />
+
+            <div id="quote-notice" class="form-notice" style="display: none;"></div>
+
+            <button type="submit" class="form-submit" id="quote-submit">
+              Send Request
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <div id="quote-success" class="form-success">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3>Quote Request Sent!</h3>
+          <p>We've received your project details and will respond within <strong>2 business days</strong>.</p>
+          <p style="margin-top: 8px;">Questions? Call us at <a href="tel:+19057380770" style="color: var(--accent);">905-738-0770</a></p>
+        </div>
+      </div>
+
+      <!-- Contact info -->
+      <div class="contact-info reveal">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Address</div>
+            <div class="contact-detail-val">40 Courtland Avenue, Unit A<br/>Concord, ON L4K 5B3</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07C9.36 17.44 7.55 15.64 6.13 13.44A19.79 19.79 0 0 1 3.06 4.81a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.13 1.05.35 2.08.69 3.07a2 2 0 0 1-.45 2.11L9.91 10.1a16 16 0 0 0 6 6l.41-.41a2 2 0 0 1 2.11-.45c.99.33 2.02.55 3.07.69a2 2 0 0 1 1.72 2.02z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-val"><a href="tel:+19057380770" style="color: var(--accent);">905-738-0770</a></div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-val"><a href="mailto:info@letarinc.com" style="color: var(--accent);">info@letarinc.com</a></div>
+          </div>
+        </div>
+
+        <div class="response-promise">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p>We review all quotation requests and respond within <strong>2 business days</strong>.</p>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.4!2d-79.4990!3d43.8340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s40+Courtland+Ave%2C+Concord%2C+ON!5e0!3m2!1sen!2sca!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Letar Inc. location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">LET<span>A</span>R</div>
+        <p class="footer-tagline">Precision CNC machining for aerospace and defence — delivered from Concord, Ontario since the early 2000s.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/company/letar-inc" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Capabilities</div>
+        <div class="footer-links">
+          <a href="capabilities.html">3/4/5-Axis Milling</a>
+          <a href="capabilities.html">CNC Turning</a>
+          <a href="capabilities.html">Sub-Assembly</a>
+          <a href="capabilities.html">CMM Inspection</a>
+          <a href="capabilities.html">Materials &amp; Tolerances</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="certifications.html">Certifications</a>
+          <a href="#industries">Industries</a>
+          <a href="#why-letar">About Us</a>
+          <a href="#contact">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:+19057380770">905-738-0770</a>
+          <a href="mailto:info@letarinc.com">info@letarinc.com</a>
+          <a href="contact.html">Get Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FedDev Ontario government funding acknowledgment (required per contribution agreement) -->
+    <div class="footer-funding">
+      <a href="https://feddev-ontario.canada.ca/en" target="_blank" rel="noopener noreferrer" title="Federal Economic Development Agency for Southern Ontario">
+        <img src="assets/images/feddev-logo-white.png"
+             alt="Funded by the Federal Economic Development Agency for Southern Ontario / Financé par l'Agence fédérale de développement économique pour le Sud de l'Ontario"
+             loading="lazy"
+             decoding="async"
+             height="64" />
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-certs">
+        <span class="footer-cert-badge">AS9100D</span>
+        <span class="footer-cert-badge">ISO 9001</span>
+        <span class="footer-cert-badge">CGP</span>
+        <span class="footer-cert-badge">JCP</span>
+        <span class="footer-cert-badge">Bombardier ASL</span>
+      </div>
+      <p class="footer-copy">
+        <a href="privacy.html" style="color: var(--muted);">Privacy</a> ·
+        <a href="terms.html" style="color: var(--muted);">Terms</a> ·
+        © 2026 Letar Inc. All rights reserved. · Built with LetarOS
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/particles.js?v=20260617d"></script>
+<script src="js/animations.js?v=20260617d"></script>
+<script src="js/supabase-client.js?v=20260617d"></script>
+<script src="js/main.js?v=20260617d"></script>
+</body>
+</html>

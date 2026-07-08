@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "takes": [
+      {
+        "file": "hero-t1.mp4",
+        "seed": 153553826,
+        "res": "720p"
+      },
+      {
+        "file": "hero-final.mp4",
+        "seed": 101719960,
+        "res": "1080p"
+      }
+    ]
+  },
+  "orbit": {
+    "takes": [
+      {
+        "file": "orbit-t1.mp4",
+        "seed": 15077042,
+        "res": "720p"
+      },
+      {
+        "file": "orbit-final.mp4",
+        "seed": 994417896,
+        "res": "1080p"
+      },
+      {
+        "file": "orbit-final.mp4",
+        "seed": 598169816,
+        "res": "1080p"
+      }
+    ]
+  },
+  "teardown": {
+    "takes": [
+      {
+        "file": "teardown-t1.mp4",
+        "seed": 1192599493,
+        "res": "720p"
+      },
+      {
+        "file": "teardown-final.mp4",
+        "seed": 1581159223,
+        "res": "1080p"
+      },
+      {
+        "file": "teardown-final.mp4",
+        "seed": 1202173606,
+        "res": "1080p"
+      }
+    ]
+  },
+  "machining": {
+    "takes": [
+      {
+        "file": "machining-t1.mp4",
+        "seed": 939542730,
+        "res": "720p"
+      },
+      {
+        "file": "machining-final.mp4",
+        "seed": 216190872,
+        "res": "1080p"
+      },
+      {
+        "file": "machining-final.mp4",
+        "seed": 1477853564,
+        "res": "1080p"
+      }
+    ]
+  },
+  "cmm": {
+    "takes": [
+      {
+        "file": "cmm-t1.mp4",
+        "seed": 866527134,
+        "res": "720p"
+      },
+      {
+        "file": "cmm-final.mp4",
+        "seed": 1550126407,
+        "res": "1080p"
+      },
+      {
+        "file": "cmm-final.mp4",
+        "seed": 1680319191,
+        "res": "1080p"
+      }
+    ]
+  },
+  "ret": {
+    "takes": [
+      {
+        "file": "ret-t1.mp4",
+        "seed": 589995072,
+        "res": "720p"
+      },
+      {
+        "file": "ret-final.mp4",
+        "seed": 686839944,
+        "res": "1080p"
+      }
+    ]
+  },
+  "hangar": {
+    "takes": [
+      {
+        "file": "hangar-t1.mp4",
+        "seed": 1771386635,
+        "res": "720p"
+      },
+      {
+        "file": "hangar-final.mp4",
+        "seed": 1921111349,
+        "res": "1080p"
+      }
+    ]
+  }
+}

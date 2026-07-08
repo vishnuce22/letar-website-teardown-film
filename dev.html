@@ -1,0 +1,104 @@
+<!doctype html>
+<!-- DEV HARNESS — unlinked. Tune jet/bracket geometry + explode without scroll.
+     Keys: E = explode/reassemble · 1 = jet view · 2 = bracket bench · 3 = lab · 4 = hero closeup -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TRACE dev harness</title>
+<style>
+  body { margin: 0; background: #FAFBFC; overflow: hidden; font-family: monospace; }
+  #hint { position: fixed; top: 10px; left: 12px; color: #56616D; font-size: 12px; z-index: 5; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="hint">E explode · 1 jet · 2 bench · 3 lab · 4 hero</div>
+<script type="module">
+import * as THREE from 'three'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { buildEnvironment, buildMaterials } from './js/film/materials.js'
+import { buildWorld, W } from './js/film/world.js'
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
+renderer.setSize(innerWidth, innerHeight)
+renderer.toneMapping = THREE.ACESFilmicToneMapping
+renderer.toneMappingExposure = 1.12
+document.body.appendChild(renderer.domElement)
+
+const scene = new THREE.Scene()
+scene.background = new THREE.Color(0xfafbfc)
+const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 0.05, 400)
+
+buildMaterials()
+scene.environment = buildEnvironment(renderer)
+buildWorld(scene)
+
+// make everything visible for inspection
+W.lab.visible = true
+W.bracket.visible = true
+W.billet.visible = false
+W.wireShell.visible = false
+
+const controls = new OrbitControls(camera, renderer.domElement)
+function view(pos, tgt) { camera.position.set(...pos); controls.target.set(...tgt); controls.update() }
+view([18, 66, 34], [0, 60, 0])
+
+let explodeT = 0, explodeDir = 0
+addEventListener('keydown', (e) => {
+  if (e.key === 'e' || e.key === 'E') explodeDir = explodeDir === 1 ? -1 : 1
+  if (e.key === '1') view([18, 66, 34], [0, 60, 0])
+  if (e.key === '2') view([2.5, 2.6, 7.5], [0, 0.3, 0])
+  if (e.key === '3') view([32.4, 2.1, 6.4], [30, -0.4, 0])
+  if (e.key === '4') view([-3.5, 59.2, 5.6], [-2.2, 58.95, 2.6])
+})
+
+const clockStart = performance.now()
+function render(now) {
+  const t = (now - clockStart) * 0.001
+  // explode lerp
+  if (explodeDir !== 0) {
+    explodeT = Math.min(1, Math.max(0, explodeT + explodeDir * 0.014))
+    W.jetPieces.forEach((p) => {
+      const h = p.userData.home, ex = p.userData.explode, s = p.userData.spin
+      p.position.set(h.x + ex.x * explodeT, h.y + ex.y * explodeT, h.z + ex.z * explodeT)
+      p.rotation.set(s.x * explodeT, s.y * explodeT, s.z * explodeT)
+    })
+  }
+  // ambient: jet breathe + nav blink + flight drift
+  W.jetPivot.rotation.z = Math.sin(t * 0.3) * 0.015
+  W.jetPivot.position.y = 60 + Math.sin(t * 0.23) * 0.12
+  if (W.strobe) W.strobe.material.color.setScalar(t % 1.4 < 0.08 ? 8 : 0.4)
+  if (W.navLeft) W.navLeft.material.color.setRGB(0.5 + 0.5 * Math.sin(t * 2), 0.1, 0.1).multiplyScalar(2)
+  if (W.navRight) W.navRight.material.color.setRGB(0.05, 0.5 + 0.5 * Math.sin(t * 2), 0.15).multiplyScalar(2)
+  W.terrain.position.x = ((t * 2.2) % 40) - 20
+  W.contours.position.x = W.terrain.position.x
+  W.clouds.forEach((c, i) => {
+    c.position.x -= 0.05 + (i % 3) * 0.015
+    if (c.position.x < -110) c.position.x = 110
+  })
+  W.wingInner.forEach(({ inner, ail, side }) => {
+    inner.rotation.x = side * -0.052 + Math.sin(t * 0.7 + side) * 0.006
+    ail.rotation.z = Math.sin(t * 1.3 + side * 2) * 0.05
+  })
+  if (W.elevator) W.elevator.rotation.z = Math.sin(t * 0.9) * 0.04
+
+  controls.update()
+  renderer.render(scene, camera)
+  requestAnimationFrame(render)
+}
+requestAnimationFrame(render)
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(innerWidth, innerHeight)
+})
+</script>
+</body>
+</html>

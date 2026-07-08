@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Quote — Letar Inc. | CNC Machining, Concord ON</title>
+  <meta name="description" content="Send your RFQ package to Letar Inc. — drawings, specs, and quantities. AS9100D certified, ITAR registered CNC machining in Concord, Ontario. 905-738-0770." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/real/as9100d.png" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="index.html">LETAR <span class="co">INC</span><span class="co-aero">Aerospace</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="markets.html">Markets</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a href="#rfq" class="btn btn-primary btn-sm">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom: 40px;">
+  <div class="container">
+    <div class="eyebrow">Start a job</div>
+    <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.4rem);">Send the drawing.<br /><span class="accent">Get a machinist's quote.</span></h1>
+    <p class="lede" style="margin-top: 20px;">
+      Attach your RFQ package below — drawings, specs, quantities, and required dates.
+      Quotes come from the people who will actually plan and machine the part.
+      We respond within two business days.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ RFQ FORM — IDs and field names are wired to supabase-client.js; do not rename ═══ -->
+<section class="section-tight" id="rfq">
+  <div class="container rfq-grid">
+
+    <div class="form-card">
+      <div id="quote-form-body">
+        <h3 style="margin-bottom: 6px;">Request for quote</h3>
+        <p style="color: var(--steel); font-size: .95rem; margin-bottom: 26px;">Controlled drawings are handled under our ITAR / CGP procedures.</p>
+        <form id="quote-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="q-name">Your name</label>
+              <input id="q-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="q-company">Company</label>
+              <input id="q-company" name="company" required autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="q-email">Work email</label>
+              <input id="q-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="q-phone">Phone (optional)</label>
+              <input id="q-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="q-qty">Quantity</label>
+              <input id="q-qty" name="quantity" placeholder="e.g. 25 pcs + FAI" />
+            </div>
+            <div class="field">
+              <label for="q-material">Material</label>
+              <input id="q-material" name="material" placeholder="e.g. 7075-T651, Ti-6Al-4V" />
+            </div>
+            <div class="field">
+              <label for="q-date">Required date (optional)</label>
+              <input id="q-date" name="required_date" type="date" />
+            </div>
+            <div class="field">
+              <label for="file-input">Drawing / RFQ package (optional)</label>
+              <input id="file-input" name="file" type="file" accept=".pdf,.step,.stp,.iges,.igs,.zip,.dwg,.dxf" />
+            </div>
+            <div class="field full">
+              <label for="q-desc">What are we quoting?</label>
+              <textarea id="q-desc" name="description" rows="5" required placeholder="Part description, key tolerances, finish requirements, certs needed…"></textarea>
+            </div>
+          </div>
+          <!-- honeypot: humans never see this; bots fill it and get silently dropped -->
+          <div class="hp-field" aria-hidden="true">
+            <label>Leave this field empty<input name="_hp" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div style="margin-top: 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+            <button type="submit" id="quote-submit" class="btn btn-primary">Submit RFQ</button>
+            <span id="quote-notice" class="form-notice"></span>
+          </div>
+          <p class="form-note">Files up to 10 MB. For larger packages or controlled data, call us to arrange transfer.</p>
+        </form>
+      </div>
+      <div id="quote-success" style="display:none;">
+        <h3 style="color: var(--good); margin-bottom: 8px;">RFQ received</h3>
+        <p style="color: var(--steel);">Thanks — your package is in our quoting queue. Expect a response within two business days. For anything urgent, call <a href="tel:+19057380770" style="color: var(--blue-deep); font-weight:600;">905-738-0770</a>.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="dwg-frame" style="margin-bottom: 22px;">
+        <span class="tick tl"></span><span class="tick tr"></span>
+        <span class="tick bl"></span><span class="tick br"></span>
+        <div class="frame-img" style="border-radius: 4px 4px 0 0;">
+          <iframe
+            title="Letar Inc. location — 40 Courtland Ave, Concord ON"
+            src="https://www.google.com/maps?q=40+Courtland+Ave,+Concord,+ON+L4K+5B3&output=embed"
+            style="width:100%; aspect-ratio: 4/3.4; border:0; display:block;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="title-block" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="tb-cell">
+            <div class="tb-label">Facility</div>
+            <div class="tb-value">40 Courtland Ave</div>
+          </div>
+          <div class="tb-cell">
+            <div class="tb-label">City</div>
+            <div class="tb-value">Concord, ON L4K 5B3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card" style="padding: 26px 28px;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 16px;">Reach us directly</h3>
+        <p style="margin-bottom: 12px;"><a href="tel:+19057380770" style="font-weight: 600;">905-738-0770</a><br /><span style="color: var(--steel); font-size:.88rem;">Mon–Fri, 8:00–17:00 ET</span></p>
+        <p><a href="mailto:info@letarinc.com" style="font-weight: 600;">info@letarinc.com</a><br /><span style="color: var(--steel); font-size:.88rem;">RFQs, supplier surveys, general inquiries</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GENERAL CONTACT ═══ -->
+<section class="section-tight" style="padding-top: 24px;">
+  <div class="container" style="max-width: 828px;">
+    <div class="form-card">
+      <div id="contact-form-body">
+        <h3 style="margin-bottom: 6px;">Not a quote? Send a message</h3>
+        <p style="color: var(--steel); font-size: .95rem; margin-bottom: 26px;">Supplier surveys, audits, careers, or anything else.</p>
+        <form id="contact-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="c-name">Your name</label>
+              <input id="c-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="c-email">Email</label>
+              <input id="c-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field full">
+              <label for="c-phone">Phone (optional)</label>
+              <input id="c-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field full">
+              <label for="c-message">Message</label>
+              <textarea id="c-message" name="message" rows="4" required></textarea>
+            </div>
+          </div>
+          <div class="hp-field" aria-hidden="true">
+            <label>Leave this field empty<input name="_hp" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div style="margin-top: 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+            <button type="submit" id="contact-submit" class="btn btn-ghost">Send message</button>
+            <span id="contact-notice" class="form-notice"></span>
+          </div>
+        </form>
+      </div>
+      <div id="contact-success" style="display:none;">
+        <h3 style="color: var(--good); margin-bottom: 8px;">Message sent</h3>
+        <p style="color: var(--steel);">Thanks — we'll get back to you within two business days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="index.html" style="margin-bottom:14px;">LETAR <span class="co">INC</span></a>
+        <p>Precision CNC machining for aerospace, defence, and industry — Concord, Ontario.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="markets.html">Markets</a>
+        <a href="capabilities.html">Capabilities</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Compliance</h4>
+        <a href="certifications.html">AS9100D + ISO 9001</a>
+        <a href="certifications.html">ITAR / CGP</a>
+        <a href="supplier-terms.html">Supplier T&amp;C</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>40 Courtland Ave<br />Concord, ON L4K 5B3</p>
+        <a href="tel:+19057380770">905-738-0770</a>
+        <a href="mailto:info@letarinc.com">info@letarinc.com</a>
+      </div>
+    </div>
+    <div class="footer-doc">
+      <span>© 2026 Letar Inc. All rights reserved.</span>
+      <span>DOC: LETAR-WEB · REV C · CONCORD, ON</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+<script src="js/supabase-client.js" defer></script>
+</body>
+</html>

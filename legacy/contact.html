@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>Contact &amp; Quote — Letar Inc. Aerospace CNC Machining</title>
+  <meta name="description" content="Contact Letar Inc. for CNC machining quotes. 40 Courtland Ave, Concord ON. Phone: 905-738-0770. We respond within 2 business days." />
+  <link rel="stylesheet" href="css/styles.css?v=20260617d" />
+  <link rel="stylesheet" href="css/animations.css?v=20260617d" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260617d" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ NAV ══ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">LET<span>A</span>R <span class="tagline">Aerospace Manufacturing</span></a>
+    <ul class="nav-links">
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="index.html#machines">Machines</a></li>
+      <li><a href="certifications.html">Certifications</a></li>
+      <li><a href="index.html#industries">Industries</a></li>
+      <li><a href="index.html#why-letar">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary btn-sm">Request a Quote</a>
+      <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-overlay"></div>
+<nav class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="capabilities.html">Capabilities</a>
+  <a href="certifications.html">Certifications</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ════════════════════════════ PAGE HERO ══ -->
+<div class="page-hero">
+  <span class="section-label" style="margin-bottom: 20px;">Let's Talk</span>
+  <h1>Start Your <span class="gradient-text">Project</span></h1>
+  <p>Send us your drawings, quantities, and timeline. We review every RFQ personally and respond within 2 business days.</p>
+</div>
+
+<!-- ══════════════════════════ CONTACT CONTENT ══ -->
+<section class="section">
+  <div class="container">
+    <div class="contact-inner">
+
+      <!-- Forms -->
+      <div>
+        <!-- Quote Request Form -->
+        <div class="quote-form reveal" style="margin-bottom: 28px;">
+          <div id="quote-form-body">
+            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Request a Quote</h3>
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 24px;">Upload your drawings and we'll get back to you with a competitive quote. All file formats accepted.</p>
+
+            <form id="quote-form">
+              <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input class="form-input" type="text" name="name" placeholder="Jane Smith" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Company *</label>
+                  <input class="form-input" type="text" name="company" placeholder="Acme Aerospace" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Email *</label>
+                  <input class="form-input" type="email" name="email" placeholder="jane@company.com" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <input class="form-input" type="tel" name="phone" placeholder="+1 (905) 000-0000" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Project Description *</label>
+                <textarea class="form-input" name="description" rows="4" placeholder="Describe the parts, materials, quantities, and any special requirements…" required></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Quantity</label>
+                  <input class="form-input" type="text" name="quantity" placeholder="e.g. 50 pcs" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Material</label>
+                  <input class="form-input" type="text" name="material" placeholder="e.g. Al 6061-T6, Ti-6Al-4V" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Required Delivery Date</label>
+                <input class="form-input" type="date" name="required_date" />
+              </div>
+
+              <div class="drop-zone" id="drop-zone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <p><span>Click to upload</span> or drag &amp; drop your drawings</p>
+                <p style="font-size: 11px; color: var(--subtle); margin-top: 4px;">PDF, STEP, DXF, DWG, IGES — up to 50MB</p>
+                <p id="file-label" style="font-size: 12px; color: var(--cyan); margin-top: 6px;"></p>
+              </div>
+              <input type="file" id="file-input" style="display: none;" accept=".pdf,.step,.stp,.dxf,.dwg,.iges,.igs" />
+
+              <div id="quote-notice" class="form-notice" style="display: none;"></div>
+
+              <button type="submit" class="form-submit" id="quote-submit">
+                Send Quote Request
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <div id="quote-success" class="form-success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Quote Request Received!</h3>
+            <p>We'll review your project and respond within <strong>2 business days</strong>.</p>
+            <p style="margin-top: 8px;">Urgent? Call us directly: <a href="tel:+19057380770" style="color: var(--accent);">905-738-0770</a></p>
+          </div>
+        </div>
+
+        <!-- General Contact Form -->
+        <div class="quote-form reveal">
+          <div id="contact-form-body">
+            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">General Enquiry</h3>
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 24px;">Questions, supplier inquiries, or employment — we'd love to hear from you.</p>
+
+            <form id="contact-form">
+              <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input class="form-input" type="text" name="name" placeholder="John Smith" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email *</label>
+                  <input class="form-input" type="email" name="email" placeholder="john@company.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input class="form-input" type="tel" name="phone" placeholder="+1 (905) 000-0000" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message *</label>
+                <textarea class="form-input" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+              </div>
+
+              <div id="contact-notice" class="form-notice" style="display: none;"></div>
+
+              <button type="submit" class="form-submit" id="contact-submit">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <div id="contact-success" class="form-success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. We'll get back to you shortly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Info Sidebar -->
+      <div class="contact-info reveal">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Address</div>
+            <div class="contact-detail-val">
+              40 Courtland Avenue<br/>
+              Concord, ON L4K 5B3<br/>
+              Canada
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07C9.36 17.44 7.55 15.64 6.13 13.44A19.79 19.79 0 0 1 3.06 4.81a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.13 1.05.35 2.08.69 3.07a2 2 0 0 1-.45 2.11L9.91 10.1a16 16 0 0 0 6 6l.41-.41a2 2 0 0 1 2.11-.45c.99.33 2.02.55 3.07.69a2 2 0 0 1 1.72 2.02z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-val">
+              <a href="tel:+19057380770" style="color: var(--accent); font-size: 18px; font-weight: 600;">905-738-0770</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-val">
+              <a href="mailto:info@letarinc.com" style="color: var(--accent);">info@letarinc.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Business Hours</div>
+            <div class="contact-detail-val">
+              Monday – Friday<br/>
+              7:00 AM – 5:00 PM EST
+            </div>
+          </div>
+        </div>
+
+        <div class="response-promise">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p>We review all quotation requests and respond within <strong>2 business days</strong>. Urgent requests? Call us directly.</p>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.4!2d-79.4990!3d43.8340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s40+Courtland+Ave%2C+Concord%2C+ON!5e0!3m2!1sen!2sca!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Letar Inc. — 40 Courtland Ave, Concord ON">
+          </iframe>
+        </div>
+
+        <!-- Certifications quick ref -->
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px;">
+          <div class="contact-detail-label" style="margin-bottom: 12px;">Active Certifications</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="footer-cert-badge">AS9100D</span>
+            <span class="footer-cert-badge">ISO 9001</span>
+            <span class="footer-cert-badge">ITAR</span>
+            <span class="footer-cert-badge">CGP</span>
+            <span class="footer-cert-badge">JCP</span>
+            <span class="footer-cert-badge">Bombardier ASL</span>
+          </div>
+          <p style="font-size: 12px; color: var(--subtle); margin-top: 12px;">Certificates available on request.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">LET<span>A</span>R</div>
+        <p class="footer-tagline">Precision CNC machining for aerospace and defence — delivered from Concord, Ontario since the early 2000s.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/company/letar-inc" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H5z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Capabilities</div>
+        <div class="footer-links">
+          <a href="capabilities.html">3/4/5-Axis Milling</a>
+          <a href="capabilities.html">CNC Turning</a>
+          <a href="capabilities.html">Sub-Assembly</a>
+          <a href="capabilities.html">CMM Inspection</a>
+          <a href="capabilities.html">Materials &amp; Tolerances</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="certifications.html">Certifications</a>
+          <a href="index.html#industries">Industries</a>
+          <a href="index.html#why-letar">About Us</a>
+          <a href="contact.html">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:+19057380770">905-738-0770</a>
+          <a href="mailto:info@letarinc.com">info@letarinc.com</a>
+          <a href="contact.html">Get Directions</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-funding">
+      <a href="https://feddev-ontario.canada.ca/en" target="_blank" rel="noopener noreferrer" title="Federal Economic Development Agency for Southern Ontario">
+        <img src="assets/images/feddev-logo-white.png" alt="Funded by the Federal Economic Development Agency for Southern Ontario" loading="lazy" decoding="async" height="44" />
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-certs">
+        <span class="footer-cert-badge">AS9100D</span>
+        <span class="footer-cert-badge">ISO 9001</span>
+        <span class="footer-cert-badge">ITAR</span>
+        <span class="footer-cert-badge">CGP</span>
+        <span class="footer-cert-badge">Bombardier ASL</span>
+      </div>
+      <p class="footer-copy">
+        <a href="privacy.html" style="color: var(--muted);">Privacy</a> ·
+        <a href="terms.html" style="color: var(--muted);">Terms</a> ·
+        © 2026 Letar Inc. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/supabase-client.js?v=20260617d"></script>
+<script src="js/animations.js?v=20260617d"></script>
+<script src="js/main.js?v=20260617d"></script>
+</body>
+</html>

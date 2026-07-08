@@ -1,0 +1,1009 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Michroma&display=swap');
+
+/* ══════════════════════════════════════════════════════════════
+   LETAR INC — "The Inspection Document"
+   Aerospace buyers live in engineering drawings, FAI reports, and
+   travelers. The site speaks that language: title blocks, corner
+   ticks, mono spec tables — on the company's approved warm-neutral
+   canvas with its aerospace-blue accent. One dark anchor band per
+   page (the product design system's rule, carried to marketing).
+   Type: Space Grotesk (display) · Inter (body) · JetBrains Mono (data)
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  color-scheme: light;
+  /* TRI-METAL: aluminum = canvas · stainless = structure/type · titanium = accent */
+  --canvas: #F4F6F8;
+  --card: #FFFFFF;
+  --card-2: #ECF0F4;
+  --ink: #171C22;
+  --ink-70: rgba(23, 28, 34, 0.74);
+  --steel: #56616D;
+  --steel-lt: #8E99A6;
+  --line: rgba(23, 28, 34, 0.15);
+  --line-soft: rgba(23, 28, 34, 0.08);
+  --blue: #2563EB;
+  --blue-deep: #1D4ED8;
+  --blue-wash: #EFF5FF;
+  --good: #178A50;
+  /* titanium anodize spectrum — the one loud element */
+  --ti-gold: #C9A227;
+  --ti-violet: #7C5CBF;
+  --ti-grad: linear-gradient(100deg, var(--ti-gold) 0%, var(--ti-violet) 48%, var(--blue) 100%);
+  /* brushed aluminum surface + polished stainless hairline */
+  --alu-grad: linear-gradient(165deg, #FDFEFF 0%, #DDE3E9 100%);
+  --chrome-grad: linear-gradient(90deg, #C9D0D8 0%, #FFFFFF 45%, #AEB7C1 100%);
+  /* "anchor" band is now a LIGHT aluminum plate (names kept for page compat) */
+  --anchor: #E9EDF1;
+  --anchor-card: #FFFFFF;
+  --anchor-line: rgba(23, 28, 34, 0.12);
+  --anchor-text: #171C22;
+  --anchor-steel: #56616D;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --container: 1180px;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(21,24,29,.05), 0 8px 28px rgba(21,24,29,.07);
+  --shadow-lift: 0 2px 4px rgba(21,24,29,.06), 0 16px 44px rgba(21,24,29,.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--canvas);
+  color: var(--ink);
+  font-size: 16.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--blue); color: #fff; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+/* ── Type scale ─────────────────────────────────────────────── */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); letter-spacing: -0.015em; }
+h3 { font-size: 1.25rem; line-height: 1.3; }
+
+.lede { font-size: 1.15rem; color: var(--steel); max-width: 56ch; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px; height: 2px;
+  background: var(--ti-grad);
+  border-radius: 1px;
+}
+/* titanium sheen for display-type highlights — never on body text */
+.ti-text {
+  background: var(--ti-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.site-header {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(239, 237, 232, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.28rem; letter-spacing: 0.01em;
+  display: flex; align-items: baseline; gap: 9px;
+}
+.wordmark .co { color: var(--ink); font-weight: 500; font-size: .92rem; letter-spacing: .1em; }
+/* the trade, set in a technical aerospace face — visible, tracked, engineered */
+.wordmark .co-aero {
+  font-family: "Michroma", var(--font-display); font-weight: 400; font-size: .68rem;
+  letter-spacing: .3em; color: var(--ink); text-transform: uppercase;
+  padding-left: 12px; border-left: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  .wordmark { font-size: 1.14rem; gap: 7px; }
+  .wordmark .co { font-size: .82rem; }
+  .wordmark .co-aero { font-size: .56rem; letter-spacing: .22em; padding-left: 9px; }
+}
+.nav { display: flex; gap: 30px; align-items: center; }
+.nav a {
+  font-size: 0.92rem; font-weight: 500; color: var(--steel);
+  padding: 6px 2px; border-bottom: 2px solid transparent;
+  transition: color .16s, border-color .16s;
+}
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--blue); }
+.nav .btn { margin-left: 6px; }
+/* nav CTA = plain emphasized text link (no box). A little bolder + ink so it
+   reads as the primary action; small lift on hover. */
+.nav a.btn-primary {
+  background: none; border: none; box-shadow: none; border-radius: 0;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  color: var(--ink); font-weight: 600; font-size: 0.92rem; padding: 6px 2px;
+  transition: transform .16s ease, color .16s;
+}
+.nav a.btn-primary:hover { color: var(--ink); transform: translateY(-2px); }
+.nav-toggle { display: none; }
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  padding: 13px 24px; border-radius: 10px; border: 1px solid transparent;
+  cursor: pointer; transition: transform .16s, box-shadow .16s, background .16s, border-color .16s;
+}
+/* premium CTA: inspection-document ink, titanium-gold edge on hover —
+   the saturated blue read as "SaaS", not machined metal */
+.btn-primary { background: var(--ink); color: #fff; box-shadow: 0 6px 18px rgba(21,24,29,.22); }
+.btn-primary:hover {
+  background: #232a33; border-color: var(--ti-gold);
+  box-shadow: 0 6px 20px rgba(201,162,39,.28); transform: translateY(-1px); color: #fff;
+}
+.btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-inverse { background: #fff; color: var(--ink); }
+.btn-inverse:hover { transform: translateY(-1px); }
+.btn-sm { padding: 9px 16px; font-size: 0.88rem; }
+.btn:focus-visible, a:focus-visible {
+  outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px;
+}
+
+/* ── The signature: drawing frame + title block ─────────────── */
+.dwg-frame { position: relative; }
+.dwg-frame .frame-img {
+  border: 1px solid var(--line);
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  background: var(--card);
+}
+.dwg-frame .frame-img img {
+  width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3.1;
+}
+/* corner registration ticks */
+.dwg-frame .tick { position: absolute; width: 18px; height: 18px; border-color: var(--ink); border-style: solid; opacity: .5; }
+.dwg-frame .tick.tl { top: -9px; left: -9px; border-width: 1.5px 0 0 1.5px; }
+.dwg-frame .tick.tr { top: -9px; right: -9px; border-width: 1.5px 1.5px 0 0; }
+.dwg-frame .tick.bl { bottom: -9px; left: -9px; border-width: 0 0 1.5px 1.5px; }
+.dwg-frame .tick.br { bottom: -9px; right: -9px; border-width: 0 1.5px 1.5px 0; }
+
+.title-block {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line);
+  border-top: 1px dashed var(--line);
+  border-radius: 0 0 4px 4px;
+  background: var(--card);
+}
+.tb-cell {
+  padding: 10px 14px 12px;
+  border-right: 1px solid var(--line-soft);
+  min-width: 0;
+}
+.tb-cell:last-child { border-right: none; }
+.tb-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--steel-lt); margin-bottom: 3px;
+}
+.tb-value {
+  font-family: var(--font-mono);
+  font-size: 0.66rem; letter-spacing: 0.03em; text-transform: uppercase;
+  color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tb-value .ok { color: var(--good); }
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.hero { padding: 84px 0 96px; }
+/* filmed hero (About): footage faded behind the text — white veil keeps ink legible */
+.hero-filmed { position: relative; overflow: clip; }
+.hero-filmed .hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.hero-filmed::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(105deg, rgba(250,251,252,.88) 0%, rgba(250,251,252,.64) 40%, rgba(250,251,252,.14) 100%);
+}
+/* filmed hero: the accent line stays house type, ink black over the sky */
+.hero-filmed h1 span.accent { color: var(--ink); }
+/* one smooth monotonic wash from the bottom: dissolves the hero into the next
+   band AND melts the footage's cloud-horizon line. Never a peaked band — a
+   gradient peak reads as a crease across the frame. */
+.hero-filmed::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(236,240,244,0) 0%, rgba(236,240,244,.18) 26%, rgba(236,240,244,.45) 52%,
+    rgba(236,240,244,.8) 80%, #ECF0F4 100%);
+  pointer-events: none;
+}
+.hero-filmed .container { position: relative; z-index: 2; }
+@media (prefers-reduced-motion: reduce) { .hero-filmed .hero-video { display: none; } }
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px; align-items: center;
+}
+.hero h1 .accent { color: var(--blue-deep); }
+.hero .lede { margin: 22px 0 32px; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+.cred-row {
+  display: flex; align-items: center; gap: 26px; flex-wrap: wrap;
+  padding-top: 26px; border-top: 1px solid var(--line-soft);
+}
+.cred-row img { height: 44px; width: auto; filter: grayscale(1) contrast(1.05); opacity: .78; transition: filter .2s, opacity .2s; }
+.cred-row img:hover { filter: none; opacity: 1; }
+
+/* ── Sections ───────────────────────────────────────────────── */
+.section { padding: 104px 0; }
+.section-tight { padding: 72px 0; }
+.section-head { max-width: 720px; margin-bottom: 56px; }
+.section-head .lede { margin-top: 16px; }
+.section-alt { background: var(--card-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+
+/* capability cards */
+.cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.cap-card {
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); padding: 30px 28px 32px;
+  box-shadow: var(--shadow);
+  transition: transform .18s, box-shadow .18s;
+}
+.cap-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.cap-card .cap-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--blue-wash); color: var(--blue-deep);
+  display: grid; place-items: center; margin-bottom: 20px;
+}
+.cap-card h3 { margin-bottom: 10px; }
+.cap-card p { color: var(--steel); font-size: 0.97rem; }
+.cap-card .cap-spec, .mkc-body .cap-spec {
+  margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line);
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: .08em;
+  color: var(--steel); text-transform: uppercase;
+}
+
+/* equipment cards */
+.equip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.equip-card {
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  transition: transform .18s, box-shadow .18s;
+}
+.equip-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.equip-card img { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
+.equip-body { padding: 20px 22px 22px; }
+.equip-body h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.equip-body .equip-type { color: var(--steel); font-size: .9rem; margin-bottom: 14px; }
+.equip-spec {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--steel);
+  border-top: 1px dashed var(--line); padding-top: 13px;
+}
+.equip-spec b { color: var(--ink); font-weight: 600; }
+
+/* ── Credentials band — brushed-aluminum plate (LIGHT; owner: no dark) ── */
+.anchor-band {
+  background: var(--alu-grad); color: var(--anchor-text);
+  padding: 96px 0; position: relative; overflow: hidden;
+  border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+}
+.anchor-band h2 { color: var(--ink); }
+.anchor-band .lede { color: var(--anchor-steel); }
+.stat-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--anchor-line);
+  border: 1px solid var(--anchor-line); border-radius: var(--radius);
+  overflow: hidden; margin-top: 54px;
+}
+.stat-cell { background: var(--anchor-card); padding: 34px 30px 30px; position: relative; }
+.stat-cell::before {
+  /* stainless mirror edge along the top of each plate */
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--chrome-grad);
+}
+.stat-value {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.2rem, 3.6vw, 3.1rem); letter-spacing: -0.02em;
+  line-height: 1;
+  background: var(--ti-grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.stat-value .unit { font-size: 0.5em; color: var(--anchor-steel); font-weight: 500; margin-left: 2px; }
+.stat-label {
+  font-family: var(--font-mono); font-size: 0.66rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--anchor-steel); margin-top: 12px;
+}
+.cert-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 54px; }
+.cert-item {
+  display: flex; gap: 18px; align-items: flex-start;
+  background: var(--anchor-card); border: 1px solid var(--anchor-line);
+  border-radius: var(--radius); padding: 24px 26px;
+}
+.cert-item img { height: 52px; width: 52px; object-fit: contain; background: #fff; border-radius: 8px; padding: 6px; flex-shrink: 0; border: 1px solid var(--line-soft); }
+.cert-item h3 { color: var(--ink); font-size: 1.02rem; margin-bottom: 4px; }
+.cert-item p { color: var(--anchor-steel); font-size: 0.92rem; }
+.cert-item { box-shadow: var(--shadow); }
+
+/* ── Industries strip ───────────────────────────────────────── */
+.ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.ind-card { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.ind-card img { aspect-ratio: 4/4.6; object-fit: cover; width: 100%; transition: transform .5s ease; }
+.ind-card:hover img { transform: scale(1.035); }
+.ind-card .ind-label {
+  position: absolute; inset: auto 0 0 0;
+  padding: 44px 24px 20px;
+  background: linear-gradient(transparent, rgba(10,12,16,.86));
+  color: #fff;
+}
+.ind-label h3 { font-size: 1.12rem; margin-bottom: 2px; }
+.ind-label p { font-size: .85rem; color: rgba(255,255,255,.72); }
+
+/* ── Spec / inspection tables ───────────────────────────────── */
+.spec-card {
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+}
+.spec-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.spec-table th, .spec-table td { text-align: left; padding: 13px 20px; border-bottom: 1px solid var(--line-soft); }
+.spec-table tr:last-child td { border-bottom: none; }
+.spec-table th {
+  font-family: var(--font-mono);
+  font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--steel-lt); font-weight: 500; background: var(--card-2);
+}
+.spec-table td { color: var(--ink-70); }
+.spec-table td:first-child { color: var(--ink); font-weight: 500; }
+.spec-table td.mono-cell { font-family: var(--font-mono); font-size: .8rem; }
+
+/* ── CTA band ───────────────────────────────────────────────── */
+.cta-band { padding: 104px 0 120px; text-align: center; }
+.cta-band h2 { max-width: 640px; margin: 0 auto 18px; }
+.cta-band .lede { margin: 0 auto 34px; }
+
+/* ── Forms (contact / RFQ) ──────────────────────────────────── */
+.form-card {
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); box-shadow: var(--shadow); padding: 38px;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-grid .full { grid-column: 1 / -1; }
+.field label {
+  display: block; font-size: 0.8rem; font-weight: 600;
+  margin-bottom: 7px; color: var(--ink);
+}
+.field input, .field textarea, .field select {
+  width: 100%; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: #fff; font: inherit; font-size: 0.95rem; color: var(--ink);
+  transition: border-color .15s, box-shadow .15s;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+.form-note { font-size: .82rem; color: var(--steel); margin-top: 14px; }
+/* .form-notice classes are set by js/supabase-client.js — keep the names */
+.form-notice { display: none; font-size: .92rem; font-weight: 500; }
+.form-notice.error { display: inline-block; color: #C2410C; }
+.rfq-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 1020px) { .rfq-grid { grid-template-columns: 1fr; } }
+/* honeypot — visually gone, present for bots */
+.hp-field { position: absolute; left: -6000px; opacity: 0; height: 0; overflow: hidden; }
+
+/* ── Footer — document footer ───────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--card-2);
+  padding: 54px 0 34px;
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+.footer-grid h4 {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--steel-lt); margin-bottom: 14px; font-weight: 500;
+}
+.footer-grid a, .footer-grid p { display: block; font-size: .92rem; color: var(--steel); margin-bottom: 9px; }
+.footer-grid a:hover { color: var(--ink); }
+.footer-doc {
+  display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  border-top: 1px solid var(--line-soft); padding-top: 22px;
+  font-family: var(--font-mono); font-size: 0.64rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--steel-lt);
+}
+
+/* ── Document pages (privacy / terms) ───────────────────────── */
+.doc-page { max-width: 780px; margin: 0 auto; padding: 72px 24px 120px; }
+.doc-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 10px; }
+.doc-page .doc-meta {
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--steel-lt); margin-bottom: 44px;
+}
+.doc-page h2 { font-size: 1.3rem; margin: 40px 0 12px; }
+.doc-page p, .doc-page li { color: var(--ink-70); margin-bottom: 12px; }
+.doc-page ul { padding-left: 22px; }
+
+/* ── Reveal on scroll — fail-open: only hides when JS confirms it's
+      running (html.js set by site.js). No JS → everything visible. ── */
+html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+html.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation: none !important; transition-duration: .01ms !important; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1020px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+  .cap-grid, .equip-grid, .ind-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .section { padding: 72px 0; }
+  .hero { padding: 48px 0 64px; }
+  .cap-grid, .equip-grid, .ind-grid, .cert-list, .form-grid { grid-template-columns: 1fr; }
+  .title-block { grid-template-columns: repeat(2, 1fr); }
+  .tb-cell:nth-child(2n) { border-right: none; }
+  /* drawer nav: frosted panel slides in from the right over a dimmed page */
+  .site-header::after {
+    content: ""; position: fixed; inset: 0; z-index: 40;
+    background: rgba(23, 28, 34, .34);
+    opacity: 0; pointer-events: none; transition: opacity .32s ease;
+  }
+  .site-header:has(.nav.open)::after { opacity: 1; pointer-events: auto; }
+  .nav {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 60;
+    width: min(320px, 84vw); height: 100dvh;
+    background: rgba(250, 251, 252, .94);
+    -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+    border-left: 1px solid var(--line);
+    box-shadow: -24px 0 60px rgba(23, 28, 34, .16);
+    flex-direction: column; padding: 96px 26px 28px; gap: 0; align-items: stretch;
+    visibility: hidden; transform: translateX(102%);
+    transition: transform .38s cubic-bezier(.32, .9, .3, 1), visibility 0s linear .38s;
+  }
+  .nav.open {
+    visibility: visible; transform: translateX(0);
+    transition: transform .38s cubic-bezier(.32, .9, .3, 1);
+  }
+  .nav a {
+    font-size: 1.06rem; padding: 15px 2px;
+    border-bottom: 1px solid var(--line-soft);
+    opacity: 0; transform: translateX(18px);
+    transition: opacity .34s ease, transform .34s ease, color .16s;
+  }
+  .nav.open a { opacity: 1; transform: translateX(0); }
+  .nav.open a:nth-child(1) { transition-delay: .08s; }
+  .nav.open a:nth-child(2) { transition-delay: .13s; }
+  .nav.open a:nth-child(3) { transition-delay: .18s; }
+  .nav.open a:nth-child(4) { transition-delay: .23s; }
+  .nav.open a:nth-child(5) { transition-delay: .28s; }
+  .nav.open a:nth-child(6) { transition-delay: .33s; }
+  .nav.open a:nth-child(7) { transition-delay: .38s; }
+  .nav a[aria-current="page"] { border-bottom: 1px solid var(--blue); }
+  .nav .btn { margin: 20px 0 0; justify-content: center; border-bottom: none; }
+  .nav-toggle {
+    display: grid; place-items: center; width: 42px; height: 42px;
+    position: relative; z-index: 70;   /* stays above the drawer as the X */
+    border: 1px solid var(--line); border-radius: 9px; background: transparent;
+    cursor: pointer; color: var(--ink);
+  }
+  /* hamburger morphs to an X */
+  .nav-toggle svg { transition: opacity .18s ease, transform .3s ease; }
+  .nav-toggle::before, .nav-toggle::after {
+    content: ""; position: absolute; width: 18px; height: 2px; border-radius: 1px;
+    background: currentColor; opacity: 0;
+    transition: transform .3s ease, opacity .18s ease;
+  }
+  .nav-toggle[aria-expanded="true"] svg { opacity: 0; transform: rotate(90deg) scale(.5); }
+  .nav-toggle[aria-expanded="true"]::before { opacity: 1; transform: rotate(45deg); }
+  .nav-toggle[aria-expanded="true"]::after { opacity: 1; transform: rotate(-45deg); }
+  @media (prefers-reduced-motion: reduce) {
+    .nav, .nav a, .nav-toggle svg, .nav-toggle::before, .nav-toggle::after { transition: none; }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CINEMA LAYER — GSAP scroll scenes (index.html)
+   Fail-open: without html.js everything below renders static.
+   ══════════════════════════════════════════════════════════════ */
+
+/* scroll progress rail — titanium thread up the right edge */
+.progress-rail {
+  position: fixed; top: 0; right: 0; width: 3px; height: 100%;
+  background: var(--line-soft); z-index: 70; pointer-events: none;
+}
+.progress-rail .fill {
+  width: 100%; height: 100%;
+  background: var(--ti-grad);
+  transform-origin: top; transform: scaleY(0);
+}
+
+/* ── Scene 1: video hero ────────────────────────────────────── */
+.cine-hero {
+  position: relative; min-height: 92vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+  padding-bottom: 96px;
+}
+.cine-hero .hero-media {
+  position: absolute; inset: 0; z-index: 0;
+}
+.cine-hero .hero-media video,
+.cine-hero .hero-media img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.cine-hero .hero-scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg,
+    rgba(244,246,248,.97) 0%, rgba(244,246,248,.9) 44%,
+    rgba(244,246,248,.55) 72%, rgba(244,246,248,.18) 100%);
+}
+.cine-hero .container { position: relative; z-index: 2; }
+.cine-hero h1 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); max-width: 13ch; }
+.cine-hero h1 .line { display: block; overflow: hidden; }
+.cine-hero h1 .line > span { display: inline-block; }
+.hero-titleblock { max-width: 620px; margin-top: 44px; }
+.scroll-cue {
+  position: absolute; bottom: 18px; right: 42px; left: auto; transform: none;
+  z-index: 2; font-family: var(--font-mono); font-size: .6rem;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--steel);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-cue::after {
+  content: ""; width: 1px; height: 34px;
+  background: linear-gradient(var(--steel), transparent);
+  animation: cueDrop 1.8s ease-in-out infinite;
+}
+@keyframes cueDrop { 0%,100% { transform: scaleY(.4); opacity:.4 } 50% { transform: scaleY(1); opacity:1 } }
+
+/* ── Scene 2: pinned process strip ──────────────────────────── */
+.process-scene { position: relative; }
+.process-pin { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.process-track {
+  display: flex; gap: 26px; will-change: transform;
+  padding: 0 max(24px, calc((100vw - 1180px) / 2));
+}
+.process-panel {
+  flex: 0 0 min(520px, 78vw);
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+}
+.process-panel img { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
+.process-panel .pp-body { padding: 22px 26px 26px; }
+.process-panel .pp-step {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .18em;
+  text-transform: uppercase; margin-bottom: 10px;
+  background: var(--ti-grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-weight: 500;
+}
+.process-panel h3 { margin-bottom: 8px; }
+.process-panel p { color: var(--steel); font-size: .95rem; }
+
+/* ── Scene 4: 3D billet ─────────────────────────────────────── */
+.billet-scene { position: relative; background: var(--alu-grad); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.billet-pin { min-height: 100vh; display: grid; align-items: center; }
+.billet-stage { position: relative; height: 72vh; }
+.billet-stage canvas, .billet-stage .billet-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; display: block;
+}
+.billet-copy { position: absolute; top: 8vh; left: 0; right: 0; text-align: center; z-index: 2; pointer-events: none; }
+.billet-callout {
+  position: absolute; z-index: 2; pointer-events: none;
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink);
+  background: rgba(255,255,255,.85); border: 1px solid var(--line);
+  padding: 7px 12px; border-radius: 6px; opacity: 0;
+  backdrop-filter: blur(4px);
+}
+.billet-callout::before { content: "— "; background: var(--ti-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ── Scene 5: markets rail ──────────────────────────────────── */
+.markets-scene { overflow: hidden; }
+.markets-track { display: flex; gap: 22px; will-change: transform; padding: 0 max(24px, calc((100vw - 1180px) / 2)); }
+.market-card {
+  flex: 0 0 min(420px, 74vw); position: relative;
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+}
+.market-card img { aspect-ratio: 4/4.8; object-fit: cover; width: 100%; }
+.market-card .ind-label {
+  position: absolute; inset: auto 0 0 0; padding: 44px 24px 20px;
+  background: linear-gradient(transparent, rgba(244,246,248,.96));
+  color: var(--ink);
+}
+.market-card .ind-label p { color: var(--steel); }
+/* static variant for content pages (About/Markets) — the homepage rail is
+   scrub-driven by cinema.js; without it the flex track can't be reached */
+.markets-static { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); padding: 0; will-change: auto; }
+.markets-static .market-card { flex: none; }
+/* blueprint tiles — markets with no owned photography get grid-paper + line icon */
+.mk-tile {
+  aspect-ratio: 4 / 4.8; display: flex; align-items: center; justify-content: center;
+  background:
+    linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px),
+    #F7FAFD;
+  background-size: 22px 22px, 22px 22px, auto;
+}
+.mk-tile { flex-direction: column; gap: 16px; }
+.mk-tile svg { width: 32%; height: auto; color: var(--blue-deep); opacity: .55; }
+/* quiet capsule — premium reads as restraint, not shine */
+.mk-soon {
+  font-family: var(--font-mono); font-size: .58rem; font-weight: 500;
+  letter-spacing: .42em; text-indent: .42em; text-transform: uppercase;
+  color: var(--steel); padding: 7px 16px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(255, 255, 255, .75);
+}
+/* real-parts carousel — slow horizontal drift, the centered part swells */
+.parts-carousel { overflow: hidden; width: 100%; padding: 64px 0 58px; }
+.parts-track { display: flex; gap: 18px; width: max-content; will-change: transform; }
+.parts-track img {
+  width: 290px; aspect-ratio: 4 / 3; object-fit: cover; flex: none;
+  border-radius: 12px; border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow); background: #fff;
+  will-change: transform;
+}
+.parts-carousel { position: relative; }
+.pc-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
+  width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.8); color: var(--ink);
+  border: 1px solid var(--line-soft); box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.pc-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.08); box-shadow: var(--shadow-lift); }
+.pc-prev { left: 26px; }
+.pc-next { right: 26px; }
+@media (prefers-reduced-motion: reduce) {
+  .parts-carousel { overflow-x: auto; }   /* manual scroll, no motion */
+  .pc-arrow { display: none; }
+}
+.parts-lists { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 38px; }
+.parts-lists h4 {
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--blue-deep); margin-bottom: 10px;
+}
+.parts-lists ul { list-style: none; padding: 0; margin: 0; color: var(--steel); line-height: 2; }
+.parts-lists li { border-bottom: 1px dashed var(--line-soft); }
+@media (max-width: 720px) { .parts-lists { grid-template-columns: 1fr; } }
+
+/* the customer journey (About) — traveler-operation vocabulary */
+.journey { display: grid; gap: 12px; margin-top: 34px; }
+.jstep {
+  display: grid; grid-template-columns: 84px 130px 1fr; gap: 20px; align-items: center;
+  background: var(--card); border: 1px solid var(--line-soft); border-radius: 10px;
+  border-left: 4px solid var(--blue); padding: 18px 22px;
+  box-shadow: var(--shadow);
+}
+.j-op { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; color: var(--blue-deep); font-weight: 600; }
+.j-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.j-desc { color: var(--steel); font-size: .95rem; }
+@media (max-width: 720px) {
+  .jstep { grid-template-columns: 64px 1fr; }
+  .j-desc { grid-column: 1 / -1; }
+}
+
+/* merged market cards: media header + narrative + spec footer */
+.mkc {
+  background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.mkc:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.mkc-media { height: 185px; flex: none; }
+.mkc-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mkc-media .mk-tile { width: 100%; height: 100%; aspect-ratio: auto; }
+.mkc-body { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.mkc-body h3 { margin: 0; }
+.mkc-body p { color: var(--steel); font-size: .93rem; flex: 1; }
+
+/* four tiles, one row, on desktop */
+@media (min-width: 1100px) {
+  .mk-four { grid-template-columns: repeat(4, 1fr); }
+  .markets-static { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 721px) and (max-width: 1099px) {
+  .mk-four { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* card 3D tilt (JS sets --rx/--ry) */
+.tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .18s ease-out; }
+
+/* chrome hairline utility */
+.chrome-rule { height: 2px; background: var(--chrome-grad); border: none; border-radius: 1px; }
+
+/* video helpers */
+.vid-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 860px) {
+  .cine-hero { min-height: 78vh; }
+  .cine-hero .hero-scrim { background: linear-gradient(180deg, rgba(244,246,248,.95) 0%, rgba(244,246,248,.75) 60%, rgba(244,246,248,.4) 100%); }
+  .process-track, .markets-track { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .process-panel, .market-card { scroll-snap-align: center; }
+  .billet-stage { height: 54vh; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TITAN FILM (experience.html) — one canvas, chaptered captions,
+   traveler HUD. .has-film runs the film; .no-film shows the essay.
+   ══════════════════════════════════════════════════════════════ */
+/* altitude sky: pale blue overhead dissolving to white at the horizon —
+   the renderer canvas is alpha:true, so this gradient IS the film's sky */
+.film-body {
+  background: linear-gradient(180deg, #DDEBF9 0%, #EDF4FB 34%, #FAFBFC 62%) fixed;
+}
+#film-stage { position: fixed; inset: 0; z-index: 1; }
+#film-canvas, #film-canvas canvas { position: absolute; inset: 0; }
+#film-fade { position: absolute; inset: 0; background: #FAFBFC; opacity: 1; pointer-events: none; }
+.film-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40; border-bottom: none;
+  /* soft top scrim: the wordmark + nav must read over any footage frame */
+  background: linear-gradient(180deg, rgba(244,246,248,.82) 0%, rgba(244,246,248,.45) 55%, rgba(244,246,248,0) 100%);
+}
+
+
+#film-scroll { position: relative; z-index: 10; height: 1350vh; pointer-events: none; }
+.film-cap {
+  position: fixed; left: 50%; bottom: 12vh; transform: translateX(-50%);
+  width: min(720px, calc(100vw - 48px)); text-align: center;
+  opacity: 0; pointer-events: none; z-index: 12;
+}
+.film-cap h2 { font-size: clamp(1.7rem, 3.4vw, 2.7rem); text-shadow: 0 0 18px rgba(250,251,252,.95), 0 0 42px rgba(250,251,252,.85), 0 1px 2px rgba(250,251,252,.9); }
+.film-cap .cap-label {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--steel); margin-bottom: 12px;
+}
+.film-cap .cap-sub { color: var(--steel); margin-top: 12px; font-size: 1.02rem; text-shadow: 0 0 14px rgba(250,251,252,.95), 0 0 30px rgba(250,251,252,.9); }
+.film-cap .cap-sub em { color: var(--steel-lt); font-style: normal; font-size: .82rem; }
+.film-cap .reading {
+  display: block; font-family: var(--font-mono); font-size: .82rem;
+  letter-spacing: .06em; color: var(--steel-lt); margin-top: 6px;
+  transition: color .3s;
+}
+.film-cap .reading.typed { color: var(--good); }
+
+/* Process glass cards — the traveler record, delivered scene by scene.
+   Light frosted glass tuned for the white void: the blur shows the 3D world
+   moving through it; hairline + shadow give it edge; blue top accent. */
+/* scoped to the film body — the classic site has its own .cap-card component */
+.cardrow { display: flex; justify-content: center; margin-top: 18px; }
+.vfilm-body .cap-card {
+  position: relative; display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 18px 10px; overflow: hidden;
+  background: rgba(255,255,255,.55);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(23,28,34,.09); border-radius: 12px;
+  box-shadow: 0 10px 34px rgba(23,28,34,.09);
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink);
+  opacity: 0; /* the engine animates cards in after each headline */
+}
+.vfilm-body .cap-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--blue); opacity: .85;
+}
+.vfilm-body .cap-card .cc-tag { color: var(--blue); font-weight: 600; }
+.vfilm-body .cap-card.cc-col { flex-direction: column; align-items: flex-start; gap: 5px; text-align: left; }
+.vfilm-body .cap-card .reading { margin-top: 0; }
+
+/* ══ TRACE v2 — full-bleed video chapters + 3D part interlude ══ */
+/* Sticky-hold scrollytelling (the Apple / Pudding pattern): each chapter is a
+   tall scroll runway; its 100vh frame pins fullscreen for ~140vh of scroll so
+   the clip plays out before the story moves on. Scroll distance = film time. */
+.vfilm-body { background: var(--canvas); }
+/* Snap deck: each film is exactly one viewport and the page snaps between them
+   (snap rules in the desktop media block below). No sticky-hold runway — the
+   scroll moves directly from one full film to the next. */
+.vchap { position: relative; height: 100vh; height: 100dvh; background: #eef2f6; }
+.vchap-frame { position: relative; height: 100vh; height: 100dvh; overflow: clip; }
+.vchap video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* white scrim keeps ink text legible over any footage (and keeps it bright) */
+.vchap-frame::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 44%;
+  background: linear-gradient(180deg, rgba(250,251,252,0) 0%, rgba(250,251,252,.82) 78%);
+  pointer-events: none;
+}
+/* soft top edge on every chapter after the first — dissolve, not cut */
+.vchap:not(:first-child) .vchap-frame::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 16%;
+  background: linear-gradient(180deg, rgba(250,251,252,.85) 0%, rgba(250,251,252,0) 100%);
+  pointer-events: none; z-index: 1;
+}
+/* ── Snap deck (desktop, motion-OK): each scroll glides directly to the next
+   full film, never resting in between. Native CSS snap (not JS scroll-jacking).
+   The 260vh 3D interlude opts out so it stays a free-scroll scrubbed chapter. */
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  /* mandatory: every scene is one full screen and the deck locks to each — it
+     never rests between films. The 3D scene is a snap screen too (its beats
+     auto-play on arrival, see part-section.js), so nothing needs free scroll. */
+  html { scroll-snap-type: y mandatory; }
+  .vfilm-body .vchap { scroll-snap-align: start; scroll-snap-stop: always; }
+  .vfilm-body .part3d-section { scroll-snap-align: start; scroll-snap-stop: always; }
+  /* Outro: the invitation snaps as the final scene, then one more scroll snaps
+     the footer's BOTTOM to the viewport bottom (align:end). Two reachable snap
+     points across the 1.3-screen tail — mandatory can't trap you above it. */
+  .vfilm-body .film-landing-v { scroll-snap-align: start; }
+  .film-body .site-footer { scroll-snap-align: end; }
+}
+/* phones: the film goes fully static — each chapter is one poster + caption in
+   normal flow. No pins, no autoplay, no scroll fights with the dynamic toolbar. */
+/* Static-path caption reveal (phones + reduced-motion): no .on class is ever
+   added, so force captions visible. `.vfilm-body` prefix (body class) lifts
+   specificity above the base `.vchap .vcap {opacity:0}` — a plain media-query
+   rule ties on specificity and loses on source order. */
+@media (max-width: 860px) {
+  .vchap, #vc0, #vc-ret { height: auto; }
+  .vchap-frame { position: static; height: 100vh; height: 100svh; }
+  .vfilm-body .vchap .vcap { opacity: 1; transform: translate(-50%, 0); }
+  .vfilm-body .vchap .cap-card { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vchap, #vc0, #vc-ret { height: 100vh; height: 100dvh; }   /* no holds */
+  .vchap-frame { position: static; }
+  .vfilm-body .vchap .vcap { opacity: 1; transform: translate(-50%, 0); }
+  .vfilm-body .vchap .cap-card { opacity: 1; }
+}
+.vchap .vcap {
+  position: absolute; left: 50%; bottom: 9vh; transform: translate(-50%, 26px);
+  width: min(760px, calc(100vw - 48px)); text-align: center; z-index: 2;
+  opacity: 0; transition: opacity .8s ease, transform .8s ease;
+}
+.vchap.on .vcap { opacity: 1; transform: translate(-50%, 0); }
+/* hero caption: visible + centered at rest so the GSAP scroll-scrub (rise + zoom
+   in videos.js) owns its motion on desktop. Mobile/reduced-motion: just static. */
+#vc0 .vcap { opacity: 1; transform: translateX(-50%); }
+.vchap .vcap h2 { font-size: clamp(1.7rem, 3.4vw, 2.7rem); }
+.vchap .vcap .cap-label {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--steel); margin-bottom: 12px;
+}
+.vchap .vcap .cap-sub { color: var(--steel); margin-top: 12px; font-size: 1.02rem; }
+.vchap .vcap .cap-sub em { color: var(--steel-lt); font-style: normal; font-size: .82rem; }
+/* living cards: stamp in like a traveler stamp, catch the light once, then
+   breathe. Keyed to .on (added/removed both scroll directions → replays). */
+.vchap.on .cap-card {
+  opacity: 1;
+  animation: cardStamp .55s cubic-bezier(.2, 1.6, .35, 1) .25s backwards,
+             cardFloat 6s ease-in-out 1.4s infinite;
+}
+.vchap.on .cap-card::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 45%;
+  background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0));
+  transform: skewX(-18deg);
+  animation: cardShine 1s ease .85s both;
+}
+.vchap.on .cap-card .cc-tag { animation: tagPulse 1s ease .8s; }
+@keyframes cardStamp {
+  from { opacity: 0; transform: scale(1.14) rotate(-1.6deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes cardShine { from { left: -60%; } to { left: 115%; } }
+@keyframes tagPulse { 35% { text-shadow: 0 0 14px rgba(37,99,235,.75); } }
+@keyframes cardFloat { 50% { transform: translateY(-3px); } }
+/* 3D interlude cards: entrance is GSAP-driven (showPcap) — shine + float only */
+.pcap .cap-card { animation: cardFloat 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .vchap.on .cap-card, .pcap .cap-card { animation: none; }
+  .vchap.on .cap-card::after { animation: none; content: none; }
+}
+.scroll-cue {
+  position: absolute; left: 50%; bottom: 3vh; transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .3em;
+  color: var(--steel-lt); z-index: 2; animation: cueFloat 2.2s ease-in-out infinite;
+}
+@keyframes cueFloat { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 7px); } }
+
+/* the 3D interlude — now one snap screen; its sequence auto-plays on arrival */
+.part3d-section { position: relative; height: 100vh; height: 100dvh; background: var(--canvas); }
+.part3d-sticky {
+  position: relative; height: 100vh; height: 100dvh; overflow: clip;
+  /* warm studio backdrop — kills the flat CAD-viewport void behind the metal */
+  background: radial-gradient(ellipse 72% 62% at 50% 40%, #FAF6ED 0%, #F0EDE6 46%, #E2E1DC 100%);
+}
+/* gentle vignette over the render, under the captions — cinematic edge falloff */
+.part3d-sticky::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse 88% 82% at 50% 46%, rgba(23,28,34,0) 62%, rgba(23,28,34,.14) 100%);
+}
+#part3d-canvas, #part3d-canvas canvas { position: absolute; inset: 0; }
+.film-cap.pcap { position: absolute; z-index: 3; }
+.part3d-still { display: none; }
+.no-part3d .part3d-section { height: auto; padding: 56px 0 64px; }
+.no-part3d .part3d-sticky { position: static; height: auto; }
+.no-part3d .part3d-sticky::after { content: none; }  /* no vignette on the static layout */
+.no-part3d #part3d-canvas { display: none; }
+/* phones skip WebGL but not the part: a still of the model leads the section */
+.no-part3d .part3d-still {
+  display: block; width: min(520px, 86vw); margin: 6px auto 0;
+  border-radius: 14px;
+}
+.no-part3d .film-cap.pcap { position: static; opacity: 1 !important; transform: none !important; margin: 42px auto; }
+.no-part3d .film-cap.pcap .cap-card { opacity: 1; }
+.film-landing-v { position: relative; z-index: 2; border-top: 1px solid var(--line-soft); overflow: clip; }
+/* LetarOS Command Center — the TITAN 3D scene, breathing behind the invitation */
+#landing-cc {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+}
+#landing-cc canvas { width: 100% !important; height: 100% !important; }
+/* soft veil so the invitation text always wins over the scene */
+.film-landing-v .container { position: relative; z-index: 2; }
+.film-landing-v .container::before {
+  content: ""; position: absolute; inset: -40px -80px; z-index: -1;
+  background: radial-gradient(ellipse 60% 66% at 50% 46%, rgba(244,246,248,.9) 34%, rgba(244,246,248,0) 100%);
+}
+
+/* film grain — zero-WebGL-cost analog texture over the whole frame */
+.film-grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 6;
+  opacity: .033; /* no blend mode — multiply over a WebGL canvas costs frames */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.film-dots {
+  position: fixed; right: 26px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px; z-index: 30;
+}
+.film-dots button {
+  width: 7px; height: 7px; border-radius: 50%; border: none; cursor: default;
+  background: var(--line); transition: all .3s;
+}
+.film-dots button.on { background: var(--blue); height: 20px; border-radius: 4px; }
+
+.film-landing { position: relative; z-index: 20; background: var(--canvas); margin-top: -100vh; border-top: 1px solid var(--line-soft); }
+.film-body .site-footer { position: relative; z-index: 20; }
+
+/* fallback essay */
+.film-fallback { display: none; position: relative; z-index: 20; background: var(--canvas); }
+.no-film .film-fallback { display: block; }
+.no-film #film-stage, .no-film #film-scroll { display: none; }
+.no-film .film-header { position: sticky; background: rgba(244,246,248,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-soft); }
+.essay { max-width: 780px; margin: 0 auto; padding: 56px 24px; text-align: center; }
+.essay img { border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 26px; aspect-ratio: 16/10; object-fit: cover; }
+.essay .cap-label { font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--steel); margin-bottom: 10px; }
+.essay p { color: var(--steel); margin-top: 10px; }
+

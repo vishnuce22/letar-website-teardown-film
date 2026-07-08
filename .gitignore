@@ -1,0 +1,4 @@
+.fal-key
+node_modules/
+# raw 1080p masters (20-40 MB each) — only the -hd.mp4 web encodes ship
+assets/gen/*-final.mp4
