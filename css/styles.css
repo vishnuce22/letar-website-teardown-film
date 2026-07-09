@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Michroma&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Michroma&display=swap');
 
 /* ══════════════════════════════════════════════════════════════
    LETAR INC — "The Inspection Document"
    Aerospace buyers live in engineering drawings, FAI reports, and
    travelers. The site speaks that language: title blocks, corner
    ticks, mono spec tables — on the company's approved warm-neutral
-   canvas with its aerospace-blue accent. One dark anchor band per
-   page (the product design system's rule, carried to marketing).
-   Type: Space Grotesk (display) · Inter (body) · JetBrains Mono (data)
+   canvas with its aerospace-blue accent.
+   Type (owner-approved 2026-07-09, "manufacturing, not AI/tech"):
+   Barlow Semi Condensed (display — DIN-lineage drawing lettering)
+   · Barlow (body) · IBM Plex Mono (data) · Michroma (wordmark only)
    ══════════════════════════════════════════════════════════════ */
 
 :root {
@@ -40,9 +41,9 @@
   --anchor-text: #171C22;
   --anchor-steel: #56616D;
 
-  --font-display: "Space Grotesk", "Inter", sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Barlow Semi Condensed", "Barlow", sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   --container: 1180px;
   --radius: 14px;
@@ -71,16 +72,16 @@ a { color: inherit; text-decoration: none; }
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 
-/* ── Type scale ─────────────────────────────────────────────── */
+/* ── Type scale — condensed DIN caps, like drawing title lettering ── */
 h1, h2, h3, .display {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  line-height: 1.06;
 }
-h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); }
-h2 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); letter-spacing: -0.015em; }
-h3 { font-size: 1.25rem; line-height: 1.3; }
+h1 { font-size: clamp(2.6rem, 5.4vw, 4.3rem); text-transform: uppercase; }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); text-transform: uppercase; letter-spacing: 0.008em; }
+h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 
 .lede { font-size: 1.15rem; color: var(--steel); max-width: 56ch; }
 
@@ -98,16 +99,12 @@ h3 { font-size: 1.25rem; line-height: 1.3; }
 .eyebrow::before {
   content: "";
   width: 26px; height: 2px;
-  background: var(--ti-grad);
+  background: var(--blue);
   border-radius: 1px;
 }
-/* titanium sheen for display-type highlights — never on body text */
-.ti-text {
-  background: var(--ti-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+/* .ti-text kept for page compat — gradient retired 2026-07-09 (read "AI");
+   display highlights are now solid ink, like stamped lettering */
+.ti-text { color: var(--ink); }
 
 /* ── Header ─────────────────────────────────────────────────── */
 .site-header {
@@ -137,26 +134,56 @@ h3 { font-size: 1.25rem; line-height: 1.3; }
   .wordmark .co { font-size: .82rem; }
   .wordmark .co-aero { font-size: .56rem; letter-spacing: .22em; padding-left: 9px; }
 }
-.nav { display: flex; gap: 30px; align-items: center; }
+.nav { display: flex; gap: 26px; align-items: center; }
+/* squeeze zone: full nav + dropdowns must fit before the drawer takes over */
+@media (min-width: 1081px) and (max-width: 1520px) {
+  .wordmark .co-aero { display: none; }
+  .nav { gap: 16px; }
+  .nav a { font-size: .88rem; }
+}
 .nav a {
   font-size: 0.92rem; font-weight: 500; color: var(--steel);
   padding: 6px 2px; border-bottom: 2px solid transparent;
   transition: color .16s, border-color .16s;
+  white-space: nowrap;
 }
 .nav a:hover { color: var(--ink); }
 .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--blue); }
 .nav .btn { margin-left: 6px; }
-/* header phone — the shop is reachable, and buyers who don't want a form see it */
-.header-phone {
-  font-family: var(--font-mono); font-size: .82rem; letter-spacing: .04em;
-  color: var(--steel); border-bottom: none !important; padding: 6px 2px;
-  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+
+/* ── Dropdown groups — mirrors letarinc.com's Markets/Capabilities/
+      Certifications menus. Hover or keyboard focus reveals the panel;
+      in the mobile drawer the groups render flattened (see drawer CSS). ── */
+.nav-group { position: relative; }
+.nav-group > .nav-parent { display: inline-flex; align-items: center; gap: 6px; }
+.nav-group > .nav-parent::after {
+  content: ""; width: 7px; height: 7px; margin-top: -3px;
+  border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg); opacity: .55; transition: transform .18s;
 }
-.header-phone::before {
-  content: ""; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--good); box-shadow: 0 0 0 3px rgba(23,138,80,.16);
+.nav-group:hover > .nav-parent::after,
+.nav-group:focus-within > .nav-parent::after { transform: rotate(225deg); margin-top: 3px; }
+/* invisible hover bridge so the pointer can travel into the panel */
+.nav-group::before { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px; }
+.nav-drop {
+  position: absolute; top: calc(100% + 12px); left: -14px; min-width: 235px;
+  display: flex; flex-direction: column; padding: 8px;
+  background: #fff; border: 1px solid var(--line-soft); border-radius: 10px;
+  box-shadow: var(--shadow-lift);
+  opacity: 0; visibility: hidden; transform: translateY(7px);
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  z-index: 80;
 }
-.header-phone:hover { color: var(--ink); }
+.nav-group:hover .nav-drop, .nav-group:focus-within .nav-drop {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.nav-drop a {
+  padding: 9px 12px; border-radius: 7px; border-bottom: none;
+  font-size: .9rem; color: var(--steel); white-space: nowrap;
+}
+.nav-drop a:hover { background: var(--blue-wash); color: var(--ink); }
+.nav-drop a[aria-current="page"] { color: var(--ink); background: var(--card-2); border-bottom: none; }
 /* nav CTA = plain emphasized text link (no box). A little bolder + ink so it
    reads as the primary action; small lift on hover. */
 .nav a.btn-primary {
@@ -175,12 +202,11 @@ h3 { font-size: 1.25rem; line-height: 1.3; }
   padding: 13px 24px; border-radius: 10px; border: 1px solid transparent;
   cursor: pointer; transition: transform .16s, box-shadow .16s, background .16s, border-color .16s;
 }
-/* premium CTA: inspection-document ink, titanium-gold edge on hover —
-   the saturated blue read as "SaaS", not machined metal */
+/* CTA: inspection-document ink; quiet mechanical hover (no glow) */
 .btn-primary { background: var(--ink); color: #fff; box-shadow: 0 6px 18px rgba(21,24,29,.22); }
 .btn-primary:hover {
-  background: #232a33; border-color: var(--ti-gold);
-  box-shadow: 0 6px 20px rgba(201,162,39,.28); transform: translateY(-1px); color: #fff;
+  background: #232a33;
+  box-shadow: 0 8px 22px rgba(21,24,29,.28); transform: translateY(-1px); color: #fff;
 }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
 .btn-ghost:hover { border-color: var(--ink); }
@@ -347,10 +373,9 @@ h3 { font-size: 1.25rem; line-height: 1.3; }
 }
 .stat-value {
   font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(2.2rem, 3.6vw, 3.1rem); letter-spacing: -0.02em;
+  font-size: clamp(2.2rem, 3.6vw, 3.1rem); letter-spacing: 0;
   line-height: 1;
-  background: var(--ti-grad);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--ink);
 }
 .stat-value .unit { font-size: 0.5em; color: var(--anchor-steel); font-weight: 500; margin-left: 2px; }
 .stat-label {
@@ -548,6 +573,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .cap-grid, .equip-grid, .ind-grid, .cert-list, .form-grid { grid-template-columns: 1fr; }
   .title-block { grid-template-columns: repeat(2, 1fr); }
   .tb-cell:nth-child(2n) { border-right: none; }
+}
+/* drawer breakpoint is 1080px — the dropdown nav needs the full desktop width */
+@media (max-width: 1080px) {
   /* drawer nav: frosted panel slides in from the right over a dimmed page */
   .site-header::after {
     content: ""; position: fixed; inset: 0; z-index: 40;
@@ -563,6 +591,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
     border-left: 1px solid var(--line);
     box-shadow: -24px 0 60px rgba(23, 28, 34, .16);
     flex-direction: column; padding: 96px 26px 28px; gap: 0; align-items: stretch;
+    overflow-y: auto;
     visibility: hidden; transform: translateX(102%);
     transition: transform .38s cubic-bezier(.32, .9, .3, 1), visibility 0s linear .38s;
   }
@@ -586,6 +615,30 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .nav.open a:nth-child(7) { transition-delay: .38s; }
   .nav a[aria-current="page"] { border-bottom: 1px solid var(--blue); }
   .nav .btn { margin: 20px 0 0; justify-content: center; border-bottom: none; }
+  /* dropdown groups flatten inside the drawer: parent becomes a section
+     label, sub-links render indented and always visible */
+  .nav-group { display: contents; }
+  .nav-group::before { content: none; }
+  .nav-group > .nav-parent {
+    font-family: var(--font-mono); font-size: .64rem; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--steel-lt);
+    padding: 18px 2px 6px; border-bottom: none;
+    opacity: 1; transform: none;
+  }
+  .nav-group > .nav-parent::after { content: none; }
+  .nav-drop {
+    position: static; display: flex; flex-direction: column;
+    opacity: 1; visibility: visible; transform: none;
+    background: none; border: none; box-shadow: none;
+    padding: 0; min-width: 0;
+  }
+  .nav-drop a {
+    font-size: 1rem; padding: 12px 2px 12px 16px;
+    border-bottom: 1px solid var(--line-soft); border-radius: 0;
+    white-space: normal; opacity: 1; transform: none;
+  }
+  .nav-drop a:hover { background: none; }
+  .nav-drop a[aria-current="page"] { background: none; border-bottom: 1px solid var(--blue); }
   .nav-toggle {
     display: grid; place-items: center; width: 42px; height: 42px;
     position: relative; z-index: 70;   /* stays above the drawer as the X */
@@ -619,7 +672,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 }
 .progress-rail .fill {
   width: 100%; height: 100%;
-  background: var(--ti-grad);
+  background: var(--blue);
   transform-origin: top; transform: scaleY(0);
 }
 
@@ -678,8 +731,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .process-panel .pp-step {
   font-family: var(--font-mono); font-size: .64rem; letter-spacing: .18em;
   text-transform: uppercase; margin-bottom: 10px;
-  background: var(--ti-grad);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--blue-deep);
   font-weight: 500;
 }
 .process-panel h3 { margin-bottom: 8px; }
@@ -702,7 +754,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   padding: 7px 12px; border-radius: 6px; opacity: 0;
   backdrop-filter: blur(4px);
 }
-.billet-callout::before { content: "— "; background: var(--ti-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.billet-callout::before { content: "— "; color: var(--blue-deep); }
 
 /* ── Scene 5: markets rail ──────────────────────────────────── */
 .markets-scene { overflow: hidden; }
