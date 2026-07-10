@@ -926,9 +926,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* Process glass cards — the traveler record, delivered scene by scene.
    Light frosted glass tuned for the white void: the blur shows the 3D world
    moving through it; hairline + shadow give it edge; blue top accent. */
-/* scoped to the film body — the classic site has its own .cap-card component */
+/* scoped to the film body + theaters — classic has its own .cap-card */
 .cardrow { display: flex; justify-content: center; margin-top: 18px; }
-.vfilm-body .cap-card {
+.vfilm-body .cap-card, .theaters .cap-card {
   position: relative; display: inline-flex; align-items: center; gap: 10px;
   padding: 11px 18px 10px; overflow: hidden;
   background: rgba(255,255,255,.55);
@@ -939,11 +939,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
   text-transform: uppercase; color: var(--ink);
   opacity: 0; /* the engine animates cards in after each headline */
 }
-.vfilm-body .cap-card::before {
+.vfilm-body .cap-card::before, .theaters .cap-card::before {
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: var(--blue); opacity: .85;
 }
-.vfilm-body .cap-card .cc-tag { color: var(--blue); font-weight: 600; }
+.vfilm-body .cap-card .cc-tag, .theaters .cap-card .cc-tag { color: var(--blue); font-weight: 600; }
 .vfilm-body .cap-card.cc-col { flex-direction: column; align-items: flex-start; gap: 5px; text-align: left; }
 .vfilm-body .cap-card .reading { margin-top: 0; }
 
@@ -976,18 +976,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* ── Snap deck (desktop, motion-OK): each scroll glides directly to the next
    full film, never resting in between. Native CSS snap (not JS scroll-jacking).
    The 260vh 3D interlude opts out so it stays a free-scroll scrubbed chapter. */
+/* SNAP DECK RETIRED (2026-07-10): the chapter deck was replaced by the pinned
+   THREE THEATERS section — mandatory page snap would fight its 300vh runway.
+   Rules kept only for reference; the .vfilm-body class is no longer on index. */
 @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
-  /* mandatory: every scene is one full screen and the deck locks to each — it
-     never rests between films. The 3D scene is a snap screen too (its beats
-     auto-play on arrival, see part-section.js), so nothing needs free scroll. */
-  html { scroll-snap-type: y mandatory; }
   .vfilm-body .vchap { scroll-snap-align: start; scroll-snap-stop: always; }
   .vfilm-body .part3d-section { scroll-snap-align: start; scroll-snap-stop: always; }
-  /* Outro: the invitation snaps as the final scene, then one more scroll snaps
-     the footer's BOTTOM to the viewport bottom (align:end). Two reachable snap
-     points across the 1.3-screen tail — mandatory can't trap you above it. */
   .vfilm-body .film-landing-v { scroll-snap-align: start; }
-  .film-body .site-footer { scroll-snap-align: end; }
 }
 /* phones: the film goes fully static — each chapter is one poster + caption in
    normal flow. No pins, no autoplay, no scroll fights with the dynamic toolbar. */
@@ -1096,6 +1091,81 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .film-landing-v .container::before {
   content: ""; position: absolute; inset: -40px -80px; z-index: -1;
   background: radial-gradient(ellipse 60% 66% at 50% 46%, rgba(244,246,248,.9) 34%, rgba(244,246,248,0) 100%);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   THREE THEATERS — pinned tri-panel film (index.html)
+   FLOOR · SKY · ORBIT loop side by side, sync up on scroll (js/film/
+   theaters.js drives --sync and --merge), then merge into one frame.
+   Phones + reduced-motion: static posters stacked, no pinning.
+   ══════════════════════════════════════════════════════════════ */
+.theaters { position: relative; height: 300vh; background: #0e1216; }
+.th-stage {
+  position: sticky; top: 0; height: 100vh; height: 100dvh;
+  display: flex; overflow: clip; --merge: 0;
+}
+.th-panel { position: relative; flex: 1; overflow: hidden; opacity: calc(1 - var(--merge, 0)); }
+.th-panel video, .th-panel img.th-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.th-label {
+  position: absolute; top: 84px; left: 0; right: 0; text-align: center; z-index: 3;
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .42em; text-indent: .42em;
+  text-transform: uppercase; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.75);
+  opacity: calc(1 - var(--merge, 0));
+}
+.th-panel .cardrow { position: absolute; bottom: 7vh; left: 0; right: 0; z-index: 3; }
+/* theater capsules ride the panel; engine-free reveal (always on) */
+.theaters .cap-card { opacity: 1; }
+.th-divider {
+  position: relative; z-index: 4; width: 2px; flex: none; align-self: stretch;
+  background: rgba(255,255,255,.22); --sync: 0;
+  /* through Phase B the divider thins and takes the amber glow */
+  box-shadow: 0 0 calc(var(--sync) * 14px) rgba(201,162,39, calc(var(--sync) * .9));
+  background: rgba(255,255,255, calc(.22 + var(--sync) * .5));
+  transform: scaleX(calc(1 - var(--sync) * .5));
+  /* Phase C: dividers slide up and away as the panels merge */
+  translate: 0 calc(var(--merge, 0) * -110vh);
+}
+.th-merge { position: absolute; inset: 0; z-index: 2; opacity: var(--merge, 0); pointer-events: none; }
+.th-merge video { width: 100%; height: 100%; object-fit: cover; }
+.th-final {
+  position: absolute; left: 50%; bottom: 11vh; transform: translate(-50%, 22px);
+  width: min(680px, calc(100vw - 48px)); text-align: center; z-index: 5;
+  opacity: 0; transition: opacity .7s ease, transform .7s ease; pointer-events: none;
+}
+.th-final.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.th-final h2 { font-size: clamp(1.7rem, 3.2vw, 2.6rem); color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,.65); }
+.th-final .btn { margin-top: 20px; }
+.th-stage .scroll-cue { opacity: calc(1 - var(--merge, 0)); }
+/* representative-imagery disclaimer — quiet, mono, always present in the stage */
+.th-note {
+  position: absolute; left: 18px; bottom: 12px; z-index: 6;
+  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(255,255,255,.5);
+  text-shadow: 0 1px 6px rgba(0,0,0,.6);
+}
+/* ── static fallback: phones + reduced-motion ── */
+@media (max-width: 860px), (prefers-reduced-motion: reduce) {
+  .theaters { height: auto; }
+  .th-stage { position: static; height: auto; flex-direction: column; }
+  .th-panel { height: 64vh; opacity: 1; }
+  .th-panel video { display: none; }   /* posters only — no video downloads */
+  .th-panel img.th-poster { display: block; }
+  .th-label { top: 26px; }
+  .th-divider { display: none; }
+  .th-merge { position: static; opacity: 1; height: auto; }
+  .th-merge video { display: none; }
+  .th-merge img.th-poster { position: static; width: 100%; height: auto; display: block; }
+  .th-final { position: static; transform: none; opacity: 1; pointer-events: auto; padding: 34px 24px 10px; width: auto; }
+  .th-final h2 { color: #fff; }   /* the section stays dark in the static layout */
+  .th-stage .scroll-cue { display: none; }
+  .th-note { position: static; display: block; padding: 12px 24px 20px; color: rgba(255,255,255,.45); text-shadow: none; }
+}
+/* desktop: posters hidden once JS runs the film (poster attr covers preload) */
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  .th-panel img.th-poster, .th-merge img.th-poster { display: none; }
+  .theaters + .film-landing-v { border-top: none; }
 }
 
 /* film grain — zero-WebGL-cost analog texture over the whole frame */
