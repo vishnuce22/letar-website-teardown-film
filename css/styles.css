@@ -1144,25 +1144,37 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .th-final {
   position: absolute; left: 50%; top: 52%;
   transform: translate(-50%, calc(-50% + 22px * (1 - var(--focus, 0))));
-  width: min(880px, calc(100vw - 48px)); text-align: center; z-index: 5;
+  width: min(1040px, calc(100vw - 48px)); text-align: center; z-index: 5;
   opacity: var(--focus, 0); pointer-events: none;
 }
 .th-final.on { pointer-events: auto; }
 .th-final .th-final-logo {
-  display: block; width: min(760px, 94%); margin: 0 auto 24px;
+  display: block; width: min(880px, 96%); margin: 0 auto 30px;
   /* double shadow: tight edge definition + wide ambient — the merge frame is bright behind it */
   filter: drop-shadow(0 1px 6px rgba(0,0,0,.9)) drop-shadow(0 8px 34px rgba(0,0,0,.6));
 }
-/* real certification marks — navy/black artwork, so each sits on a white chip */
-.th-certs { display: flex; justify-content: center; align-items: stretch; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
-.th-certs .th-cert {
-  display: flex; align-items: center; height: 58px; padding: 8px 14px;
-  background: rgba(255,255,255,.94); border-radius: 10px;
-  box-shadow: 0 6px 22px rgba(0,0,0,.45);
+/* the three theaters named — the one color moment is the two gold points */
+.th-kicker {
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .5em; text-indent: .5em; color: var(--steel-lt);
+  margin-bottom: 12px;
 }
-.th-certs .th-cert img { height: 100%; width: auto; display: block; }
-.th-final h2 { font-size: clamp(1.7rem, 3.2vw, 2.6rem); color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,.65); }
-.th-final .btn { margin-top: 20px; }
+.th-kicker span { color: var(--ti-gold); }
+.th-final h2 {
+  font-size: clamp(2rem, 3.4vw, 3rem); letter-spacing: .045em;
+  color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,.65);
+}
+/* bare certification marks — white-knockout versions (assets/real/certs-white/,
+   luminance-to-alpha so each seal keeps its internal detail), no chips */
+.th-certs { display: flex; justify-content: center; align-items: center; gap: 34px; flex-wrap: wrap; margin: 26px 0 0; }
+.th-certs img {
+  height: 76px; width: auto; display: block;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.7));
+  opacity: .92;
+}
+.th-final .btn { margin-top: 30px; }
+.th-final .btn-ghost { color: #fff; border-color: rgba(255,255,255,.45); }
+.th-final .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
 .th-stage .scroll-cue { opacity: calc(1 - var(--merge, 0)); }
 /* representative-imagery disclaimer — quiet, mono, always present in the stage */
 .th-note {
