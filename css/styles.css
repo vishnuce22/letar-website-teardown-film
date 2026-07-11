@@ -1233,19 +1233,21 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .diff-copy strong { color: #fff; }
 .diff-word { margin-top: 56px; }
 .diff-word svg { display: block; width: 100%; height: auto; }
+/* squat extended letterforms (Owens look): smaller cap height, glyphs
+   stretched wide by textLength=spacingAndGlyphs; 600 keeps stems in check */
 .dw-base, .dw-trace {
-  font-family: var(--font-display); font-weight: 700; font-size: 340px;
+  font-family: var(--font-display); font-weight: 600; font-size: 250px;
   fill: none;
 }
 .dw-base { stroke: rgba(255,255,255,.15); stroke-width: 1.5; }
-/* several slow segments; offset travels exactly one dash period (80+700)
+/* long slow sweeps; offset travels exactly one dash period (420+680)
    per cycle so the loop is seamless */
 .dw-trace {
   stroke: #fff; stroke-width: 1.6;
-  stroke-dasharray: 80 700;
-  animation: diff-trace 18s linear infinite;
+  stroke-dasharray: 420 680;
+  animation: diff-trace 26s linear infinite;
 }
-@keyframes diff-trace { to { stroke-dashoffset: -780; } }
+@keyframes diff-trace { to { stroke-dashoffset: -1100; } }
 @media (prefers-reduced-motion: reduce) { .dw-trace { display: none; } }
 @media (max-width: 860px) {
   .difference { padding-top: 64px; }
