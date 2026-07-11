@@ -1131,22 +1131,36 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* the frame arrives slightly pushed-in and settles to 1.0 as --focus rises —
    reads as the clip's own pull-back receding into the background */
 .th-merge video { width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.05 - var(--focus, 0) * .05)); }
-/* focus veil: edge-weighted vignette so the lockup is the bright object */
+/* focus veil: heavy edge-weighted dim + defocus blur so the card reads
+   clearly; browsers without backdrop-filter still get the full dim */
 .th-merge::after {
   content: ''; position: absolute; inset: 0; opacity: var(--focus, 0);
-  background: radial-gradient(ellipse 62% 54% at 50% 58%, rgba(6,9,13,.5), rgba(6,9,13,.78));
+  background: radial-gradient(ellipse 62% 54% at 50% 58%, rgba(6,9,13,.62), rgba(6,9,13,.88));
+  backdrop-filter: blur(calc(var(--focus, 0) * 14px));
+  -webkit-backdrop-filter: blur(calc(var(--focus, 0) * 14px));
 }
+/* card opacity/position ride --focus directly — scroll-locked, no transition
+   lag or threshold flicker; .on only grants pointer-events once settled */
 .th-final {
-  position: absolute; left: 50%; bottom: 11vh; transform: translate(-50%, 22px);
-  width: min(680px, calc(100vw - 48px)); text-align: center; z-index: 5;
-  opacity: 0; transition: opacity .7s ease, transform .7s ease; pointer-events: none;
+  position: absolute; left: 50%; top: 52%;
+  transform: translate(-50%, calc(-50% + 22px * (1 - var(--focus, 0))));
+  width: min(880px, calc(100vw - 48px)); text-align: center; z-index: 5;
+  opacity: var(--focus, 0); pointer-events: none;
 }
-.th-final.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.th-final.on { pointer-events: auto; }
 .th-final .th-final-logo {
-  display: block; width: min(580px, 88%); margin: 0 auto 26px;
+  display: block; width: min(760px, 94%); margin: 0 auto 24px;
   /* double shadow: tight edge definition + wide ambient — the merge frame is bright behind it */
   filter: drop-shadow(0 1px 6px rgba(0,0,0,.9)) drop-shadow(0 8px 34px rgba(0,0,0,.6));
 }
+/* real certification marks — navy/black artwork, so each sits on a white chip */
+.th-certs { display: flex; justify-content: center; align-items: stretch; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.th-certs .th-cert {
+  display: flex; align-items: center; height: 58px; padding: 8px 14px;
+  background: rgba(255,255,255,.94); border-radius: 10px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.45);
+}
+.th-certs .th-cert img { height: 100%; width: auto; display: block; }
 .th-final h2 { font-size: clamp(1.7rem, 3.2vw, 2.6rem); color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,.65); }
 .th-final .btn { margin-top: 20px; }
 .th-stage .scroll-cue { opacity: calc(1 - var(--merge, 0)); }
