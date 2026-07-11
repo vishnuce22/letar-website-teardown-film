@@ -1208,38 +1208,44 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 /* ── THE LETAR DIFFERENCE — ink band, big title left / copy right, and a
       giant outlined wordmark whose boundary a white line travels ── */
-.difference { position: relative; background: var(--ink); overflow: hidden; padding: 100px 0 0; }
-.difference::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: var(--chrome-grad);
+/* owner-picked A-Navy: lockup navy on the left falling to black (Owens'
+   red-to-black structure in Letar colours); curved white boundaries */
+.difference {
+  position: relative; overflow: hidden; padding: 130px 0 0;
+  background: linear-gradient(115deg, #1E3E74 0%, #12264A 34%, #0B0E12 68%);
 }
+.diff-curve { position: absolute; left: 0; width: 100%; height: 70px; display: block; }
+.diff-curve.top { top: 0; }
+.diff-curve.bot { bottom: 0; }
 .diff-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
 .diff-title { display: flex; flex-direction: column; line-height: .96; }
 .diff-title .t1, .diff-title .t3 {
   font-family: var(--font-body); font-weight: 300;
-  font-size: clamp(2rem, 3.2vw, 3.1rem); color: #fff; letter-spacing: .04em;
+  font-size: clamp(2rem, 3.2vw, 3.1rem); color: #fff; letter-spacing: .3em;
 }
 .diff-title .t2 {
   font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(3.6rem, 7vw, 6rem); color: #fff; letter-spacing: .03em;
+  font-size: clamp(3.6rem, 7vw, 6rem); color: #fff; letter-spacing: .12em;
   margin: 6px 0;
 }
 .diff-title .t3 { align-self: flex-end; }
 .diff-copy p { color: #AEB7C1; font-size: 1.04rem; line-height: 1.85; }
 .diff-copy strong { color: #fff; }
-.diff-word { margin-top: 88px; }
+.diff-word { margin-top: 56px; }
 .diff-word svg { display: block; width: 100%; height: auto; }
 .dw-base, .dw-trace {
-  font-family: var(--font-display); font-weight: 700; font-size: 360px;
-  letter-spacing: .04em; fill: none;
+  font-family: var(--font-display); font-weight: 700; font-size: 340px;
+  fill: none;
 }
 .dw-base { stroke: rgba(255,255,255,.15); stroke-width: 1.5; }
+/* several slow segments; offset travels exactly one dash period (80+700)
+   per cycle so the loop is seamless */
 .dw-trace {
   stroke: #fff; stroke-width: 1.6;
-  stroke-dasharray: 90 1400;
-  animation: diff-trace 7s linear infinite;
+  stroke-dasharray: 80 700;
+  animation: diff-trace 18s linear infinite;
 }
-@keyframes diff-trace { to { stroke-dashoffset: -1490; } }
+@keyframes diff-trace { to { stroke-dashoffset: -780; } }
 @media (prefers-reduced-motion: reduce) { .dw-trace { display: none; } }
 @media (max-width: 860px) {
   .difference { padding-top: 64px; }
