@@ -1231,7 +1231,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .diff-title .t3 { align-self: flex-end; }
 .diff-copy p { color: #AEB7C1; font-size: 1.04rem; line-height: 1.85; }
 .diff-copy strong { color: #fff; }
-.diff-word { margin-top: 56px; }
+/* bottom margin lifts the word clear of the white curve — the E's lowest
+   arm must stay visible so the letter reads */
+.diff-word { margin-top: 56px; margin-bottom: 40px; }
 .diff-word svg { display: block; width: 100%; height: auto; }
 /* squat extended letterforms (Owens look): smaller cap height, glyphs
    stretched wide by textLength=spacingAndGlyphs; 600 keeps stems in check */
