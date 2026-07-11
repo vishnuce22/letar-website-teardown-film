@@ -1242,15 +1242,15 @@ html.js .reveal.in { opacity: 1; transform: none; }
   fill: none;
 }
 .dw-base { stroke: rgba(255,255,255,.15); stroke-width: 1.5; }
-/* ~3 medium sweeps across the whole word (period >> letter perimeter, so
-   most letters are quiet at any moment — Owens pacing); offset travels
+/* Owens-style: short dashes, several per letter (period 350 vs letter
+   perimeter ~1300 -> ~4 each), creeping slowly (~12 u/s); offset travels
    exactly one dash period per cycle so the loop is seamless */
 .dw-trace {
   stroke: #fff; stroke-width: 1.6;
-  stroke-dasharray: 250 1900;
-  animation: diff-trace 50s linear infinite;
+  stroke-dasharray: 70 280;
+  animation: diff-trace 30s linear infinite;
 }
-@keyframes diff-trace { to { stroke-dashoffset: -2150; } }
+@keyframes diff-trace { to { stroke-dashoffset: -350; } }
 @media (prefers-reduced-motion: reduce) { .dw-trace { display: none; } }
 @media (max-width: 860px) {
   .difference { padding-top: 64px; }
