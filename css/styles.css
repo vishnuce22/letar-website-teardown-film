@@ -1236,7 +1236,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* squat extended letterforms (Owens look): smaller cap height, glyphs
    stretched wide by textLength=spacingAndGlyphs; 600 keeps stems in check */
 .dw-base, .dw-trace {
-  font-family: var(--font-display); font-weight: 600; font-size: 250px;
+  font-family: var(--font-display); font-weight: 600; font-size: 290px;
   fill: none;
 }
 .dw-base { stroke: rgba(255,255,255,.15); stroke-width: 1.5; }
