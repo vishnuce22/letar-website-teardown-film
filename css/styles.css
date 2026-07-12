@@ -122,18 +122,20 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
+  gap: clamp(32px, 4vw, 72px);
   height: 68px;
 }
 .wordmark {
   font-family: var(--font-display);
   font-weight: 700; font-size: 1.28rem; letter-spacing: 0.01em;
   display: flex; align-items: baseline; gap: 9px;
+  flex-shrink: 0; white-space: nowrap;
 }
 .wordmark .co { color: var(--ink); font-weight: 500; font-size: .92rem; letter-spacing: .1em; }
 /* the trade, set in a technical aerospace face — visible, tracked, engineered */
 .wordmark .co-aero {
   font-family: "Michroma", var(--font-display); font-weight: 400; font-size: .68rem;
-  letter-spacing: .3em; color: var(--ink); text-transform: uppercase;
+  letter-spacing: .3em; color: var(--steel-lt); text-transform: uppercase;
   padding-left: 12px; border-left: 1px solid var(--line);
 }
 @media (max-width: 720px) {
