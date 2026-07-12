@@ -382,6 +382,20 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   .split-sec.rev .split-img { order: 0; }
   .market-hero { height: 52vh; min-height: 360px; }
 }
+/* About hero — the bore-telescope frame emerges from the page on the
+   right: no tile, no edges; a radial mask dissolves it to nothing well
+   before the text column so the words always sit on clean canvas */
+.about-hero { position: relative; overflow: hidden; padding: 110px 0 130px; }
+.about-bleed {
+  position: absolute; top: 0; right: 0; height: 100%; width: 58%;
+  object-fit: cover; object-position: 60% 38%;
+  -webkit-mask-image: radial-gradient(115% 125% at 78% 45%, rgba(0,0,0,.95) 32%, transparent 75%);
+  mask-image: radial-gradient(115% 125% at 78% 45%, rgba(0,0,0,.95) 32%, transparent 75%);
+  pointer-events: none;
+}
+.about-hero .container { position: relative; z-index: 2; }
+.about-lede { max-width: 44ch; }
+@media (max-width: 860px) { .about-bleed { display: none; } .about-hero { padding: 64px 0 56px; } }
 /* 2-col capability hero: verbatim lede left, scene visual right */
 .hero-2col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 54px; align-items: center; }
 .hero-visual { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lift); }
