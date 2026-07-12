@@ -378,6 +378,12 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   color: var(--ink);
 }
 .stat-value .unit { font-size: 0.5em; color: var(--anchor-steel); font-weight: 500; margin-left: 2px; }
+/* homepage strip only: numerals take the titanium-anodize gradient (the
+   design system's one loud element); units keep their steel color */
+.home-stats .stat-value {
+  background: var(--ti-grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .stat-label {
   font-family: var(--font-mono); font-size: 0.66rem;
   letter-spacing: 0.15em; text-transform: uppercase;
@@ -1205,6 +1211,23 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .th-panel img.th-poster, .th-merge img.th-poster { display: none; }
   .theaters + .film-landing-v { border-top: none; }
 }
+
+/* ── OUR CAPABILITIES router — quiet cards between the film and stats ── */
+.caprouter { padding: 96px 0 84px; background: var(--canvas); }
+.caprouter h2 { margin-top: 14px; font-size: clamp(1.9rem, 3vw, 2.6rem); }
+.capr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 40px; }
+.capr-card {
+  display: block; background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); overflow: hidden; color: inherit;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.capr-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: var(--blue); }
+.capr-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.capr-card h3 { font-family: var(--font-display); font-size: 1.18rem; margin: 16px 18px 6px; }
+.capr-card p { font-size: .9rem; color: var(--steel); line-height: 1.55; margin: 0 18px 12px; }
+.capr-more { font-size: .85rem; font-weight: 600; color: var(--blue); margin: 0 18px 18px; display: inline-block; }
+@media (max-width: 1180px) { .capr-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .capr-grid { grid-template-columns: 1fr; } }
 
 /* ── THE LETAR DIFFERENCE — ink band, big title left / copy right, and a
       giant outlined wordmark whose boundary a white line travels ── */
