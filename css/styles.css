@@ -373,6 +373,14 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 .split-sec { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .split-sec.rev .split-img { order: -1; }
 .split-img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lift); }
+/* OEM section heads on approvals — the official marks ARE the names
+   (wordmark logos beside repeated text read twice); h2 stays for a11y */
+.oem-head { display: flex; align-items: center; gap: 20px; }
+.oem-head img { height: 34px; width: auto; }
+.oem-head h2 {
+  position: absolute; width: 1px; height: 1px; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
 /* approved-by proof line (real ASL data; links to approvals) */
 .approved-line {
   font-family: var(--font-mono); font-size: .74rem; letter-spacing: .16em;
