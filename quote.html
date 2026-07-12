@@ -99,14 +99,10 @@
               <label for="q-date">Required date (optional)</label>
               <input id="q-date" name="required_date" type="date" />
             </div>
-            <div class="field">
-              <label for="q-desc" style="visibility:hidden;">Spacer</label>
-              <div style="font-family: var(--font-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color: var(--steel-lt); padding-top: 12px;">Fields left blank are fine</div>
-            </div>
             <div class="field full">
               <label for="file-input">Drawing / RFQ package (optional)</label>
               <label class="dropzone" for="file-input" id="dropzone">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
                 <span class="dz-text" id="dz-text">Drop your file here or <b>browse</b></span>
                 <span class="dz-hint">PDF · STEP · IGES · DWG · DXF · ZIP — up to 10 MB</span>
                 <input id="file-input" name="file" type="file" accept=".pdf,.step,.stp,.iges,.igs,.zip,.dwg,.dxf" />
@@ -114,7 +110,7 @@
             </div>
             <div class="field full">
               <label for="q-desc">What are we quoting?</label>
-              <textarea id="q-desc" name="description" rows="5" required placeholder="Part description, key tolerances, finish requirements, certs needed…"></textarea>
+              <textarea id="q-desc" name="description" rows="3" required placeholder="Part description, key tolerances, finish requirements, certs needed…"></textarea>
             </div>
           </div>
           <!-- honeypot: humans never see this; bots fill it and get silently dropped -->
