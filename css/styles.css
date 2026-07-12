@@ -926,13 +926,20 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .parts-carousel { overflow-x: auto; }   /* manual scroll, no motion */
   .pc-arrow { display: none; }
 }
-.parts-lists { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 38px; }
+.parts-lists { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 38px; }
 .parts-lists h4 {
-  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--blue-deep); margin-bottom: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.02rem;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--ink);
+  margin-bottom: 6px; padding-bottom: 12px; border-bottom: 2px solid var(--ink);
 }
-.parts-lists ul { list-style: none; padding: 0; margin: 0; color: var(--steel); line-height: 2; }
-.parts-lists li { border-bottom: 1px dashed var(--line-soft); }
+.parts-lists ul { list-style: none; padding: 0; margin: 0; }
+/* spec-sheet voice: the display face carries the list items — big,
+   confident rows instead of small body text */
+.parts-lists li {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 1.4rem; line-height: 1.25; color: var(--ink);
+  padding: 13px 0; border-bottom: 1px solid var(--line-soft);
+}
 @media (max-width: 720px) { .parts-lists { grid-template-columns: 1fr; } }
 
 /* the customer journey (About) — traveler-operation vocabulary */
