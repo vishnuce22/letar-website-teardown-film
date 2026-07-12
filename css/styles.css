@@ -380,8 +380,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   color: var(--ink);
 }
 .stat-value .unit { font-size: 0.5em; color: var(--anchor-steel); font-weight: 500; margin-left: 2px; }
-/* homepage strip only: numerals wear the same navy gradient as the
-   Difference band below; units keep their steel color */
+/* homepage strip: seamless with the tiles section above — no band borders,
+   same canvas tone; tight rhythm into the navy curve below */
+.home-stats { background: var(--canvas); border-top: none; border-bottom: none; padding: 40px 0 88px; }
+/* numerals wear the same navy gradient as the Difference band below;
+   units keep their steel color */
 .home-stats .stat-value {
   background: var(--navy-grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -1214,22 +1217,20 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .theaters + .film-landing-v { border-top: none; }
 }
 
-/* ── OUR CAPABILITIES router — quiet cards between the film and stats ── */
-.caprouter { padding: 96px 0 84px; background: var(--canvas); }
-.caprouter h2 { margin-top: 14px; font-size: clamp(1.9rem, 3vw, 2.6rem); }
-.capr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 40px; }
+/* ── capabilities router — big 2×2 tiles between the film and stats ── */
+.caprouter { padding: 72px 0 8px; background: var(--canvas); }
+.caprouter h2 { font-size: clamp(2rem, 3.4vw, 3rem); }
+.capr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 44px; }
 .capr-card {
   display: block; background: var(--card); border: 1px solid var(--line-soft);
   border-radius: var(--radius); overflow: hidden; color: inherit;
   transition: transform .18s, box-shadow .18s, border-color .18s;
 }
 .capr-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: var(--blue); }
-.capr-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
-.capr-card h3 { font-family: var(--font-display); font-size: 1.18rem; margin: 16px 18px 6px; }
-.capr-card p { font-size: .9rem; color: var(--steel); line-height: 1.55; margin: 0 18px 12px; }
-.capr-more { font-size: .85rem; font-weight: 600; color: var(--blue); margin: 0 18px 18px; display: inline-block; }
-@media (max-width: 1180px) { .capr-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .capr-grid { grid-template-columns: 1fr; } }
+.capr-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.capr-card h3 { font-family: var(--font-display); font-size: 1.5rem; margin: 22px 26px 8px; }
+.capr-card p { font-size: 1rem; color: var(--steel); line-height: 1.6; margin: 0 26px 26px; }
+@media (max-width: 640px) { .capr-grid { grid-template-columns: 1fr; gap: 20px; } }
 
 /* ── THE LETAR DIFFERENCE — ink band, big title left / copy right, and a
       giant outlined wordmark whose boundary a white line travels ── */
@@ -1301,7 +1302,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .film-dots button.on { background: var(--blue); height: 20px; border-radius: 4px; }
 
 .film-landing { position: relative; z-index: 20; background: var(--canvas); margin-top: -100vh; border-top: 1px solid var(--line-soft); }
-.film-body .site-footer { position: relative; z-index: 20; }
+.film-body .site-footer { position: relative; z-index: 20; border-top: none; }
 
 /* fallback essay */
 .film-fallback { display: none; position: relative; z-index: 20; background: var(--canvas); }
