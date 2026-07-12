@@ -78,3 +78,36 @@ if (reduced) {
   )
   counters.forEach((el) => cio.observe(el))
 }
+
+// ── certificate lightbox: click a framed document to view it full screen
+//    at full quality; browser Back (or ✕ / Esc / backdrop) closes it ──
+const certImgs = document.querySelectorAll('.frame-img img')
+if (certImgs.length) {
+  const box = document.createElement('div')
+  box.className = 'lightbox'
+  box.innerHTML = '<button class="lb-close" aria-label="Back">&larr; Back</button><img alt="" />'
+  document.body.appendChild(box)
+  const lbImg = box.querySelector('img')
+
+  function openBox(src, alt) {
+    lbImg.src = src
+    lbImg.alt = alt || ''
+    box.classList.add('open')
+    document.body.style.overflow = 'hidden'
+    history.pushState({ lightbox: true }, '')
+  }
+  function closeBox(viaHistory) {
+    if (!box.classList.contains('open')) return
+    box.classList.remove('open')
+    document.body.style.overflow = ''
+    if (!viaHistory && history.state && history.state.lightbox) history.back()
+  }
+  certImgs.forEach((img) => {
+    img.style.cursor = 'zoom-in'
+    img.addEventListener('click', () => openBox(img.currentSrc || img.src, img.alt))
+  })
+  box.querySelector('.lb-close').addEventListener('click', () => closeBox(false))
+  box.addEventListener('click', (e) => { if (e.target === box) closeBox(false) })
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBox(false) })
+  addEventListener('popstate', () => closeBox(true))
+}
