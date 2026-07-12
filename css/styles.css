@@ -1232,20 +1232,42 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .theaters + .film-landing-v { border-top: none; }
 }
 
-/* ── capabilities router — big 2×2 tiles between the film and stats ── */
+/* ── capabilities router — hover-expand strip: one compact row, the slat
+      under the cursor widens and reveals its line, the rest compress ── */
 .caprouter { padding: 72px 0 8px; background: var(--canvas); }
 .caprouter h2 { font-size: clamp(2rem, 3.4vw, 3rem); }
-.capr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 44px; }
-.capr-card {
-  display: block; background: var(--card); border: 1px solid var(--line-soft);
-  border-radius: var(--radius); overflow: hidden; color: inherit;
-  transition: transform .18s, box-shadow .18s, border-color .18s;
+.capr-strip { display: flex; gap: 14px; margin-top: 44px; height: 340px; }
+.capr-slat {
+  position: relative; flex: 1; display: block; overflow: hidden;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  transition: flex .45s cubic-bezier(.4, 0, .2, 1);
 }
-.capr-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: var(--blue); }
-.capr-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-.capr-card h3 { font-family: var(--font-display); font-size: 1.5rem; margin: 22px 26px 8px; }
-.capr-card p { font-size: 1rem; color: var(--steel); line-height: 1.6; margin: 0 26px 26px; }
-@media (max-width: 640px) { .capr-grid { grid-template-columns: 1fr; gap: 20px; } }
+.capr-slat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.slat-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,14,18,0) 42%, rgba(11,14,18,.8) 100%);
+}
+.slat-info { position: absolute; left: 22px; right: 22px; bottom: 18px; }
+.slat-info h3 { font-family: var(--font-display); font-size: 1.28rem; color: #fff; }
+/* collapsed at rest so every title sits on the same baseline; grows with
+   the slat on hover */
+.slat-info p {
+  font-size: .92rem; color: rgba(255,255,255,.85); line-height: 1.5;
+  max-width: 340px; max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .35s .1s, margin-top .4s;
+}
+.capr-slat:hover, .capr-slat:focus-visible { flex: 2.4; }
+.capr-slat:hover .slat-info p, .capr-slat:focus-visible .slat-info p { max-height: 90px; opacity: 1; margin-top: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  .capr-slat, .slat-info p { transition: none; }
+  .capr-slat:hover, .capr-slat:focus-visible { flex: 1; }
+  .slat-info p { opacity: 1; transform: none; }
+}
+@media (max-width: 860px) {
+  .capr-strip { flex-direction: column; height: auto; }
+  .capr-slat, .capr-slat:hover, .capr-slat:focus-visible { flex: none; height: 130px; }
+  .slat-info p { display: none; }
+}
 
 /* ── THE LETAR DIFFERENCE — ink band, big title left / copy right, and a
       giant outlined wordmark whose boundary a white line travels ── */
