@@ -376,7 +376,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 /* OEM section heads on approvals — the official marks ARE the names
    (wordmark logos beside repeated text read twice); h2 stays for a11y */
 .oem-head { display: flex; align-items: center; gap: 20px; }
-.oem-head img { height: 34px; width: auto; }
+/* per-mark heights: equal LETTER size, not equal box — each lockup
+   carries different internal proportions */
+.oem-head img { height: 40px; width: auto; }
+.oem-head img[src*="dehavilland"] { height: 48px; }
+.oem-head img[src*="l3harris"] { height: 42px; }
 .oem-head h2 {
   position: absolute; width: 1px; height: 1px; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
@@ -391,6 +395,29 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   .split-sec { grid-template-columns: 1fr; gap: 28px; }
   .split-sec.rev .split-img { order: 0; }
   .market-hero { height: 52vh; min-height: 360px; }
+}
+/* approvals hero — the formation stacks vertically in the frame, so it
+   needs the full viewport to show all three aircraft; text sits in a
+   left column over the clean-sky third, and the sky dissolves into the
+   page at the bottom instead of ending on a hard photo edge */
+.market-hero--full { height: 100svh; min-height: 640px; max-height: none; align-items: center; }
+.market-hero--full > img { object-position: 58% 50%; }
+.market-hero--full::after {
+  background: linear-gradient(100deg, rgba(11,14,18,.72) 0%, rgba(11,14,18,.36) 34%, rgba(11,14,18,0) 58%);
+}
+.market-hero--full::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 15%;
+  background: linear-gradient(180deg, rgba(244,246,248,0), var(--canvas));
+  z-index: 1;
+}
+.market-hero--full .container {
+  padding-bottom: 0; width: 100%; max-width: none;
+  padding-left: clamp(28px, 4.5vw, 88px);
+}
+.market-hero--full .lede { max-width: 560px; }
+@media (max-width: 860px) {
+  .market-hero--full { height: 100svh; min-height: 560px; }
+  .market-hero--full > img { object-position: 55% 50%; }
 }
 /* About hero — the bore-telescope frame emerges from the page on the
    right: no tile, no edges; a radial mask dissolves it to nothing well
