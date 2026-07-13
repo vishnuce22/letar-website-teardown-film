@@ -434,8 +434,16 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 .inspect-bleed {
   position: absolute; top: 0; right: 0; height: 100%; width: 66%;
   object-fit: cover; object-position: 50% 45%;
-  -webkit-mask-image: radial-gradient(115% 100% at 78% 50%, rgba(0,0,0,.98) 42%, transparent 76%);
-  mask-image: radial-gradient(115% 100% at 78% 50%, rgba(0,0,0,.98) 42%, transparent 76%);
+  /* linear intersect fades: fully transparent AT the left edge (the
+     radial left a faint vertical seam), soft melt top and bottom */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 36%),
+    linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 36%),
+    linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-composite: intersect;
 }
 @media (max-width: 860px) {
   .inspect-sec { flex-direction: column; min-height: 0; }
@@ -459,11 +467,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
      left (toward the text) and bottom (into the page). A single radial
      at this full-screen size washed the whole frame out */
   -webkit-mask-image:
-    linear-gradient(90deg, transparent 1%, #000 30%),
+    linear-gradient(90deg, transparent 2%, #000 34%),
     linear-gradient(180deg, #000 70%, transparent 97%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(90deg, transparent 1%, #000 30%),
+    linear-gradient(90deg, transparent 2%, #000 34%),
     linear-gradient(180deg, #000 70%, transparent 97%);
   mask-composite: intersect;
   pointer-events: none;
