@@ -426,7 +426,10 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
    full height and dissolves into the canvas: strong fade toward the text,
    soft falloff top and bottom (same bleed language as the About hero) */
 .inspect-sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: 620px; }
-.inspect-sec .container { position: relative; z-index: 2; width: 100%; }
+.inspect-sec .container {
+  position: relative; z-index: 2; width: 100%; max-width: none;
+  padding-left: clamp(28px, 4.5vw, 88px);
+}
 .inspect-copy { max-width: 500px; }
 .inspect-bleed {
   position: absolute; top: 0; right: 0; height: 100%; width: 66%;
@@ -447,20 +450,29 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
    before the text column so the words always sit on clean canvas */
 .about-hero {
   position: relative; overflow: hidden; padding: 0;
-  min-height: 560px; display: flex; align-items: center;
+  min-height: 100svh; display: flex; align-items: center;
 }
 .about-bleed {
-  position: absolute; top: 0; right: 0; height: 100%; width: 64%;
+  position: absolute; top: 0; right: 0; height: 100%; width: 72%;
   object-fit: cover; object-position: 58% 42%;
-  /* elliptical dissolve centered on the bore: soft exit on EVERY edge —
-     left toward the text, and top/bottom into the page. Vertical radius
-     kept tight so the bottom reaches full transparency BEFORE the section
-     clips it (the larger radius left a hard straight line at the cut) */
-  -webkit-mask-image: radial-gradient(92% 74% at 74% 47%, rgba(0,0,0,.96) 30%, transparent 72%);
-  mask-image: radial-gradient(92% 74% at 74% 47%, rgba(0,0,0,.96) 30%, transparent 72%);
+  /* full-strength image; two intersecting fades only where asked —
+     left (toward the text) and bottom (into the page). A single radial
+     at this full-screen size washed the whole frame out */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 23%),
+    linear-gradient(180deg, #000 70%, transparent 97%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 23%),
+    linear-gradient(180deg, #000 70%, transparent 97%);
+  mask-composite: intersect;
   pointer-events: none;
 }
-.about-hero .container { position: relative; z-index: 2; width: 100%; padding-top: 88px; padding-bottom: 88px; }
+.about-hero .container {
+  position: relative; z-index: 2; width: 100%; max-width: none;
+  padding-left: clamp(28px, 4.5vw, 88px);
+  padding-top: 88px; padding-bottom: 88px;
+}
 /* certification showcase — the real marks in full color, big, evenly
    distributed on the light page (owner: no banner) */
 .cert-band { padding: 64px 0 72px; }
@@ -488,7 +500,7 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 /* the whole text block lives in the left column, clear of the image */
 .about-copy { max-width: 520px; }
 .about-lede { max-width: 44ch; }
-@media (max-width: 860px) { .about-bleed { display: none; } .about-hero { padding: 64px 0 56px; } }
+@media (max-width: 860px) { .about-bleed { display: none; } .about-hero { padding: 64px 0 56px; min-height: 0; } }
 /* 2-col capability hero: verbatim lede left, scene visual right */
 .hero-2col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 54px; align-items: center; }
 .hero-visual { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lift); }
