@@ -51,6 +51,16 @@ if (filmActive) {
 
   chapters.forEach((c) => loader.observe(c))
   frames.forEach((f) => player.observe(f))
+
+  // two-act captions on the machine chapter: the centered machining caption
+  // yields to the CMM caption when the film's white flash lands (~2.9s)
+  const machSec = document.getElementById('vc-machining')
+  if (machSec) {
+    const mv = machSec.querySelector('video')
+    if (mv) mv.addEventListener('timeupdate', () => {
+      machSec.classList.toggle('act2', mv.currentTime >= 2.85)
+    })
+  }
 }
 
 // Hero push-in: as you scroll off CH0, the caption rises toward screen center
