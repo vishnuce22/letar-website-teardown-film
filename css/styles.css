@@ -1219,6 +1219,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .vfilm-body .vchap { scroll-snap-align: start; scroll-snap-stop: always; }
   .vfilm-body .caprouter { scroll-snap-align: start; }
   .vfilm-body .film-landing-v { scroll-snap-align: start; }
+  /* rest stops for the tail — without them mandatory snap yanks the scroll
+     back up before the stats/Difference/footer can be reached */
+  .vfilm-body .home-stats { scroll-snap-align: start; }
+  .vfilm-body .difference { scroll-snap-align: start; }
+  .vfilm-body .site-footer { scroll-snap-align: end; }
 }
 /* phones: the film goes fully static — each chapter is one poster + caption in
    normal flow. No pins, no autoplay, no scroll fights with the dynamic toolbar. */
