@@ -1237,6 +1237,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
   opacity: 0; transition: opacity .8s ease, transform .8s ease;
 }
 .vchap.on .vcap { opacity: 1; transform: translate(-50%, 0); }
+/* centered caption variant — sits over the subject so the finished part
+   stays mostly covered (owner: don't showcase the full part) */
+.vchap .vcap.vcap-center { bottom: auto; top: 62%; transform: translate(-50%, calc(-50% + 26px)); }
+.vchap.on .vcap.vcap-center { transform: translate(-50%, -50%); }
+.vcap-center h2 { font-size: clamp(2.1rem, 4.2vw, 3.4rem); }
 /* hero caption: visible + centered at rest so the GSAP scroll-scrub (rise + zoom
    in videos.js) owns its motion on desktop. Mobile/reduced-motion: just static. */
 #vc0 .vcap { opacity: 1; transform: translateX(-50%); }
