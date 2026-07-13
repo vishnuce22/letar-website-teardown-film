@@ -439,6 +439,12 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   opacity: 0; animation: oem-in 2.4s ease var(--d, 0s) forwards;
 }
 @keyframes oem-in { to { opacity: 1; } }
+.market-hero--full .hero-note {
+  position: absolute; right: clamp(18px, 3vw, 44px); bottom: 16px; z-index: 2;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(23, 28, 34, .52);
+}
+.footer-doc .ai-note { width: 100%; opacity: .82; }
 @media (prefers-reduced-motion: reduce) { .hero-oem span { animation: none; opacity: 1; } }
 @media (max-width: 860px) {
   .market-hero--full { height: 100svh; min-height: 560px; }
