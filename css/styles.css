@@ -455,6 +455,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
    full height and dissolves into the canvas: strong fade toward the text,
    soft falloff top and bottom (same bleed language as the About hero) */
 .inspect-sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: 620px; }
+.bleed-note {
+  position: absolute; left: clamp(18px, 3vw, 44px); bottom: 14px; z-index: 3;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(23, 28, 34, .48);
+}
 .inspect-sec .container {
   position: relative; z-index: 2; width: 100%; max-width: none;
   display: flex; justify-content: flex-end;
