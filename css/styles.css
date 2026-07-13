@@ -422,6 +422,26 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   .market-hero--full { height: 100svh; min-height: 560px; }
   .market-hero--full > img { object-position: 55% 50%; }
 }
+/* engineering & inspection — the CMM fills the section's right side at
+   full height and dissolves into the canvas: strong fade toward the text,
+   soft falloff top and bottom (same bleed language as the About hero) */
+.inspect-sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: 620px; }
+.inspect-sec .container { position: relative; z-index: 2; width: 100%; }
+.inspect-copy { max-width: 500px; }
+.inspect-bleed {
+  position: absolute; top: 0; right: 0; height: 100%; width: 66%;
+  object-fit: cover; object-position: 50% 45%;
+  -webkit-mask-image: radial-gradient(115% 100% at 78% 50%, rgba(0,0,0,.98) 42%, transparent 76%);
+  mask-image: radial-gradient(115% 100% at 78% 50%, rgba(0,0,0,.98) 42%, transparent 76%);
+}
+@media (max-width: 860px) {
+  .inspect-sec { flex-direction: column; min-height: 0; }
+  .inspect-bleed {
+    position: static; width: calc(100% - 48px); height: auto;
+    -webkit-mask-image: none; mask-image: none;
+    border-radius: var(--radius); margin: 26px auto 0;
+  }
+}
 /* About hero — the bore-telescope frame emerges from the page on the
    right: no tile, no edges; a radial mask dissolves it to nothing well
    before the text column so the words always sit on clean canvas */
@@ -433,9 +453,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   position: absolute; top: 0; right: 0; height: 100%; width: 64%;
   object-fit: cover; object-position: 58% 42%;
   /* elliptical dissolve centered on the bore: soft exit on EVERY edge —
-     left toward the text, and top/bottom into the page */
-  -webkit-mask-image: radial-gradient(92% 88% at 74% 50%, rgba(0,0,0,.96) 30%, transparent 72%);
-  mask-image: radial-gradient(92% 88% at 74% 50%, rgba(0,0,0,.96) 30%, transparent 72%);
+     left toward the text, and top/bottom into the page. Vertical radius
+     kept tight so the bottom reaches full transparency BEFORE the section
+     clips it (the larger radius left a hard straight line at the cut) */
+  -webkit-mask-image: radial-gradient(92% 74% at 74% 47%, rgba(0,0,0,.96) 30%, transparent 72%);
+  mask-image: radial-gradient(92% 74% at 74% 47%, rgba(0,0,0,.96) 30%, transparent 72%);
   pointer-events: none;
 }
 .about-hero .container { position: relative; z-index: 2; width: 100%; padding-top: 88px; padding-bottom: 88px; }
