@@ -122,6 +122,14 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(23, 28, 34, 0.08);
   box-shadow: 0 1px 24px rgba(11, 14, 18, 0.05);
+  transition: background .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+/* at the very top of a page the bar goes glassier so the hero shows
+   through; it firms up as soon as the page scrolls (js/site.js) */
+.site-header.at-top {
+  background: rgba(248, 250, 252, 0.45);
+  border-bottom-color: rgba(23, 28, 34, 0.04);
+  box-shadow: none;
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -403,6 +411,9 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
    needs the full viewport to show all three aircraft; text sits in a
    left column over the clean-sky third, and the sky dissolves into the
    page at the bottom instead of ending on a hard photo edge */
+/* full-screen heroes slide under the sticky bar so the at-top glass
+   shows the imagery through it (header itself stays 68px in flow) */
+.market-hero--full, .about-hero { margin-top: -68px; }
 .market-hero--full { height: 100svh; min-height: 640px; max-height: none; align-items: center; }
 .market-hero--full > img { object-position: 58% 50%; }
 .market-hero--full::after {

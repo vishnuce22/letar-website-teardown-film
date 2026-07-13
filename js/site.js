@@ -25,6 +25,15 @@ if (toggle && nav) {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false) })
 }
 
+// ── Header glass: extra-transparent while at the very top ─────
+// (film-header on the homepage keeps its own gradient scrim)
+const siteHeader = document.querySelector('.site-header:not(.film-header)')
+if (siteHeader) {
+  const setGlass = () => siteHeader.classList.toggle('at-top', (window.scrollY || 0) < 24)
+  addEventListener('scroll', setGlass, { passive: true })
+  setGlass()
+}
+
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 // ── Scroll reveal ─────────────────────────────────────────────
