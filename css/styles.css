@@ -418,9 +418,21 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   padding-left: clamp(28px, 4.5vw, 88px);
 }
 .market-hero--full .lede { max-width: 560px; }
+/* editorial OEM annotations near each aircraft — quiet mono text (NOT
+   brand marks: the aircraft are illustrative), staggered slow fade-in */
+.hero-oem { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.hero-oem span {
+  position: absolute; font-family: var(--font-mono); font-size: .74rem;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: rgba(255, 255, 255, .88); text-shadow: 0 1px 12px rgba(11, 14, 18, .55);
+  opacity: 0; animation: oem-in 2.4s ease var(--d, 0s) forwards;
+}
+@keyframes oem-in { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .hero-oem span { animation: none; opacity: 1; } }
 @media (max-width: 860px) {
   .market-hero--full { height: 100svh; min-height: 560px; }
   .market-hero--full > img { object-position: 55% 50%; }
+  .hero-oem { display: none; }
 }
 /* engineering & inspection — the CMM fills the section's right side at
    full height and dissolves into the canvas: strong fade toward the text,
@@ -428,20 +440,21 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 .inspect-sec { position: relative; overflow: hidden; display: flex; align-items: center; min-height: 620px; }
 .inspect-sec .container {
   position: relative; z-index: 2; width: 100%; max-width: none;
-  padding-left: clamp(28px, 4.5vw, 88px);
+  display: flex; justify-content: flex-end;
+  padding-right: clamp(28px, 4.5vw, 88px);
 }
 .inspect-copy { max-width: 500px; }
 .inspect-bleed {
-  position: absolute; top: 0; right: 0; height: 100%; width: 66%;
+  position: absolute; top: 0; left: 0; height: 100%; width: 66%;
   object-fit: cover; object-position: 50% 45%;
-  /* linear intersect fades: fully transparent AT the left edge (the
-     radial left a faint vertical seam), soft melt top and bottom */
+  /* linear intersect fades: fully transparent AT the right edge (toward
+     the text, which now sits on the right), soft melt top and bottom */
   -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 36%),
+    linear-gradient(270deg, transparent 0%, #000 36%),
     linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(90deg, transparent 0%, #000 36%),
+    linear-gradient(270deg, transparent 0%, #000 36%),
     linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
   mask-composite: intersect;
 }
@@ -461,7 +474,7 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   min-height: 100svh; display: flex; align-items: center;
 }
 .about-bleed {
-  position: absolute; top: 0; right: 0; height: 100%; width: 72%;
+  position: absolute; top: 0; right: 0; height: 100%; width: 88%;
   object-fit: cover; object-position: 58% 42%;
   /* full-strength image; two intersecting fades only where asked —
      left (toward the text) and bottom (into the page). A single radial
