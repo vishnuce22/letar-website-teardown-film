@@ -459,11 +459,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
      left (toward the text) and bottom (into the page). A single radial
      at this full-screen size washed the whole frame out */
   -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 23%),
+    linear-gradient(90deg, transparent 1%, #000 30%),
     linear-gradient(180deg, #000 70%, transparent 97%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(90deg, transparent 0%, #000 23%),
+    linear-gradient(90deg, transparent 1%, #000 30%),
     linear-gradient(180deg, #000 70%, transparent 97%);
   mask-composite: intersect;
   pointer-events: none;
