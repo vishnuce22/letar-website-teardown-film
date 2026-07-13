@@ -1213,8 +1213,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
    THREE THEATERS section — mandatory page snap would fight its 300vh runway.
    Rules kept only for reference; the .vfilm-body class is no longer on index. */
 @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  /* the container rule the align rules need — without it the page can park
+     half-way between two films. Scoped to the film homepage only. */
+  html:has(body.vfilm-body) { scroll-snap-type: y mandatory; }
   .vfilm-body .vchap { scroll-snap-align: start; scroll-snap-stop: always; }
-  .vfilm-body .part3d-section { scroll-snap-align: start; scroll-snap-stop: always; }
+  .vfilm-body .caprouter { scroll-snap-align: start; }
   .vfilm-body .film-landing-v { scroll-snap-align: start; }
 }
 /* phones: the film goes fully static — each chapter is one poster + caption in
@@ -1259,6 +1262,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
 #vc-machining.on .vcap-right { opacity: 0; transform: translateY(calc(-50% + 26px)); }
 #vc-machining.on.act2 .vcap-right { opacity: 1; transform: translateY(-50%); }
 #vc-machining.act2 .vcap-center { opacity: 0; }
+/* white type — the black ink is unreadable over the CMM column */
+.vcap-right h2 { color: #fff; text-shadow: 0 2px 16px rgba(11, 14, 18, .6); }
+.vcap-right .cap-label { color: rgba(255, 255, 255, .78); text-shadow: 0 1px 8px rgba(11, 14, 18, .5); }
+.vcap-right .cap-sub { color: rgba(255, 255, 255, .88); text-shadow: 0 1px 10px rgba(11, 14, 18, .55); }
+.vcap-right .cap-sub em { color: rgba(255, 255, 255, .66); }
 /* hero caption: visible + centered at rest so the GSAP scroll-scrub (rise + zoom
    in videos.js) owns its motion on desktop. Mobile/reduced-motion: just static. */
 #vc0 .vcap { opacity: 1; transform: translateX(-50%); }
