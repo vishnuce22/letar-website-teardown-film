@@ -1265,8 +1265,6 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* white type — the black ink is unreadable over the CMM column */
 .vcap-right h2 { color: #fff; text-shadow: 0 2px 16px rgba(11, 14, 18, .6); }
 .vcap-right .cap-label { color: rgba(255, 255, 255, .78); text-shadow: 0 1px 8px rgba(11, 14, 18, .5); }
-.vcap-right .cap-sub { color: rgba(255, 255, 255, .88); text-shadow: 0 1px 10px rgba(11, 14, 18, .55); }
-.vcap-right .cap-sub em { color: rgba(255, 255, 255, .66); }
 /* hero caption: visible + centered at rest so the GSAP scroll-scrub (rise + zoom
    in videos.js) owns its motion on desktop. Mobile/reduced-motion: just static. */
 #vc0 .vcap { opacity: 1; transform: translateX(-50%); }
@@ -1275,8 +1273,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
   font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;
   text-transform: uppercase; color: var(--steel); margin-bottom: 12px;
 }
-.vchap .vcap .cap-sub { color: var(--steel); margin-top: 12px; font-size: 1.02rem; }
-.vchap .vcap .cap-sub em { color: var(--steel-lt); font-style: normal; font-size: .82rem; }
+.vchap .vcap .cap-sub {
+  color: var(--ink); margin-top: 12px; font-size: 1.16rem;
+  text-shadow: 0 0 12px rgba(250, 251, 252, .85), 0 0 26px rgba(250, 251, 252, .7);
+}
+.vchap .vcap .cap-sub em { color: var(--steel); font-style: normal; font-size: .84rem; }
 /* living cards: stamp in like a traveler stamp, catch the light once, then
    breathe. Keyed to .on (added/removed both scroll directions → replays). */
 .vchap.on .cap-card {
