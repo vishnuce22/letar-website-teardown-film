@@ -415,7 +415,7 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
    shows the imagery through it (header itself stays 68px in flow) */
 .market-hero--full, .about-hero { margin-top: -68px; }
 .market-hero--full { height: 100svh; min-height: 640px; max-height: none; align-items: center; }
-.market-hero--full > img { object-position: 58% 50%; }
+.market-hero--full > img { object-position: 58% 24%; }
 .market-hero--full::after {
   background: linear-gradient(100deg, rgba(11,14,18,.72) 0%, rgba(11,14,18,.36) 34%, rgba(11,14,18,0) 58%);
 }
@@ -1252,19 +1252,12 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .vchap .vcap.vcap-center { bottom: auto; top: 62%; transform: translate(-50%, calc(-50% + 26px)); }
 .vchap.on .vcap.vcap-center { transform: translate(-50%, -50%); }
 .vcap-center h2 { font-size: clamp(2.1rem, 4.2vw, 3.4rem); }
-/* act-two caption: appears beside the CMM after the film's white flash
-   (videos.js toggles .act2 on #vc-machining from the video clock) */
-.vchap .vcap.vcap-right {
-  left: auto; right: clamp(24px, 6vw, 96px); bottom: auto; top: 50%;
-  width: min(440px, 46vw); text-align: left;
-  transform: translateY(calc(-50% + 26px));
-}
-#vc-machining.on .vcap-right { opacity: 0; transform: translateY(calc(-50% + 26px)); }
-#vc-machining.on.act2 .vcap-right { opacity: 1; transform: translateY(-50%); }
-#vc-machining.act2 .vcap-center { opacity: 0; }
-/* white type — the black ink is unreadable over the CMM column */
-.vcap-right h2 { color: #fff; text-shadow: 0 2px 16px rgba(11, 14, 18, .6); }
-.vcap-right .cap-label { color: rgba(255, 255, 255, .78); text-shadow: 0 1px 8px rgba(11, 14, 18, .5); }
+/* act-two caption: centered in front of the part but seated lower,
+   swapped in after the film's white flash (videos.js toggles .act2) */
+.vchap .vcap.vcap-act2 { top: 76%; }
+#vc-machining.on .vcap-act2 { opacity: 0; }
+#vc-machining.on.act2 .vcap-act2 { opacity: 1; }
+#vc-machining.act2 .vcap-center:not(.vcap-act2) { opacity: 0; }
 /* hero caption: visible + centered at rest so the GSAP scroll-scrub (rise + zoom
    in videos.js) owns its motion on desktop. Mobile/reduced-motion: just static. */
 #vc0 .vcap { opacity: 1; transform: translateX(-50%); }
