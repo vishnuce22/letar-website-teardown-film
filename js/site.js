@@ -16,7 +16,19 @@ if (toggle && nav) {
     e.stopPropagation()
     setNav(!nav.classList.contains('open'))
   })
-  nav.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false) })
+  nav.addEventListener('click', (e) => {
+    // drawer accordions: the group parent toggles its sub-links instead
+    // of navigating (the hub pages are reachable via their first sub-link)
+    const parent = e.target.closest('.nav-parent')
+    if (parent && matchMedia('(max-width: 1080px)').matches) {
+      e.preventDefault()
+      const group = parent.closest('.nav-group')
+      nav.querySelectorAll('.nav-group.open').forEach((g) => { if (g !== group) g.classList.remove('open') })
+      group.classList.toggle('open')
+      return
+    }
+    if (e.target.closest('a')) setNav(false)
+  })
   document.addEventListener('click', (e) => {
     if (!nav.classList.contains('open')) return
     if (e.target.closest('.nav') || e.target.closest('.nav-toggle')) return
