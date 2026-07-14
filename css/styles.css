@@ -1803,3 +1803,10 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .footer-doc .ai-note { font-size: .6rem; letter-spacing: .06em; }
   .vchap .vcap .cap-sub em { font-size: .72rem; }
 }
+
+/* phones: the Difference title scales down (desktop untouched) */
+@media (max-width: 640px) {
+  .diff-title .t1, .diff-title .t3 { font-size: 1.15rem; letter-spacing: .22em; }
+  .diff-title .t2 { font-size: 2.4rem; letter-spacing: .1em; margin: 4px 0; }
+  .diff-copy p { font-size: .94rem; line-height: 1.75; }
+}
