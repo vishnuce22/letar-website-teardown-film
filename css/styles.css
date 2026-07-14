@@ -1793,3 +1793,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .essay .cap-label { font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--steel); margin-bottom: 10px; }
 .essay p { color: var(--steel); margin-top: 10px; }
 
+
+/* phones: AI-imagery clauses stay one quiet line, not a block of tracked caps */
+@media (max-width: 640px) {
+  .hero-visual-wrap .visual-note, .market-hero--full .hero-note, .market-hero .hero-note-dark,
+  .bleed-note, .about-hero-note, .th-note {
+    font-size: .46rem; letter-spacing: .09em; line-height: 1.6;
+  }
+  .footer-doc .ai-note { font-size: .6rem; letter-spacing: .06em; }
+  .vchap .vcap .cap-sub em { font-size: .72rem; }
+}
