@@ -1717,7 +1717,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* glyph bases tuck slightly under the white curve, but the E's lowest
    arm stays mostly visible so the letter still reads */
 .diff-word { margin-top: 56px; margin-bottom: 12px; }
-.diff-word svg { display: block; width: 100%; height: auto; }
+/* bottom edge cuts through the L's lower bar — the word reads as running
+   on under the banner (height tracks width so the cut stays on the bar) */
+.diff-word svg { display: block; width: 100%; height: 17.1vw; }
 /* squat extended letterforms (Owens look): smaller cap height, glyphs
    stretched wide by textLength=spacingAndGlyphs; 600 keeps stems in check */
 .dw-base, .dw-trace {
