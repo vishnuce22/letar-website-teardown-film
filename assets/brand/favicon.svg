@@ -1,0 +1,14 @@
+<!-- Letar Inc. — browser-tab icon: the corporate jet glyph on an ink plate -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Letar Inc.">
+  <rect width="64" height="64" rx="13" fill="#171C22"/>
+  <path d="M6,44 C 22,41.5 40,40.5 55,41.5 C 40,43.5 24,45 12,45.5 C 9.5,45.5 7.2,44.8 6,44 Z" fill="#22D3EE" opacity=".85"/>
+  <g transform="rotate(-14 32 30)">
+    <g transform="translate(32,30) scale(0.205) translate(-157,-81.5)" fill="#F3F8FF">
+      <path d="M26,84 C 70,80 140,79 210,80 C 252,81 282,84 292,88 C 282,92 252,94 210,94 C 140,95 70,92 26,84 Z"/>
+      <path d="M172,90 L118,126 L148,126 L208,91 Z"/>
+      <path d="M78,80 C 98,76 114,79 116,85 C 114,90 98,91 80,88 Z"/>
+      <path d="M46,82 L30,42 L44,40 L74,80 Z"/>
+      <path d="M22,45 L58,37 L58,42 L26,51 Z"/>
+    </g>
+  </g>
+</svg>
