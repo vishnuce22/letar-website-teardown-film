@@ -636,7 +636,13 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   background: var(--card); border: 1px solid var(--line-soft);
   border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
 }
+/* wide tables scroll inside their card on phones instead of clipping */
+.spec-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .spec-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+@media (max-width: 640px) {
+  .spec-table th, .spec-table td { padding: 10px 12px; }
+  .spec-table { font-size: .84rem; }
+}
 .spec-table th, .spec-table td { text-align: left; padding: 13px 20px; border-bottom: 1px solid var(--line-soft); }
 .spec-table tr:last-child td { border-bottom: none; }
 .spec-table th {
@@ -1232,19 +1238,18 @@ html.js .reveal.in { opacity: 1; transform: none; }
    specificity above the base `.vchap .vcap {opacity:0}` — a plain media-query
    rule ties on specificity and loses on source order. */
 @media (max-width: 860px) {
+  /* films play on phones too — svh height keeps the browser chrome honest;
+     captions ride the same .on/.act2 logic as desktop */
   .vchap, #vc0, #vc-ret { height: auto; }
-  .vchap-frame { position: static; height: 100vh; height: 100svh; }
-  .vfilm-body .vchap .vcap { opacity: 1; transform: translate(-50%, 0); }
-  .vfilm-body .vchap .cap-card { opacity: 1; }
-  /* static path shows the machining poster — only act one's caption applies */
-  .vfilm-body #vc-machining .vcap-right { display: none; }
+  .vchap-frame { height: 100vh; height: 100svh; }
 }
 @media (prefers-reduced-motion: reduce) {
   .vchap, #vc0, #vc-ret { height: 100vh; height: 100dvh; }   /* no holds */
   .vchap-frame { position: static; }
   .vfilm-body .vchap .vcap { opacity: 1; transform: translate(-50%, 0); }
   .vfilm-body .vchap .cap-card { opacity: 1; }
-  .vfilm-body #vc-machining .vcap-right { display: none; }
+  /* static path shows the machining poster — only act one's caption applies */
+  .vfilm-body #vc-machining .vcap-act2 { display: none; }
 }
 .vchap .vcap {
   position: absolute; left: 50%; bottom: 9vh; transform: translate(-50%, 26px);

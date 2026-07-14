@@ -9,7 +9,8 @@
 //  · JS "settle-snap" (scrollTo after input-quiet) — fought wheel/touch momentum
 //  · GSAP scrub timelines fading video opacity per scroll tick — compositing jank
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
-const filmActive = matchMedia('(min-width: 861px)').matches && !reduced
+const desktop = matchMedia('(min-width: 861px)').matches
+const filmActive = !reduced // films play on phones too (muted+playsinline)
 
 const chapters = [...document.querySelectorAll('.vchap')]
 const frames = chapters.map((c) => c.querySelector('.vchap-frame') || c)
@@ -70,7 +71,7 @@ if (filmActive) {
 // deterministic: at the top it is always at rest, even when the snap deck
 // brings you back UP to the hero (the scrub-lag left it stuck mid-fade before).
 // Desktop + motion-OK only; mobile/reduced-motion keep the static CSS caption.
-if (filmActive) {
+if (filmActive && desktop) {
   const hero = document.getElementById('vc0')
   const heroCap = hero && hero.querySelector('.vcap')
   if (heroCap) {
