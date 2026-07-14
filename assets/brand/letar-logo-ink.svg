@@ -1,0 +1,21 @@
+<!-- Letar Inc. — ink logo (for light backgrounds; transparent canvas).
+     Wordmark uses a heavy italic stand-in; outline the text for final assets. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 250" role="img" aria-label="LETAR INC. — Aerospace Precision Machining &amp; Assembly">
+  <defs>
+    <linearGradient id="cy" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3B82F6" stop-opacity="0"/><stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#cy)" d="M180,186 C 320,174 460,172 566,168 C 460,175 330,183 208,190 C 196,190 186,189 180,186 Z"/>
+  <path fill="none" stroke="url(#cy)" stroke-width="4" stroke-linecap="round" d="M560,168 C 618,132 690,100 726,80"/>
+  <g transform="translate(766,-40) scale(0.82) rotate(-18 160 85)" fill="#171C22">
+    <path d="M26,84 C 70,80 140,79 210,80 C 252,81 282,84 292,88 C 282,92 252,94 210,94 C 140,95 70,92 26,84 Z"/>
+    <path d="M172,90 L118,126 L148,126 L208,91 Z"/>
+    <path d="M78,80 C 98,76 114,79 116,85 C 114,90 98,91 80,88 Z"/>
+    <path d="M46,82 L30,42 L44,40 L74,80 Z"/>
+    <path d="M22,45 L58,37 L58,42 L26,51 Z"/>
+  </g>
+  <text x="322" y="162" font-family="Arial Black,Arial" font-weight="900" font-style="italic" font-size="130" letter-spacing="-4" fill="#171C22">LETAR</text>
+  <text x="790" y="160" font-family="Arial" font-weight="800" font-style="italic" font-size="46" fill="#2563EB">INC.</text>
+  <text x="240" y="220" font-family="Arial" font-weight="700" font-style="italic" font-size="26" letter-spacing="3.4" fill="#5C6670">AEROSPACE PRECISION MACHINING &amp; ASSEMBLY</text>
+</svg>

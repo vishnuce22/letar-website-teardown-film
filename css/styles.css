@@ -113,6 +113,7 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 /* ── Header ─────────────────────────────────────────────────── */
 /* Apple-style glass: neutral (the old warm cream read yellow over dark
    heroes), highly translucent, heavy blur + saturation boost */
+.wordmark img.nav-logo { height: 44px; width: auto; display: block; }
 .site-header {
   position: sticky; top: 0; z-index: 60;
   /* neutral glass: no saturate boost — over warm content (gold marks,
@@ -1436,9 +1437,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .th-cap {
   position: absolute; bottom: 8vh; left: 0; right: 0; z-index: 3;
   padding: 0 18px; text-align: center;
-  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
-  font-size: clamp(1.15rem, 1.6vw, 1.7rem); letter-spacing: .02em; color: #fff;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, .7), 0 0 28px rgba(0, 0, 0, .4);
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(1.3rem, 1.9vw, 2rem); letter-spacing: .03em; color: #fff;
+  /* machined extrusion: white face stepping down through steel tones into a
+     soft drop — holds on the bright sky panel and the dark orbit panel alike */
+  text-shadow:
+    0 1px 0 #c8ccd2, 0 2px 0 #aeb3ba, 0 3px 0 #9298a0, 0 4px 0 #767d86,
+    0 5px 1px rgba(15, 20, 26, .6), 0 8px 18px rgba(0, 0, 0, .55), 0 14px 34px rgba(0, 0, 0, .4);
   opacity: calc(1 - var(--merge, 0));
 }
 /* theater capsules ride the panel; engine-free reveal (always on) */
@@ -1506,7 +1511,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .th-note {
   position: absolute; left: 18px; bottom: 12px; z-index: 6;
   font-family: var(--font-mono); font-size: .56rem; letter-spacing: .14em;
-  text-transform: uppercase; color: rgba(255,255,255,.5);
+  text-transform: uppercase; color: rgba(255,255,255,.82);
+  /* quiet dark plate so the clause stays legible over the bright floor panel */
+  background: rgba(8, 12, 16, .55); padding: 5px 10px; border-radius: 4px;
   text-shadow: 0 1px 6px rgba(0,0,0,.6);
 }
 /* ── static fallback: phones + reduced-motion ── */
@@ -1523,7 +1530,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .th-panel video { display: none; }   /* posters only — no video downloads */
   .th-panel img.th-poster { display: block; }
   .th-label { top: 26px; }
-  .th-cap { bottom: 60px; font-size: 1.25rem; }   /* clear of the panel's bottom mask fade */
+  .th-cap { bottom: 60px; font-size: 1.4rem; }   /* clear of the panel's bottom mask fade */
   .th-divider { display: none; }
   .th-merge { position: static; opacity: 1; height: auto; }
   .th-merge video { display: none; }
