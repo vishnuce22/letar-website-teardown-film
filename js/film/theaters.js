@@ -32,6 +32,31 @@ if (section && !active && !reduced) {
     })
   }, { threshold: 0.25 })
   vids.forEach((v) => io.observe(v))
+
+  // the final card waits for the merge to finish (safety timer covers
+  // data-saver browsers that refuse to play through)
+  const mergeV = section.querySelector('.th-merge video')
+  if (mergeV) {
+    const reveal = () => section.classList.add('merged')
+    mergeV.addEventListener('ended', reveal)
+    const armed = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) { setTimeout(reveal, 9000); armed.disconnect() } })
+    }, { threshold: 0.4 })
+    armed.observe(mergeV)
+    // fast scrollers who skip the merge must not land on an empty card
+    const cardEl = section.querySelector('.th-final')
+    if (cardEl) {
+      const armCard = new IntersectionObserver((es) => {
+        es.forEach((e) => {
+          if (!e.isIntersecting) return
+          if (mergeV.ended) reveal()
+          else setTimeout(reveal, 3500)
+          armCard.disconnect()
+        })
+      }, { threshold: 0.3 })
+      armCard.observe(cardEl)
+    }
+  }
 }
 
 if (section && active) {

@@ -1496,6 +1496,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .th-merge img.th-poster { position: static; width: 100%; height: auto; display: block; }
   .th-final { position: static; transform: none; opacity: 1; pointer-events: auto; padding: 34px 24px 10px; width: auto; }
   .th-final h2 { color: #fff; }   /* the section stays dark in the static layout */
+  .th-final .th-final-logo { width: 100%; }
+  .th-certs img { height: 52px; }
   .th-stage .scroll-cue { display: none; }
   .th-note { position: static; display: block; padding: 12px 24px 20px; color: rgba(255,255,255,.45); text-shadow: none; }
 }
@@ -1507,9 +1509,19 @@ html.js .reveal.in { opacity: 1; transform: none; }
     display: block; position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
   }
-  /* the merge plays once in place too, holding its final frame */
-  .th-merge video { display: block; position: static; width: 100%; height: auto; }
+  /* the merge rises as its own full-screen chapter after ORBIT, plays
+     through, and only then does the final card animate in */
+  .th-merge { position: relative; height: 100svh; }
+  .th-merge video {
+    display: block; position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }
   .th-merge img.th-poster { display: none; }
+  .th-final {
+    opacity: 0; transform: translateY(26px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  .theaters.merged .th-final { opacity: 1; transform: translateY(0); }
 }
 /* desktop: posters hidden once JS runs the film (poster attr covers preload) */
 @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
