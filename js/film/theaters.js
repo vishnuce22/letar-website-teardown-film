@@ -38,6 +38,9 @@ if (section && !active && !reduced) {
   const mergeV = section.querySelector('.th-merge video')
   if (mergeV) {
     const reveal = () => section.classList.add('merged')
+    // don't wait for the jet to cross the whole frame — the card pulls
+    // up once the shot has established itself
+    mergeV.addEventListener('timeupdate', () => { if (mergeV.currentTime >= 3.2) reveal() })
     mergeV.addEventListener('ended', reveal)
     const armed = new IntersectionObserver((es) => {
       es.forEach((e) => { if (e.isIntersecting) { setTimeout(reveal, 9000); armed.disconnect() } })

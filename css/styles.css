@@ -145,19 +145,19 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 .wordmark .co { color: var(--ink); font-weight: 500; font-size: .92rem; letter-spacing: .1em; }
 /* the trade, set in a technical aerospace face — visible, tracked, engineered */
 .wordmark .co-aero {
-  font-family: var(--font-display); font-weight: 600; font-size: .7rem;
+  font-family: var(--font-display); font-weight: 600; font-size: .8rem;
   letter-spacing: .3em; color: rgba(23, 28, 34, .58); text-transform: uppercase;
   padding-left: 12px; border-left: 1px solid var(--line);
 }
 @media (max-width: 720px) {
   .wordmark { font-size: 1.14rem; gap: 7px; }
   .wordmark .co { font-size: .82rem; }
-  .wordmark .co-aero { font-size: .56rem; letter-spacing: .22em; padding-left: 9px; }
+  .wordmark .co-aero { font-size: .66rem; letter-spacing: .22em; padding-left: 9px; }
 }
 .nav { display: flex; gap: 26px; align-items: center; }
 /* squeeze zone: full nav + dropdowns must fit before the drawer takes over */
 @media (min-width: 1081px) and (max-width: 1520px) {
-  .wordmark .co-aero { font-size: .58rem; letter-spacing: .2em; padding-left: 9px; }
+  .wordmark .co-aero { font-size: .68rem; letter-spacing: .2em; padding-left: 9px; }
   .nav { gap: 13px; }
   .nav a { font-size: .86rem; }
 }
@@ -466,6 +466,21 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   text-transform: uppercase; color: rgba(23, 28, 34, .48);
 }
 .about-hero-note { left: auto; right: clamp(18px, 3vw, 44px); }
+/* clause variants: dark-scrim market heroes get white; capability hero
+   visuals carry a quiet caption under the image */
+.market-hero { position: relative; }
+.market-hero .hero-note-dark {
+  position: absolute; right: clamp(18px, 3vw, 44px); bottom: 14px; z-index: 2;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(255, 255, 255, .6);
+  text-shadow: 0 1px 8px rgba(11, 14, 18, .55);
+}
+.hero-visual-wrap { width: 100%; }
+.hero-visual-wrap .visual-note {
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(23, 28, 34, .42);
+  text-align: right; margin-top: 8px;
+}
 @media (max-width: 860px) {
   /* pin the clause onto the image band itself (image is full-width,
      aspect 1600:893 => height = 55.8vw) */
@@ -1486,7 +1501,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 @media (max-width: 860px), (prefers-reduced-motion: reduce) {
   .theaters { height: auto; }
   .th-stage { position: static; height: auto; flex-direction: column; }
-  .th-panel { flex: none; height: 64vh; opacity: 1; }
+  .th-panel {
+    flex: none; height: 64vh; opacity: 1;
+    /* soft dissolve between the stacked films — the dark section shows
+       through the crossfade zones */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  }
   .th-panel video { display: none; }   /* posters only — no video downloads */
   .th-panel img.th-poster { display: block; }
   .th-label { top: 26px; }
@@ -1509,19 +1530,26 @@ html.js .reveal.in { opacity: 1; transform: none; }
     display: block; position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
   }
-  /* the merge rises as its own full-screen chapter after ORBIT, plays
-     through, and only then does the final card animate in */
+  /* the merge rises as its own full-screen chapter after ORBIT; part-way
+     through, the film fades back and the final card pulls up over it */
   .th-merge { position: relative; height: 100svh; }
   .th-merge video {
     display: block; position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
+    transition: opacity 1s ease;
   }
   .th-merge img.th-poster { display: none; }
+  .theaters.merged .th-merge video { opacity: .22; }
   .th-final {
-    opacity: 0; transform: translateY(26px);
+    position: relative; z-index: 3; left: 0; top: auto; width: auto;
+    margin-top: -100svh; min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: center;
+    opacity: 0; transform: translateY(30px);
     transition: opacity .9s ease, transform .9s ease;
+    pointer-events: none;
   }
-  .theaters.merged .th-final { opacity: 1; transform: translateY(0); }
+  .theaters.merged .th-final { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .th-final .btn { align-self: center; }
 }
 /* desktop: posters hidden once JS runs the film (poster attr covers preload) */
 @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
