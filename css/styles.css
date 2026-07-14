@@ -1431,6 +1431,16 @@ html.js .reveal.in { opacity: 1; transform: none; }
   opacity: calc(1 - var(--merge, 0));
 }
 .th-panel .cardrow { position: absolute; bottom: 7vh; left: 0; right: 0; z-index: 3; }
+/* per-panel caption — the teardown deck's voice, seated low on each video;
+   fades with its panel as the merge takes over */
+.th-cap {
+  position: absolute; bottom: 8vh; left: 0; right: 0; z-index: 3;
+  padding: 0 18px; text-align: center;
+  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.15rem, 1.6vw, 1.7rem); letter-spacing: .02em; color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .7), 0 0 28px rgba(0, 0, 0, .4);
+  opacity: calc(1 - var(--merge, 0));
+}
 /* theater capsules ride the panel; engine-free reveal (always on) */
 .theaters .cap-card { opacity: 1; }
 .th-divider {
@@ -1513,6 +1523,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .th-panel video { display: none; }   /* posters only — no video downloads */
   .th-panel img.th-poster { display: block; }
   .th-label { top: 26px; }
+  .th-cap { bottom: 60px; font-size: 1.25rem; }   /* clear of the panel's bottom mask fade */
   .th-divider { display: none; }
   .th-merge { position: static; opacity: 1; height: auto; }
   .th-merge video { display: none; }
