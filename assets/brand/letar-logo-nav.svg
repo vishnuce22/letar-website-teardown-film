@@ -1,6 +1,6 @@
 <!-- Letar Inc. — nav crop: no tagline (for light header; transparent canvas).
      Wordmark uses a heavy italic stand-in; outline the text for final assets. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 -30 880 230" role="img" aria-label="LETAR INC. — Aerospace Precision Machining &amp; Assembly">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="312 -30 718 230" role="img" aria-label="LETAR INC. — Aerospace Precision Machining &amp; Assembly">
   <defs>
     <linearGradient id="cy" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#3B82F6" stop-opacity="0"/><stop offset="1" stop-color="#22D3EE"/>
