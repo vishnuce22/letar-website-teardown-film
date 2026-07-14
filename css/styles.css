@@ -114,6 +114,8 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 /* Apple-style glass: neutral (the old warm cream read yellow over dark
    heroes), highly translucent, heavy blur + saturation boost */
 .wordmark img.nav-logo { height: 44px; width: auto; display: block; }
+.wordmark--logo { align-items: center; gap: 10px; }
+.wordmark--logo .co-aero { padding-left: 10px; }
 .site-header {
   position: sticky; top: 0; z-index: 60;
   /* neutral glass: no saturate boost — over warm content (gold marks,
@@ -385,6 +387,11 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 .market-hero .eyebrow { color: #A9C4E8; }
 .market-hero h1 { color: #fff; font-size: clamp(2.4rem, 5vw, 3.6rem); text-shadow: 0 2px 18px rgba(0,0,0,.5); }
 .market-hero .lede { color: rgba(255,255,255,.9); max-width: 780px; margin-top: 16px; }
+/* coming-soon markets: quiet tracked mono line in the hero */
+.mk-soon-hero {
+  font-family: var(--font-mono); font-size: .82rem; letter-spacing: .42em;
+  text-transform: uppercase; color: rgba(255, 255, 255, .85); margin-top: 16px;
+}
 /* split section — content one side, scene image the other */
 .split-sec { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .split-sec.rev .split-img { order: -1; }
@@ -410,7 +417,13 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
 @media (max-width: 860px) {
   .split-sec { grid-template-columns: 1fr; gap: 28px; }
   .split-sec.rev .split-img { order: 0; }
-  .market-hero { height: 52vh; min-height: 360px; }
+  .market-hero { height: auto; min-height: 52vh; }
+  /* phones: text spans the whole busy frame, so the scrim carries more of
+     the contrast work than the desktop bottom-gradient */
+  .market-hero::after {
+    background: linear-gradient(180deg, rgba(11,14,18,.34) 0%, rgba(11,14,18,.66) 55%, rgba(11,14,18,.86) 100%);
+  }
+  .market-hero .container { padding-top: 96px; padding-bottom: 34px; }
 }
 /* approvals hero — the formation stacks vertically in the frame, so it
    needs the full viewport to show all three aircraft; text sits in a
@@ -456,6 +469,12 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   .market-hero--full { height: 100svh; min-height: 560px; }
   .market-hero--full > img { object-position: 55% 50%; }
   .hero-oem { display: none; }
+  /* phones: the desktop left-column scrim leaves the paragraph over bright
+     aircraft — add a full-frame dim so the copy reads */
+  .market-hero--full::after {
+    background:
+      linear-gradient(180deg, rgba(11,14,18,.42) 0%, rgba(11,14,18,.5) 60%, rgba(11,14,18,.62) 100%);
+  }
 }
 /* engineering & inspection — the CMM fills the section's right side at
    full height and dissolves into the canvas: strong fade toward the text,
@@ -585,7 +604,10 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
     mask-image: linear-gradient(180deg, #000 76%, transparent 100%);
     mask-composite: add;
   }
-  .about-hero { display: block; padding: 0 0 30px; min-height: 0; }
+  .about-hero { display: block; padding: 0 0 26px; min-height: 0; }
+  /* the desktop container keeps 88px of vertical-centering padding —
+     dead white space on phones */
+  .about-hero .container { padding-top: 12px; padding-bottom: 0; }
   .about-copy h1 { margin-top: 6px; }
 }
 /* 2-col capability hero: verbatim lede left, scene visual right */
@@ -818,6 +840,19 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   text-transform: uppercase; color: var(--steel-lt); margin-bottom: 44px;
 }
 .doc-page h2 { font-size: 1.3rem; margin: 40px 0 12px; }
+/* supplier T&C — plain legal list: number in the gutter, hairline rows */
+.tc-ol { list-style: none; margin: 0; padding: 0; counter-reset: tc; }
+.tc-ol[start="13"] { counter-reset: tc 12; }
+.tc-ol li {
+  position: relative; padding: 13px 0 13px 50px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: .98rem; line-height: 1.65; color: var(--steel);
+  counter-increment: tc;
+}
+.tc-ol li::before {
+  content: counter(tc) "."; position: absolute; left: 0; top: 13px;
+  font-family: var(--font-mono); font-size: .85rem; font-weight: 500; color: var(--ink);
+}
 .doc-page p, .doc-page li { color: var(--ink-70); margin-bottom: 12px; }
 .doc-page ul { padding-left: 22px; }
 
@@ -1102,6 +1137,14 @@ html.js .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .parts-carousel { overflow-x: auto; }   /* manual scroll, no motion */
   .pc-arrow { display: none; }
+}
+@media (max-width: 640px) {
+  /* phones: desktop-size cards read enormous at 390px — scale the strip down */
+  .parts-track img { width: 190px; }
+  .parts-carousel { padding: 26px 0 22px; }
+  .pc-arrow { width: 38px; height: 38px; }
+  .pc-prev { left: 14px; }
+  .pc-next { right: 14px; }
 }
 .parts-lists { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 38px; }
 .parts-lists h4 {
@@ -1439,11 +1482,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   padding: 0 18px; text-align: center;
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   font-size: clamp(1.3rem, 1.9vw, 2rem); letter-spacing: .03em; color: #fff;
-  /* machined extrusion: white face stepping down through steel tones into a
-     soft drop — holds on the bright sky panel and the dark orbit panel alike */
-  text-shadow:
-    0 1px 0 #c8ccd2, 0 2px 0 #aeb3ba, 0 3px 0 #9298a0, 0 4px 0 #767d86,
-    0 5px 1px rgba(15, 20, 26, .6), 0 8px 18px rgba(0, 0, 0, .55), 0 14px 34px rgba(0, 0, 0, .4);
+  /* white face in a soft dark halo — reads on the bright floor/sky and dark orbit alike */
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .7), 0 0 30px rgba(0, 0, 0, .45), 0 1px 2px rgba(0, 0, 0, .8);
   opacity: calc(1 - var(--merge, 0));
 }
 /* theater capsules ride the panel; engine-free reveal (always on) */
