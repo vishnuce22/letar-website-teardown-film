@@ -21,7 +21,7 @@ const section = document.getElementById('theaters')
 // phones (motion OK): no pinned choreography — the three panel loops just
 // play in place as you scroll past them; lazy src, pause off-screen
 if (section && !active && !reduced) {
-  const vids = [...section.querySelectorAll('.th-panel video')]
+  const vids = [...section.querySelectorAll('.th-panel video, .th-merge video')]
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       const v = e.target
