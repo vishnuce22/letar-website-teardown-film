@@ -1312,6 +1312,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
    stays mostly covered (owner: don't showcase the full part) */
 .vchap .vcap.vcap-center { bottom: auto; top: 62%; transform: translate(-50%, calc(-50% + 26px)); }
 .vchap.on .vcap.vcap-center { transform: translate(-50%, -50%); }
+/* teardown chapter: caption seated lower, level with the other films' captions */
+#vc2 .vcap.vcap-center { top: 76%; }
 .vcap-center h2 { font-size: clamp(2.1rem, 4.2vw, 3.4rem); }
 /* act-two caption: centered in front of the part but seated lower,
    swapped in after the film's white flash (videos.js toggles .act2) */
@@ -1331,7 +1333,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   color: var(--ink); margin-top: 12px; font-size: 1.16rem;
   text-shadow: 0 0 12px rgba(250, 251, 252, .85), 0 0 26px rgba(250, 251, 252, .7);
 }
-.vchap .vcap .cap-sub em { color: var(--steel); font-style: normal; font-size: .84rem; }
+.vchap .vcap .cap-sub em { display: block; margin-top: 8px; color: var(--steel); font-style: normal; font-size: .84rem; }
 /* living cards: stamp in like a traveler stamp, catch the light once, then
    breathe. Keyed to .on (added/removed both scroll directions → replays). */
 .vchap.on .cap-card {
