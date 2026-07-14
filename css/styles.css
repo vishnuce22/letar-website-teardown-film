@@ -1316,7 +1316,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
   /* the container rule the align rules need — without it the page can park
      half-way between two films. Scoped to the film homepage only. */
-  html:has(body.vfilm-body) { scroll-snap-type: y mandatory; }
+  html:has(body.vfilm-body), html:has(body.film-body) { scroll-snap-type: y mandatory; }
   .vfilm-body .vchap { scroll-snap-align: start; scroll-snap-stop: always; }
   .vfilm-body .caprouter { scroll-snap-align: start; }
   .vfilm-body .film-landing-v { scroll-snap-align: start; }
@@ -1325,6 +1325,14 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .vfilm-body .home-stats { scroll-snap-align: start; }
   .vfilm-body .difference { scroll-snap-align: start; }
   .vfilm-body .site-footer { scroll-snap-align: end; }
+  /* three-theatres homepage: the panels row and the merge film are the two
+     chapters; same tail rest stops as the deck */
+  .film-body .theaters { scroll-snap-align: start; scroll-snap-stop: always; }
+  .film-body .th-merge { scroll-snap-align: start; scroll-snap-stop: always; }
+  .film-body .caprouter { scroll-snap-align: start; }
+  .film-body .home-stats { scroll-snap-align: start; }
+  .film-body .difference { scroll-snap-align: start; }
+  .film-body .site-footer { scroll-snap-align: end; }
 }
 /* phones: the film goes fully static — each chapter is one poster + caption in
    normal flow. No pins, no autoplay, no scroll fights with the dynamic toolbar. */
@@ -1459,12 +1467,16 @@ html.js .reveal.in { opacity: 1; transform: none; }
    theaters.js drives --sync and --merge), then merge into one frame.
    Phones + reduced-motion: static posters stacked, no pinning.
    ══════════════════════════════════════════════════════════════ */
-.theaters { position: relative; height: 220vh; background: #0e1216; }
+/* Two snap chapters like the teardown deck: panels row (100vh), then the
+   merge film (100vh) where the video PLAYS on arrival and the card rises
+   at mid-clip. No scroll-scrubbed phases — theaters.js only plays/pauses. */
+.theaters { position: relative; height: auto; background: #0e1216; }
 .th-stage {
-  position: sticky; top: 0; height: 100vh; height: 100dvh;
-  display: flex; overflow: clip; --merge: 0;
+  position: relative;
+  display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr;
+  grid-template-rows: 100vh 100vh; grid-template-rows: 100dvh 100dvh;
 }
-.th-panel { position: relative; flex: 1; overflow: hidden; opacity: calc(1 - var(--merge, 0)); }
+.th-panel { position: relative; grid-row: 1; overflow: hidden; }
 .th-panel video, .th-panel img.th-poster {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
 }
@@ -1489,36 +1501,30 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* theater capsules ride the panel; engine-free reveal (always on) */
 .theaters .cap-card { opacity: 1; }
 .th-divider {
-  position: relative; z-index: 4; width: 2px; flex: none; align-self: stretch;
-  background: rgba(255,255,255,.22); --sync: 0;
-  /* through Phase B the divider thins and takes the amber glow */
-  box-shadow: 0 0 calc(var(--sync) * 14px) rgba(201,162,39, calc(var(--sync) * .9));
-  background: rgba(255,255,255, calc(.22 + var(--sync) * .5));
-  transform: scaleX(calc(1 - var(--sync) * .5));
-  /* Phase C: dividers slide up and away as the panels merge */
-  translate: 0 calc(var(--merge, 0) * -110vh);
+  position: relative; z-index: 4; width: 2px; grid-row: 1; align-self: stretch;
+  background: rgba(255,255,255,.22);
 }
-.th-merge { position: absolute; inset: 0; z-index: 2; opacity: var(--merge, 0); pointer-events: none; overflow: clip; }
-/* the frame arrives slightly pushed-in and settles to 1.0 as --focus rises —
-   reads as the clip's own pull-back receding into the background */
-.th-merge video { width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.05 - var(--focus, 0) * .05)); }
-/* focus veil: heavy edge-weighted dim + defocus blur so the card reads
-   clearly; browsers without backdrop-filter still get the full dim */
-.th-merge::after {
-  content: ''; position: absolute; inset: 0; opacity: var(--focus, 0);
-  background: radial-gradient(ellipse 62% 54% at 50% 58%, rgba(6,9,13,.62), rgba(6,9,13,.88));
-  backdrop-filter: blur(calc(var(--focus, 0) * 14px));
-  -webkit-backdrop-filter: blur(calc(var(--focus, 0) * 14px));
+/* merge chapter — its own full screen; the clip plays, then dims back
+   under the card once .merged lands */
+.th-merge {
+  position: relative; grid-row: 2; grid-column: 1 / -1; z-index: 2;
+  opacity: 1; overflow: clip; background: #06090d;
 }
-/* card opacity/position ride --focus directly — scroll-locked, no transition
-   lag or threshold flicker; .on only grants pointer-events once settled */
+.th-merge video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: opacity 1.1s ease;
+}
+.theaters.merged .th-merge video { opacity: .22; }
+/* the card shares the merge chapter's grid cell — dead-centered over the film */
 .th-final {
-  position: absolute; left: 50%; top: 52%;
-  transform: translate(-50%, calc(-50% + 22px * (1 - var(--focus, 0))));
-  width: min(1040px, calc(100vw - 48px)); text-align: center; z-index: 5;
-  opacity: var(--focus, 0); pointer-events: none;
+  grid-row: 2; grid-column: 1 / -1; position: relative; z-index: 5;
+  align-self: center; justify-self: center;
+  width: min(1040px, calc(100vw - 48px)); text-align: center;
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .9s ease, transform .9s ease;
+  pointer-events: none;
 }
-.th-final.on { pointer-events: auto; }
+.theaters.merged .th-final { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .th-final .th-final-logo {
   display: block; width: min(880px, 96%); margin: 0 auto 30px;
   /* double shadow: tight edge definition + wide ambient — the merge frame is bright behind it */
@@ -1546,10 +1552,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .th-final .btn { margin-top: 30px; }
 .th-final .btn-ghost { color: #fff; border-color: rgba(255,255,255,.45); }
 .th-final .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-.th-stage .scroll-cue { opacity: calc(1 - var(--merge, 0)); }
+/* cue + clause belong to the panels chapter, not the stage bottom */
+.th-stage .scroll-cue { bottom: auto; top: calc(100dvh - 7vh); }
 /* representative-imagery disclaimer — quiet, mono, always present in the stage */
 .th-note {
-  position: absolute; left: 18px; bottom: 12px; z-index: 6;
+  position: absolute; left: 18px; bottom: auto; top: calc(100dvh - 38px); z-index: 6;
   font-family: var(--font-mono); font-size: .56rem; letter-spacing: .14em;
   text-transform: uppercase; color: rgba(255,255,255,.82);
   /* quiet dark plate so the clause stays legible over the bright floor panel */
@@ -1559,7 +1566,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* ── static fallback: phones + reduced-motion ── */
 @media (max-width: 860px), (prefers-reduced-motion: reduce) {
   .theaters { height: auto; }
-  .th-stage { position: static; height: auto; flex-direction: column; }
+  .th-stage { position: static; height: auto; display: block; }
   .th-panel {
     flex: none; height: 64vh; opacity: 1;
     /* soft dissolve between the stacked films — the dark section shows
