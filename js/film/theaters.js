@@ -17,6 +17,23 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
 const active = matchMedia('(min-width: 861px)').matches && !reduced
 
 const section = document.getElementById('theaters')
+
+// phones (motion OK): no pinned choreography — the three panel loops just
+// play in place as you scroll past them; lazy src, pause off-screen
+if (section && !active && !reduced) {
+  const vids = [...section.querySelectorAll('.th-panel video')]
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const v = e.target
+      if (e.isIntersecting) {
+        if (!v.src && v.dataset.video) { v.src = v.dataset.video; v.load() }
+        v.play().catch(() => {})
+      } else { v.pause() }
+    })
+  }, { threshold: 0.25 })
+  vids.forEach((v) => io.observe(v))
+}
+
 if (section && active) {
   const stage = section.querySelector('.th-stage')
   const panels = [...section.querySelectorAll('.th-panel')]

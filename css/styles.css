@@ -1450,7 +1450,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 @media (max-width: 860px), (prefers-reduced-motion: reduce) {
   .theaters { height: auto; }
   .th-stage { position: static; height: auto; flex-direction: column; }
-  .th-panel { height: 64vh; opacity: 1; }
+  .th-panel { flex: none; height: 64vh; opacity: 1; }
   .th-panel video { display: none; }   /* posters only — no video downloads */
   .th-panel img.th-poster { display: block; }
   .th-label { top: 26px; }
@@ -1462,6 +1462,15 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .th-final h2 { color: #fff; }   /* the section stays dark in the static layout */
   .th-stage .scroll-cue { display: none; }
   .th-note { position: static; display: block; padding: 12px 24px 20px; color: rgba(255,255,255,.45); text-shadow: none; }
+}
+/* phones with motion OK: the three panels play their loops in place
+   (no pinning, no choreography; merge stays a poster behind the card) */
+@media (max-width: 860px) and (prefers-reduced-motion: no-preference) {
+  .th-panel { position: relative; overflow: hidden; }
+  .th-panel video {
+    display: block; position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }
 }
 /* desktop: posters hidden once JS runs the film (poster attr covers preload) */
 @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
