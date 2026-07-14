@@ -1717,11 +1717,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* glyph bases tuck slightly under the white curve, but the E's lowest
    arm stays mostly visible so the letter still reads */
 .diff-word { margin-top: 26px; margin-bottom: 0; }
-.diff-word svg { display: block; width: 100%; height: auto; }
+.diff-word svg { display: block; width: 100%; height: clamp(110px, 12vw, 158px); }
 /* squat extended letterforms (Owens look): smaller cap height, glyphs
    stretched wide by textLength=spacingAndGlyphs; 600 keeps stems in check */
 .dw-base, .dw-trace {
-  font-family: var(--font-display); font-weight: 600; font-size: 190px;
+  font-family: var(--font-display); font-weight: 600; font-size: 290px;
   fill: none;
 }
 .dw-base { stroke: rgba(255,255,255,.15); stroke-width: 1.5; }
