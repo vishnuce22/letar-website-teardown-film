@@ -515,10 +515,12 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   /* pin the clause onto the image band itself (image is full-width,
      aspect 1600:893 => height = 55.8vw) */
   .about-hero { position: relative; }
+  /* phones: the clause flows as a caption line directly under the image —
+     no computed offsets to drift into the picture */
   .about-hero-note {
-    position: absolute; top: calc(100vw * .558 - 26px);
-    right: 14px; left: auto; bottom: auto;
-    color: rgba(255, 255, 255, .78); text-shadow: 0 1px 8px rgba(11, 14, 18, .6);
+    position: static; display: block; text-align: right;
+    padding: 6px 18px 0;
+    color: rgba(23, 28, 34, .48); text-shadow: none;
   }
 }
 .inspect-sec .container {
