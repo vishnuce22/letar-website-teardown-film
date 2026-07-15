@@ -1810,6 +1810,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* phones: the Difference title scales down (desktop untouched) */
 @media (max-width: 640px) {
   .diff-title .t1, .diff-title .t3 { font-size: 1.15rem; letter-spacing: .22em; }
+  .diff-title .t3 { align-self: flex-start; }   /* no staggered offset on phones */
   .diff-title .t2 { font-size: 2.4rem; letter-spacing: .1em; margin: 4px 0; }
   .diff-copy p { font-size: .94rem; line-height: 1.75; }
 }
