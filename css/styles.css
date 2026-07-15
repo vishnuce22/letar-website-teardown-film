@@ -616,7 +616,8 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
     mask-image: linear-gradient(180deg, #000 76%, transparent 100%);
     mask-composite: add;
   }
-  .about-hero { display: block; padding: 0 0 26px; min-height: 0; }
+  .about-hero { display: block; padding: 0 0 6px; min-height: 0; }
+  .about-hero + .section-tight { padding-top: 16px; }
   /* the desktop container keeps 88px of vertical-centering padding —
      dead white space on phones */
   .about-hero .container { padding-top: 12px; padding-bottom: 0; }
