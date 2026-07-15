@@ -1391,10 +1391,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .vchap.on .vcap { opacity: 1; transform: translate(-50%, 0); }
 /* centered caption variant — sits over the subject so the finished part
    stays mostly covered (owner: don't showcase the full part) */
-.vchap .vcap.vcap-center { bottom: auto; top: 62%; transform: translate(-50%, calc(-50% + 26px)); }
+.vchap .vcap.vcap-center { bottom: auto; top: 76%; transform: translate(-50%, calc(-50% + 26px)); }
 .vchap.on .vcap.vcap-center { transform: translate(-50%, -50%); }
-/* teardown chapter: caption seated lower, level with the other films' captions */
-#vc2 .vcap.vcap-center { top: 76%; }
 .vcap-center h2 { font-size: clamp(2.1rem, 4.2vw, 3.4rem); }
 /* act-two caption: centered in front of the part but seated lower,
    swapped in after the film's white flash (videos.js toggles .act2) */
