@@ -680,9 +680,9 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .stat-label {
-  font-family: var(--font-mono); font-size: 0.8rem;
-  letter-spacing: 0.09em; text-transform: uppercase;
-  color: var(--anchor-steel); margin-top: 12px;
+  font-family: var(--font-display); font-weight: 600; font-size: 1.02rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--blue-deep); margin-top: 10px;
 }
 .cert-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 54px; }
 .cert-item {
