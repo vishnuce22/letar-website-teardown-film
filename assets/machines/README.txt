@@ -12,7 +12,6 @@ Expected files:
   variaxis600.jpg — Mazak Variaxis i-600 (5-Axis VMC; dealer studio photo)
   mx330.jpg     — Matsuura MX-330 (5-Axis VMC; matsuurausa.com product image)
   sc100x2.jpg   — Nakamura-Tome SC-100X2 (twin-spindle turning centre; methodsmachine.com product image)
-  robodrill.jpg — FANUC Robodrill a-D21LiB5ADV Plus (compact VMC; fanuc.eu product image)
 
 Format: JPEG or PNG recommended. Minimum 600x600px. Landscape or square crops work best.
 

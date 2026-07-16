@@ -1812,3 +1812,12 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .diff-title .t2 { font-size: 2.4rem; letter-spacing: .1em; margin: 4px 0; }
   .diff-copy p { font-size: .94rem; line-height: 1.75; }
 }
+
+/* "+ more" closer card on the machine wall */
+.equip-more { display: flex; align-items: center; justify-content: center; background: var(--card-2); min-height: 280px; }
+.equip-more-inner { text-align: center; padding: 30px; }
+.equip-more-plus {
+  font-family: var(--font-display); font-weight: 700; font-size: 2.4rem;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--blue-deep);
+}
+.equip-more-sub { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--steel); margin-top: 10px; }
