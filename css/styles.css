@@ -1381,7 +1381,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .vfilm-body .vchap .vcap { opacity: 1; transform: translate(-50%, 0); }
   .vfilm-body .vchap .cap-card { opacity: 1; }
   /* static path shows the machining poster — only act one's caption applies */
-  .vfilm-body #vc-machining .vcap-act2 { display: none; }
+  .vfilm-body .vchap .vcap-act2 { display: none; }
 }
 .vchap .vcap {
   position: absolute; left: 50%; bottom: 9vh; transform: translate(-50%, 26px);
@@ -1397,12 +1397,12 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* act-two caption: centered in front of the part but seated lower,
    swapped in after the film's white flash (videos.js toggles .act2) */
 .vchap .vcap.vcap-act2 { top: 76%; }
-#vc-machining.on .vcap-act2 { opacity: 0; }
-#vc-machining.on.act2 .vcap-act2 { opacity: 1; }
-#vc-machining.act2 .vcap-center:not(.vcap-act2) { opacity: 0; }
+.vchap.on .vcap-act2 { opacity: 0; }
+.vchap.on.act2 .vcap-act2 { opacity: 1; }
+.vchap.act2 .vcap:not(.vcap-act2) { opacity: 0 !important; }
 /* hero caption: visible + centered at rest so the GSAP scroll-scrub (rise + zoom
    in videos.js) owns its motion on desktop. Mobile/reduced-motion: just static. */
-#vc0 .vcap { opacity: 1; transform: translateX(-50%); }
+#vc0 .vcap:not(.vcap-act2) { opacity: 1; transform: translateX(-50%); }
 .vchap .vcap h2 { font-size: clamp(1.7rem, 3.4vw, 2.7rem); }
 .vchap .vcap .cap-label {
   font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;

@@ -8,7 +8,7 @@
   <meta name="description" content="A business jet, taken apart. Follow one structural mount back through its making — certified billet, 5-axis machining, CMM proof on granite. AS9100D · ITAR · Concord, Ontario." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg" />
 </head>
 <body class="film-body vfilm-body">
@@ -59,29 +59,22 @@
 <main class="vfilm">
 
   <!-- ══ CH0 · HERO — the jet in flight ══ -->
-  <section class="vchap" id="vc0" data-video="assets/gen/hero-hd.mp4">
+  <section class="vchap" id="vc0" data-video="assets/gen/open-film.mp4" data-act2="3.75">
     <div class="vchap-frame">
-      <video muted playsinline loop preload="none" poster="assets/gen/hero-poster.jpg" aria-hidden="true"></video>
+      <video muted playsinline preload="none" poster="assets/gen/hero-poster.jpg" aria-hidden="true"></video>
       <div class="vcap">
         <h2>Every aircraft is ten thousand promises, machined.</h2>
         <p class="cap-sub">Scroll to trace one of them home.</p>
+      </div>
+      <div class="vcap vcap-center vcap-act2">
+        <h2>Every part starts as a drawing.</h2>
       </div>
       <div class="scroll-cue" aria-hidden="true">SCROLL</div>
     </div>
   </section>
 
-  <!-- ══ CH1 · THE TEARDOWN — jet to engineering explosion to one part ══ -->
-  <section class="vchap" id="vc2" data-video="assets/gen/teardown-open.mp4?v=3">
-    <div class="vchap-frame">
-      <video muted playsinline preload="none" poster="assets/gen/teardown-open-poster.jpg" aria-hidden="true"></video>
-      <div class="vcap vcap-center">
-        <h2>Every part starts as a drawing.</h2>
-      </div>
-    </div>
-  </section>
-
   <!-- ══ CH3b · THE MACHINE (real footage) ══ -->
-  <section class="vchap" id="vc-machining" data-video="assets/gen/block-film.mp4?v=3">
+  <section class="vchap" id="vc-machining" data-video="assets/gen/block-film.mp4?v=3" data-act2="2.85">
     <div class="vchap-frame">
       <video muted playsinline preload="none" poster="assets/gen/block-film-poster.jpg" aria-hidden="true"></video>
       <div class="vcap vcap-center">
@@ -159,9 +152,9 @@
   <section class="anchor-band home-stats">
     <div class="container">
       <div class="stat-strip" style="margin-top: 0;">
-        <div class="stat-cell"><div class="stat-value">20<span class="unit">+ yrs</span></div><div class="stat-label">Aerospace &amp; defence</div></div>
+        <div class="stat-cell"><div class="stat-value">25<span class="unit">+ yrs</span></div><div class="stat-label">Aerospace &amp; defence</div></div>
         <div class="stat-cell"><div class="stat-value">26<span class="unit">+</span></div><div class="stat-label">CNC machines</div></div>
-        <div class="stat-cell"><div class="stat-value">ASL 10<span class="unit">+</span></div><div class="stat-label">Approved supplier lists</div></div>
+        <div class="stat-cell"><div class="stat-value">11<span class="unit">+</span></div><div class="stat-label">Approved supplier list inclusions</div></div>
         <div class="stat-cell"><div class="stat-value">100<span class="unit">%</span></div><div class="stat-label">Shipments with certs</div></div>
       </div>
     </div>
@@ -231,6 +224,6 @@
 <script src="js/site.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
-<script type="module" src="js/film/videos.js"></script>
+<script type="module" src="js/film/videos.js?v=2"></script>
 </body>
 </html>

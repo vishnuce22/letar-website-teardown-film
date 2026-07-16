@@ -53,15 +53,6 @@ if (filmActive) {
   chapters.forEach((c) => loader.observe(c))
   frames.forEach((f) => player.observe(f))
 
-  // two-act captions on the machine chapter: the centered machining caption
-  // yields to the CMM caption when the film's white flash lands (~2.9s)
-  const machSec = document.getElementById('vc-machining')
-  if (machSec) {
-    const mv = machSec.querySelector('video')
-    if (mv) mv.addEventListener('timeupdate', () => {
-      machSec.classList.toggle('act2', mv.currentTime >= 2.85)
-    })
-  }
 }
 
 // Hero push-in: as you scroll off CH0, the caption rises toward screen center
@@ -106,3 +97,14 @@ if (proofFrame) {
   }, { threshold: 0.45 })
   typer.observe(proofFrame)
 }
+
+// two-act chapters: any .vchap[data-act2] swaps to its second caption when
+// the film clock passes the mark (the white-flash moment in the edit)
+document.querySelectorAll('.vchap[data-act2]').forEach((sec) => {
+  const v = sec.querySelector('video')
+  const at = parseFloat(sec.dataset.act2)
+  if (!v || !isFinite(at)) return
+  v.addEventListener('timeupdate', () => {
+    sec.classList.toggle('act2', v.currentTime >= at)
+  })
+})
