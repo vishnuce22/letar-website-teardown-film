@@ -1858,10 +1858,24 @@ html.js .reveal.in { opacity: 1; transform: none; }
 }
 @media (max-width: 860px) { .bg-hero { min-height: 480px; } .bg-hero-content h1 { font-size: 1.35rem; } }
 .bg-hero-btn {
-  margin-top: 26px; color: #fff; border-color: rgba(255,255,255,.55);
-  background: rgba(11,14,18,.28); text-shadow: none;
+  margin-top: 28px; position: relative; border: none; border-radius: 0;
+  padding: 14px 34px 14px 28px; color: #fff; font-weight: 600; letter-spacing: .06em;
+  text-shadow: none;
+  background: linear-gradient(#fff, #fff) no-repeat left center / 0% 100%, rgba(11, 14, 18, .32);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .6);
+  transition: color .28s ease, background-size .28s ease, box-shadow .28s ease;
 }
-.bg-hero-btn:hover { border-color: #fff; background: rgba(255,255,255,.1); color: #fff; }
+.bg-hero-btn::after {
+  content: "92"; display: inline-block; margin-left: 12px;
+  transition: transform .28s ease;
+}
+.bg-hero-btn:hover {
+  color: var(--ink);
+  background-size: 100% 100%, auto;
+  box-shadow: inset 0 0 0 1.5px #fff;
+}
+.bg-hero-btn:hover::after { transform: translateX(5px); }
 /* Owens-style angled cut: the white page shears up into the hero's bottom edge */
 .bg-hero::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 120px; z-index: 3;
