@@ -886,6 +886,10 @@ h3 { font-size: 1.28rem; line-height: 1.3; font-weight: 600; }
       running (html.js set by site.js). No JS → everything visible. ── */
 html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 html.js .reveal.in { opacity: 1; transform: none; }
+/* phones: no reveal-hide — laggy observers read as blank gaps between sections */
+@media (max-width: 860px) {
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
