@@ -1321,10 +1321,12 @@ html.js .reveal.in { opacity: 1; transform: none; }
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover;
 }
-/* white scrim keeps ink text legible over any footage (and keeps it bright) */
+/* cinematic black vignette — matches the grade baked into the film clips */
 .vchap-frame::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 44%;
-  background: linear-gradient(180deg, rgba(250,251,252,0) 0%, rgba(250,251,252,.82) 78%);
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 120% 100% at 50% 45%, rgba(0,0,0,0) 62%, rgba(0,0,0,.30) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0) 74%, rgba(0,0,0,.38) 100%);
   pointer-events: none;
 }
 /* soft top edge on every chapter after the first — dissolve, not cut */
