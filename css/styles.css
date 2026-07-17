@@ -1853,7 +1853,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 4px 22px rgba(0,0,0,.6);
 }
 .bg-hero-content p {
-  margin-top: 10px; max-width: 62ch; color: rgba(255,255,255,.82);
+  margin-top: 10px; max-width: 90ch; color: rgba(255,255,255,.82);
   font-size: clamp(.88rem, 1vw, 1rem); line-height: 1.55;
   text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 3px 16px rgba(0,0,0,.55);
 }
