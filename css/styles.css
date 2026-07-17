@@ -1858,7 +1858,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 }
 @media (max-width: 860px) { .bg-hero { min-height: 480px; } .bg-hero-content h1 { font-size: 1.35rem; } }
 .bg-hero-btn {
-  margin-top: 26px; color: #fff; border-color: rgba(255,255,255,.5);
-  text-shadow: none; backdrop-filter: blur(2px);
+  margin-top: 26px; color: #fff; border-color: rgba(255,255,255,.55);
+  background: rgba(11,14,18,.28); text-shadow: none;
 }
 .bg-hero-btn:hover { border-color: #fff; background: rgba(255,255,255,.1); color: #fff; }
