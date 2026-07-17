@@ -7,7 +7,6 @@
 
   const headers = {
     'apikey': SUPABASE_ANON,
-    'Authorization': `Bearer ${SUPABASE_ANON}`,
     'Content-Type': 'application/json',
     'Prefer': 'return=minimal',
   }
@@ -32,7 +31,6 @@
       method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON,
-        'Authorization': `Bearer ${SUPABASE_ANON}`,
         'Content-Type': file.type || 'application/octet-stream',
       },
       body: file,
