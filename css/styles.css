@@ -1697,7 +1697,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* owner-picked A-Navy: lockup navy on the left falling to black (Owens'
    red-to-black structure in Letar colours); curved white boundaries */
 .difference {
-  position: relative; overflow: hidden; padding: 96px 0 0;
+  position: relative; overflow: hidden; padding: 140px 0 0;
+  clip-path: polygon(0 46px, 72% 46px, 79% 0, 100% 0, 100% 100%, 0 100%);
   /* "Horizon" (owner pick): the films' dusk sky — sunset orange melting into
      night blue. Straight Owens-style edges; the old curves are gone. */
   background: linear-gradient(115deg, #C2410C 0%, #6B2410 30%, #16263F 72%, #0B0E12 100%);
@@ -1884,3 +1885,25 @@ html.js .reveal.in { opacity: 1; transform: none; }
   pointer-events: none;
 }
 @media (max-width: 860px) { .bg-hero::after { height: 64px; clip-path: polygon(0 58%, 66% 58%, 78% 0, 100% 0, 100% 100%, 0 100%); } }
+/* white shelf under the hero: stats + approved-supplier line */
+.hero-shelf { background: var(--canvas); padding: 30px 0 6px; }
+.asl-line {
+  display: block; text-align: center; margin: 26px 0 10px;
+  font-family: var(--font-mono); font-size: .72rem; letter-spacing: .24em;
+  color: var(--steel); text-decoration: none; transition: color .2s;
+}
+.asl-line:hover { color: var(--blue-deep); }
+@media (max-width: 860px) { .asl-line { font-size: .6rem; letter-spacing: .16em; } .difference { clip-path: polygon(0 26px, 62% 26px, 74% 0, 100% 0, 100% 100%, 0 100%); padding-top: 96px; } }
+
+/* hero entrance: one-time rise, logo → line → sub → button */
+@media (prefers-reduced-motion: no-preference) {
+  .bg-hero-logo, .bg-hero-content h1, .bg-hero-content p, .bg-hero-btn {
+    opacity: 0; transform: translateY(16px);
+    animation: bh-in .7s cubic-bezier(.2, .6, .2, 1) forwards;
+  }
+  .bg-hero-logo { animation-delay: .15s; }
+  .bg-hero-content h1 { animation-delay: .42s; }
+  .bg-hero-content p { animation-delay: .58s; }
+  .bg-hero-btn { animation-delay: .74s; }
+  @keyframes bh-in { to { opacity: 1; transform: translateY(0); } }
+}
