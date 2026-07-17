@@ -1832,8 +1832,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .bg-hero-scrim {
   position: absolute; inset: 0; pointer-events: none;
   background:
+    radial-gradient(ellipse 52% 46% at 50% 47%, rgba(11,14,18,.52) 0%, rgba(11,14,18,.28) 55%, rgba(11,14,18,0) 100%),
     radial-gradient(ellipse 120% 100% at 50% 45%, rgba(0,0,0,0) 58%, rgba(0,0,0,.38) 100%),
-    linear-gradient(180deg, rgba(11,14,18,.42) 0%, rgba(11,14,18,.10) 30%, rgba(11,14,18,.14) 68%, rgba(11,14,18,.52) 100%);
+    linear-gradient(180deg, rgba(11,14,18,.42) 0%, rgba(11,14,18,.12) 30%, rgba(11,14,18,.16) 68%, rgba(11,14,18,.52) 100%);
 }
 .bg-hero-content {
   position: absolute; inset: 0; z-index: 2;
