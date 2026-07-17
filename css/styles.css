@@ -1855,7 +1855,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.55)) drop-shadow(0 12px 44px rgba(0,0,0,.65));
 }
 .bg-hero-content h1 {
-  margin-top: 40px; color: #fff;
+  margin-top: 12px; color: #fff;
   font-family: var(--font-display); font-weight: 600;
   font-size: clamp(1.15rem, 1.7vw, 1.6rem); letter-spacing: .04em;
   text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 4px 22px rgba(0,0,0,.6);
