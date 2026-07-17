@@ -1922,52 +1922,88 @@ html.js .reveal.in { opacity: 1; transform: none; }
   @keyframes bh-in { to { opacity: 1; transform: translateY(0); } }
 }
 
-/* ═══ NAV C — cinematic uppercase rail (owner pick 2026-07-17) ═══ */
+/* ═══ NAV GLASS — Apple liquid-glass rail (owner, 2026-07-17) ═══
+   Scrolled/base: bright frost, ink type. At top over film or photo heroes:
+   smoky transparent glass, white type. The material swap IS the effect. */
 .site-header {
-  background: rgba(6, 8, 11, .94);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, .07);
-  box-shadow: none;
+  background: rgba(250, 252, 254, .58);
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  border-bottom: 1px solid rgba(11, 14, 18, .07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 1px 22px rgba(11, 14, 18, .05);
 }
 .site-header.at-top {
-  background: linear-gradient(180deg, rgba(6, 8, 11, .88) 0%, rgba(6, 8, 11, .48) 60%, rgba(6, 8, 11, 0) 100%);
-  backdrop-filter: none; -webkit-backdrop-filter: none;
-  border-bottom-color: transparent; box-shadow: none;
+  background: rgba(250, 252, 254, .42);
+  border-bottom-color: rgba(11, 14, 18, .04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35);
 }
-.site-header .nav-logo { filter: brightness(0) invert(1); }
-.wordmark.wordmark--logo .co-aero { color: rgba(255, 255, 255, .72); border-left-color: rgba(255, 255, 255, .28); }
 .nav a {
-  color: rgba(255, 255, 255, .94);
+  color: var(--ink);
   font-family: var(--font-display); font-weight: 600;
   text-transform: uppercase; letter-spacing: .12em; font-size: .78rem;
 }
-.nav a:hover { color: #fff; }
-.nav a[aria-current="page"] { color: #fff; border-bottom-color: #fff; }
+.nav a:hover { color: var(--blue-deep); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
 .nav-drop {
-  background: rgba(9, 12, 16, .97); border-color: rgba(255, 255, 255, .09);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, .5);
+  background: rgba(252, 253, 255, .82);
+  backdrop-filter: blur(30px) saturate(1.8);
+  -webkit-backdrop-filter: blur(30px) saturate(1.8);
+  border-color: rgba(11, 14, 18, .08);
+  box-shadow: 0 18px 44px rgba(11, 14, 18, .16);
 }
-.nav-drop a { color: rgba(255, 255, 255, .82); letter-spacing: .08em; font-size: .74rem; }
-.nav-drop a:hover { background: rgba(255, 255, 255, .09); color: #fff; }
-.nav-drop a[aria-current="page"] { color: #fff; background: rgba(255, 255, 255, .07); }
+.nav-drop a { color: var(--steel); letter-spacing: .08em; font-size: .74rem; }
+.nav-drop a:hover { background: rgba(11, 14, 18, .06); color: var(--ink); }
+.nav-drop a[aria-current="page"] { color: var(--ink); background: rgba(11, 14, 18, .05); }
 .nav a.btn-primary {
-  color: #fff; letter-spacing: .1em; font-size: .78rem;
+  color: var(--ink); letter-spacing: .1em; font-size: .78rem;
   padding: 10px 18px; margin-left: 8px;
-  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .85);
+  box-shadow: inset 0 0 0 1.5px rgba(11, 14, 18, .75);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  background: linear-gradient(#fff, #fff) no-repeat left center / 0% 100%;
+  background: linear-gradient(var(--ink), var(--ink)) no-repeat left center / 0% 100%;
   transition: color .25s ease, background-size .25s ease;
 }
-.nav a.btn-primary:hover { color: var(--ink); background-size: 100% 100%; transform: none; }
+.nav a.btn-primary:hover { color: #fff; background-size: 100% 100%; transform: none; }
+
+/* over the film or a photo hero, the top-state glass goes smoky + white type */
+body.film-body .site-header.at-top,
+body:has(.market-hero) .site-header.at-top {
+  background: rgba(14, 18, 24, .26);
+  backdrop-filter: blur(24px) saturate(1.7);
+  -webkit-backdrop-filter: blur(24px) saturate(1.7);
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+}
+body.film-body .site-header.at-top .nav-logo,
+body:has(.market-hero) .site-header.at-top .nav-logo { filter: brightness(0) invert(1); }
+body.film-body .site-header.at-top .co-aero,
+body:has(.market-hero) .site-header.at-top .co-aero { color: rgba(255,255,255,.75); border-left-color: rgba(255,255,255,.3); }
+body.film-body .site-header.at-top .nav a,
+body:has(.market-hero) .site-header.at-top .nav a { color: rgba(255, 255, 255, .95); }
+body.film-body .site-header.at-top .nav a:hover,
+body:has(.market-hero) .site-header.at-top .nav a:hover { color: #fff; }
+body.film-body .site-header.at-top .nav a[aria-current="page"],
+body:has(.market-hero) .site-header.at-top .nav a[aria-current="page"] { border-bottom-color: #fff; }
+body.film-body .site-header.at-top .nav a.btn-primary,
+body:has(.market-hero) .site-header.at-top .nav a.btn-primary {
+  color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .85);
+  background: linear-gradient(#fff, #fff) no-repeat left center / 0% 100%;
+}
+body.film-body .site-header.at-top .nav a.btn-primary:hover,
+body:has(.market-hero) .site-header.at-top .nav a.btn-primary:hover { color: var(--ink); background-size: 100% 100%; }
+body.film-body .site-header.at-top .nav-toggle,
+body:has(.market-hero) .site-header.at-top .nav-toggle { color: #fff; }
+
 @media (max-width: 860px) {
-  .nav-toggle { color: #fff; }
+  .nav-toggle { color: var(--ink); }
   .nav {
-    background: rgba(8, 11, 15, .97);
-    border-left-color: rgba(255, 255, 255, .08);
+    background: rgba(250, 252, 254, .78);
+    backdrop-filter: blur(40px) saturate(1.8);
+    -webkit-backdrop-filter: blur(40px) saturate(1.8);
+    border-left: 1px solid rgba(11, 14, 18, .08);
   }
-  .nav a { border-bottom-color: rgba(255, 255, 255, .08); }
-  .nav a[aria-current="page"] { border-bottom-color: #fff; }
-  .nav-group { border-bottom-color: rgba(255, 255, 255, .08); }
-  .nav-group > .nav-parent { color: #fff; }
+  .nav a { border-bottom-color: rgba(11, 14, 18, .08); color: var(--ink); }
+  .nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+  .nav-group { border-bottom-color: rgba(11, 14, 18, .08); }
+  .nav-group > .nav-parent { color: var(--ink); }
   .nav a.btn-primary { margin: 20px 0 0; justify-content: center; }
 }
