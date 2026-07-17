@@ -1866,8 +1866,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .6);
   transition: color .28s ease, background-size .28s ease, box-shadow .28s ease;
 }
-.bg-hero-btn::after {
-  content: "92"; display: inline-block; margin-left: 12px;
+.bg-hero-btn .bh-arr {
+  display: inline-block; margin-left: 10px; font-family: Arial, sans-serif;
   transition: transform .28s ease;
 }
 .bg-hero-btn:hover {
@@ -1875,7 +1875,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   background-size: 100% 100%, auto;
   box-shadow: inset 0 0 0 1.5px #fff;
 }
-.bg-hero-btn:hover::after { transform: translateX(5px); }
+.bg-hero-btn:hover .bh-arr { transform: translateX(5px); }
 /* Owens-style angled cut: the white page shears up into the hero's bottom edge */
 .bg-hero::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 120px; z-index: 3;
