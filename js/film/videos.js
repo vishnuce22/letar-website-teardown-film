@@ -102,9 +102,10 @@ if (proofFrame) {
 // the film clock passes the mark (the white-flash moment in the edit)
 document.querySelectorAll('.vchap[data-act2]').forEach((sec) => {
   const v = sec.querySelector('video')
-  const at = parseFloat(sec.dataset.act2)
-  if (!v || !isFinite(at)) return
+  if (!v) return
+  const acts = ['act2', 'act3', 'act4'].filter((k) => isFinite(parseFloat(sec.dataset[k])))
+  if (!acts.length) return
   v.addEventListener('timeupdate', () => {
-    sec.classList.toggle('act2', v.currentTime >= at)
+    acts.forEach((k) => sec.classList.toggle(k, v.currentTime >= parseFloat(sec.dataset[k])))
   })
 })
