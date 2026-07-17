@@ -975,7 +975,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
     font-family: var(--font-mono); font-size: 1.25rem; line-height: 1;
     color: var(--steel-lt); transition: none;
   }
-  .nav-group.open > .nav-parent::after { content: "3"; }
+  .nav-group.open > .nav-parent::after { content: "–"; }
   .nav-drop {
     position: static; display: flex; flex-direction: column;
     opacity: 1; visibility: visible; transform: none;
