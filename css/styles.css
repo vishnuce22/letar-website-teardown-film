@@ -1862,3 +1862,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
   background: rgba(11,14,18,.28); text-shadow: none;
 }
 .bg-hero-btn:hover { border-color: #fff; background: rgba(255,255,255,.1); color: #fff; }
+/* Owens-style angled cut: the white page shears up into the hero's bottom edge */
+.bg-hero::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 120px; z-index: 3;
+  background: var(--canvas);
+  clip-path: polygon(0 62%, 74% 62%, 81.5% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+@media (max-width: 860px) { .bg-hero::after { height: 64px; clip-path: polygon(0 58%, 66% 58%, 78% 0, 100% 0, 100% 100%, 0 100%); } }
