@@ -968,7 +968,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
     padding: 15px 2px; border-bottom: none;
     opacity: 1; transform: none;
   }
-  .nav-group > .nav-parent::after {
+  .nav-group > .nav-parent::after,
+  .nav-group:hover > .nav-parent::after,
+  .nav-group:focus-within > .nav-parent::after {
     content: "+"; border: none; width: auto; height: auto; margin: 0; transform: none;
     font-family: var(--font-mono); font-size: 1.25rem; line-height: 1;
     color: var(--steel-lt); transition: none;
