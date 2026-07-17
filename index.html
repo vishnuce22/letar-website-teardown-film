@@ -8,7 +8,7 @@
   <meta name="description" content="A business jet, taken apart. Follow one structural mount back through its making — certified billet, 5-axis machining, CMM proof on granite. AS9100D · ITAR · Concord, Ontario." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/styles.css?v=5" />
+  <link rel="stylesheet" href="css/styles.css?v=6" />
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg" />
 </head>
 <body class="film-body vfilm-body">
@@ -56,12 +56,16 @@
 
 <div class="film-grain" aria-hidden="true"></div>
 
-<main class="vfilm">
+<main>
 
-  <!-- ══ CH0 · HERO — the jet in flight ══ -->
-  <section class="vchap" id="vc0" data-video="assets/gen/main-film.mp4?v=9">
-    <div class="vchap-frame">
-      <video muted loop playsinline preload="none" poster="assets/gen/hero-poster.jpg?v=2" aria-hidden="true"></video>
+  <!-- ══ HERO — the film runs as background; brand + Armaan's line over it ══ -->
+  <section class="bg-hero">
+    <video src="assets/gen/main-film.mp4?v=9" muted loop autoplay playsinline preload="metadata" poster="assets/gen/hero-poster.jpg?v=2" aria-hidden="true"></video>
+    <div class="bg-hero-scrim" aria-hidden="true"></div>
+    <div class="bg-hero-content">
+      <img class="bg-hero-logo" src="assets/brand/letar-logo-reversed.svg" alt="LETAR INC." />
+      <h1>Precision-driven aerospace manufacturing.</h1>
+      <p>Decades of expertise. A commitment to innovation, quality, and customer success.</p>
     </div>
   </section>
 
@@ -190,6 +194,5 @@
 <script src="js/site.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
-<script type="module" src="js/film/videos.js?v=3"></script>
 </body>
 </html>
