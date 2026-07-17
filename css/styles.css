@@ -1657,7 +1657,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 /* ── capabilities router — hover-expand strip: one compact row, the slat
       under the cursor widens and reveals its line, the rest compress ── */
-.caprouter { padding: 72px 0 8px; background: var(--canvas); }
+.caprouter { padding: 72px 0 96px; background: var(--canvas); }
 .caprouter h2 { font-size: clamp(2rem, 3.4vw, 3rem); }
 .capr-strip { display: flex; gap: 14px; margin-top: 44px; height: 340px; }
 .capr-slat {
