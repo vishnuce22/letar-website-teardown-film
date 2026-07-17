@@ -1857,3 +1857,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 3px 16px rgba(0,0,0,.55);
 }
 @media (max-width: 860px) { .bg-hero { min-height: 480px; } .bg-hero-content h1 { font-size: 1.35rem; } }
+.bg-hero-btn {
+  margin-top: 26px; color: #fff; border-color: rgba(255,255,255,.5);
+  text-shadow: none; backdrop-filter: blur(2px);
+}
+.bg-hero-btn:hover { border-color: #fff; background: rgba(255,255,255,.1); color: #fff; }
