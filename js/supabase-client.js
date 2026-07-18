@@ -2,7 +2,7 @@
 // No database. Free reliable email delivery. Get a key at https://web3forms.com
 // (enter info@letarinc.com; the key is emailed to you), then paste it below.
 (function () {
-  const ACCESS_KEY = 'PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE'
+  const ACCESS_KEY = '87610784-bfc8-4382-a170-451375e65e3f'
   const ENDPOINT = 'https://api.web3forms.com/submit'
 
   async function send(formEl, subject) {
